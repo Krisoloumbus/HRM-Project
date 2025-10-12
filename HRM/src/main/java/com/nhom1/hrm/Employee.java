@@ -17,22 +17,24 @@ public abstract class Employee {
     private long salary;
 
     public Employee(){}
-    public Employee (String EID, String Name, Education Edu, Long Salary) {
+    public Employee (String EID, String Name, Education Edu, Department Department, Level Level, Long Salary) {
         this.eid =  EID;
         this.name = Name;
         this.edu = Edu;
+        this.department = Department;
+        this.level =Level;
         this.salary = Salary;
     }
 
     // Get
-    public String getManv(){
-        return manv;
+    public String getEID(){
+        return eid;
     }
-    public String getTen(){
-        return tennv;
+    public String getName(){
+        return name;
     }
-    public String getHocVan(){
-        return hocvan;
+    public Education getEdu(){
+        return edu;
     }
     public long hetLuongcb(){
         return luongcb;
