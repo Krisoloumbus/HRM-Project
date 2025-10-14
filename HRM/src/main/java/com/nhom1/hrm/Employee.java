@@ -4,6 +4,8 @@
  */
 package com.nhom1.hrm;
 
+import java.util.Scanner;
+
 /**
  *
  * @author Kris
@@ -36,17 +38,61 @@ public abstract class Employee {
     public Education getEdu(){
         return edu;
     }
-    public long hetLuongcb(){
-        return luongcb;
+    public Department getDepartment(){
+        return department;
+    }
+    public Level getLevel (){
+        return level;
+    }
+    public Long getSalary (){
+        return salary;
     }
 
     // Set
-    public void setManv (String sManv){
-        this.manv = sManv;
+    public void setEID (String sEID){
+        this.eid = sEID;
     }
-    public void setTen (String sTennv){
-        this.tennv = sTennv;
+    public void setName (String sName){
+        this.name = sName;
     }
-    
+    public void setEdu (Education sEdu){
+        this.edu = sEdu;
+    }
+    public void setDepartment (Department sDepartment){
+        this.department = sDepartment;
+    }
+    public void setLevel (Level sLevel){
+        this.level = sLevel;
+    }
+    public void setSalary (Long sSalary){
+        this.salary = sSalary;
+    }
 
+
+    //Input
+    public void Input(Scanner sc){
+        System.out.println("Enter employee ID/EID: ");
+        setEID(sc.nextLine().strip());
+        System.out.println("Enter employee ID/EID: ");
+        setName(sc.nextLine().strip());
+        System.out.println("Enter employee ID/EID: ");
+        setEdu(edu);
+        System.out.println("Enter employee ID/EID: ");
+        setDepartment(department);
+        System.out.println("Enter employee ID/EID: ");
+        setLevel(level);
+        System.out.println("Enter employee ID/EID: ");
+        setSalary(sc.nextLong());
+        sc.nextLine();
+    }    
+    //Output
+    public void Output(){
+        System.out.println("Employee EID: " + getEID() +
+        "\n" + "Employee Name: " + getName() +
+        "\n" + "Employee Education: " + getEdu() +
+        "\n" + "Department: " + getDepartment() +
+        "\n" + "Level: " + getLevel() +
+        "\n" + "Salary: " + getSalary());
+    }
 }
+
