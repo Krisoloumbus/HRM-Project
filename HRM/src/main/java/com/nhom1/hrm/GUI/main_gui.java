@@ -288,12 +288,12 @@ public class main_gui extends javax.swing.JFrame {
         String education = eduField.getText().trim();
         String department = deptField.getText().trim();
         String level = lvlField.getText().trim();
-        String phoneTxt = phoneField.getText().trim();
+        String phoneIn = phoneField.getText().trim();
         String email = emailField.getText().trim();
-        String salaryTxt = salaryField.getText().trim();
+        String salaryIn = salaryField.getText().trim();
 
         // validate đơn giản
-        if (fullName.isEmpty() || education.isEmpty() || department.isEmpty() || level.isEmpty() || phoneTxt.isEmpty() || salaryTxt.isEmpty())
+        if (fullName.isEmpty() || education.isEmpty() || department.isEmpty() || level.isEmpty() || phoneIn.isEmpty() || salaryIn.isEmpty())
         {
         javax.swing.JOptionPane.showMessageDialog(this, "Vui lòng nhập đủ các trường bắt buộc.");
         return;
@@ -301,8 +301,8 @@ public class main_gui extends javax.swing.JFrame {
         java.math.BigDecimal salary;
         long phoneNumber;
             try {
-                salary = new java.math.BigDecimal(salaryTxt);
-                phoneNumber = Long.parseLong(phoneTxt);
+                salary = new java.math.BigDecimal(salaryIn);
+                phoneNumber = Long.parseLong(phoneIn);
             } catch (NumberFormatException ex) {
                 javax.swing.JOptionPane.showMessageDialog(this, "Salary/Phone không hợp lệ.");
             return;

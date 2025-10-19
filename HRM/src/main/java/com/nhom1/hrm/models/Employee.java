@@ -4,21 +4,31 @@
  */
 package com.nhom1.hrm.models;
 
+import java.math.BigDecimal;
+
 /**
  *
  * @author Kris
  */
-public abstract class Employee {
+public class Employee {
+    private Integer number;
     private String eid;
     private String name;
     private Education edu;
     private Department dept;
+    private String email;
     private Level level;
-    private long salary;
+    private Object phone;
+    private BigDecimal salary;
 
     public Employee(){}
-    public Employee (String EID, String Name, Education Edu, Department Dept, Level Level, Long Salary) {
+    public Employee (Integer Number, String EID, String Name, 
+    Education Edu, Department Dept, Level Level, String Email,
+    Object Phone, BigDecimal Salary) {
+        this.number = Number;
+        this.email = Email;
         this.eid =  EID;
+        this.phone = Phone;
         this.name = Name;
         this.edu = Edu;
         this.dept = Dept;
@@ -27,20 +37,26 @@ public abstract class Employee {
     }
 
     // Get
+    public Integer getNo() {return number;}
     public String getEID(){return eid;}
+    public String getEmail(){return email;}
+    public Object getPhone(){return phone;}
     public String getName(){return name;}
     public Education getEdu(){return edu;}
     public Department getDepartment(){return dept;}
     public Level getLevel (){return level;}
-    public Long getSalary (){return salary;}
+    public BigDecimal getSalary (){return salary;}
 
     // Set
+    public void setNo (Integer sNumber) {this.number = sNumber;}
+    public void setPhone (Object sPhone) {this.phone = sPhone;}
+    public void setEmail (String sEmail) {this.email = sEmail;}
     public void setEID (String sEID){this.eid = sEID;}
     public void setName (String sName){this.name = sName;}
     public void setEdu (Education sEdu){this.edu = sEdu;}
     public void setDepartment (Department sDept){this.dept = sDept;}
     public void setLevel (Level sLevel){this.level = sLevel;}
-    public void setSalary (Long sSalary){this.salary = sSalary;}
+    public void setSalary (BigDecimal sSalary){this.salary = sSalary;}
      
     //Output
     public void EOutput(){

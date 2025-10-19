@@ -1,0 +1,69 @@
+package com.nhom1.hrm.SQL;
+
+import java.math.BigDecimal;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.nhom1.hrm.models.Employee;
+
+public class middleMan extends Employee {
+ public List<Employee> findAll(Connection c) throws SQLException {
+        String sql = """
+            SELECT No, EID, Full_Name, Phone, Email, Education, Department, [Level], Salary, CreatedAt
+            FROM dbo.Employees ORDER BY No
+        """;
+        List<Employee> out = new ArrayList<>();
+        try (PreparedStatement ps = c.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                Employee e = new Employee();
+                e.setNo(rs.getInt("No"));
+                e.setEID(rs.getString("EID"));
+                e.setName(rs.getString("Full_Name"));
+                Object p = rs.getObject("Phone");
+                e.setPhone(p == null ? null : ((Number)p).longValue());
+                e.setEmail(rs.getString("Email"));
+                e.setEducation(rs.getString("Education"));
+                e.setDepartment(rs.getString("Department"));
+                e.setLevel(rs.getString("Level"));
+                e.setSalary(rs.getBigDecimal("Salary"));
+                e.setCreatedAt(rs.getTimestamp("CreatedAt"));
+                out.add(e);
+            }
+        }
+        return out;
+    }
+
+    // Insert: KHÔNG truyền EID vì là computed column
+    public int insert(Connection c, Employee e) throws SQLException {
+        String sql = """
+            INSERT INTO dbo.Employees
+            (Full_Name, Phone, Email, Education, Department, [Level], Salary)
+            VALUES (?, ?, ?, ?, ?, ?, ?)
+        """;
+        try (PreparedStatement ps = c.prepareStatement(sql)) {
+            ps.setString(1, e.getName());
+            if (e.getPhone() == null) ps.setNull(2, Types.NUMERIC);
+            else ps.setLong(2, e.getPhone());
+            if (e.getEmail() == null || e.getEmail().isBlank()) ps.setNull(3, Types.VARCHAR);
+            else ps.setString(3, e.getEmail());
+            ps.setString(4, e.getEducation());
+            ps.setString(5, e.getDepartment());
+            ps.setString(6, e.getLevel());
+            ps.setBigDecimal(7, e.getSalary() != null ? e.getSalary() : BigDecimal.ZERO);
+            return ps.executeUpdate();
+        }
+    }
+
+    public int deleteByEid(Connection c, String eid) throws SQLException {
+        try (PreparedStatement ps = c.prepareStatement(
+                "DELETE FROM dbo.Employees WHERE EID = ?")) {
+            ps.setString(1, eid);
+            return ps.executeUpdate();
+        }
+    }
+}
