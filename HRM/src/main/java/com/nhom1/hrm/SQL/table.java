@@ -1,3 +1,4 @@
+package com.nhom1.hrm.SQL;
 import java.sql.Connection;
 import java.sql.Statement;
 

@@ -22,15 +22,19 @@ public class main_gui extends javax.swing.JFrame {
      */
     private void loadTable() {
     DefaultTableModel model = new DefaultTableModel(
-        new Object[]{"Id","EID","FullName","Education","Salary","CreatedAt"}, 0) {
-        @Override public boolean isCellEditable(int r,int c){ return false; }
-    };
+        new Object[]{"No","EID","Full Name","Education","Department","Level","Phone","Email","Salary","CreatedAt"}, 0
+    ) { @Override public boolean isCellEditable(int r,int c){ return false; } };
 
     String sql =
-        "SELECT No,EID,FullName,Education,Department,Salary,CreatedAt " +
-        "FROM dbo.Employees ORDER BY No";
+        "SELECT " +
+        "  No, EID, " +
+        "  Full_Name AS FullName, " +
+        "  Education, Department, [Level], " +   // Level là từ khóa, nên để [Level]
+        "  Phone, Email, Salary, CreatedAt " +
+        "FROM dbo.Employees " +
+        "ORDER BY No";
 
-    try (Connection conn = connectSQL.getConnection();   // ← đổi thành class kết nối của bạn
+    try (Connection conn = connectSQL.getConnection();
          PreparedStatement ps = conn.prepareStatement(sql);
          ResultSet rs = ps.executeQuery()) {
 
@@ -38,10 +42,13 @@ public class main_gui extends javax.swing.JFrame {
             model.addRow(new Object[]{
                 rs.getInt("No"),
                 rs.getString("EID"),
-                rs.getString("Full Name"),
+                rs.getString("FullName"),
                 rs.getString("Education"),
-                rs.getString("Department"),                
-                rs.getBigDecimal("Salary"),
+                rs.getString("Department"),
+                rs.getString("Level"),
+                rs.getObject("Phone"),             // NUMERIC(10,0) -> Object
+                rs.getString("Email"),
+                rs.getBigDecimal("Salary"),        // MONEY → BigDecimal
                 rs.getTimestamp("CreatedAt")
             });
         }
@@ -54,6 +61,7 @@ public class main_gui extends javax.swing.JFrame {
         javax.swing.JOptionPane.showMessageDialog(this, "Lỗi nạp bảng: " + ex.getMessage());
     }
 }
+
 
     public main_gui() {
         initComponents();
@@ -82,6 +90,12 @@ public class main_gui extends javax.swing.JFrame {
         delButton = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         eTable = new javax.swing.JTable();
+        eduField = new javax.swing.JTextField();
+        lvlField = new javax.swing.JTextField();
+        deptField = new javax.swing.JTextField();
+        phoneField = new javax.swing.JTextField();
+        mailLabel = new javax.swing.JLabel();
+        emailField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -133,14 +147,45 @@ public class main_gui extends javax.swing.JFrame {
             eTable.getColumnModel().getColumn(3).setHeaderValue("Education");
         }
 
+        eduField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eduFieldActionPerformed(evt);
+            }
+        });
+
+        lvlField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lvlFieldActionPerformed(evt);
+            }
+        });
+
+        phoneField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                phoneFieldActionPerformed(evt);
+            }
+        });
+
+        mailLabel.setText("Email");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(addButton)
+                .addGap(79, 79, 79)
+                .addComponent(delButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(292, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(91, 91, 91))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(412, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(210, 210, 210))
                     .addGroup(layout.createSequentialGroup()
@@ -155,22 +200,33 @@ public class main_gui extends javax.swing.JFrame {
                                 .addGap(119, 119, 119))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(phoneLabel)
-                                    .addComponent(lvlLabel)
                                     .addComponent(salaryLabel)
-                                    .addComponent(eduLabel)
                                     .addGroup(layout.createSequentialGroup()
+                                        .addComponent(eduLabel)
+                                        .addGap(187, 187, 187)
+                                        .addComponent(eduField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(mailLabel)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(phoneLabel)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(phoneField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lvlLabel)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(lvlField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
                                         .addComponent(deptLabel)
-                                        .addGap(105, 105, 105)
-                                        .addComponent(addButton)
-                                        .addGap(45, 45, 45)
-                                        .addComponent(delButton)))
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                                        .addGap(169, 169, 169)
+                                        .addComponent(deptField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(120, 120, 120)))
                         .addContainerGap())))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(368, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -182,28 +238,39 @@ public class main_gui extends javax.swing.JFrame {
                     .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nameLabel))
                 .addGap(18, 18, 18)
-                .addComponent(salaryLabel)
-                .addGap(5, 5, 5)
-                .addComponent(salaryField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(3, 3, 3)
-                .addComponent(eduLabel)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(salaryLabel)
+                    .addComponent(salaryField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(eduLabel)
+                    .addComponent(eduField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(lvlLabel)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lvlLabel)
+                    .addComponent(lvlField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(5, 5, 5)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(deptLabel)
+                    .addComponent(deptField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(phoneLabel)
+                    .addComponent(phoneField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addComponent(deptLabel)
-                        .addGap(26, 26, 26))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(34, 34, 34)
+                        .addComponent(addButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(addButton)
-                            .addComponent(delButton))
-                        .addGap(11, 11, 11)))
-                .addComponent(phoneLabel)
-                .addGap(18, 18, 18)
+                            .addComponent(mailLabel)
+                            .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(6, 6, 6)
+                        .addComponent(delButton)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -213,9 +280,79 @@ public class main_gui extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_nameFieldActionPerformed
 
+
+    //add data to Table with add button (addbutton)
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         // TODO add your handling code here:
+        String fullName = nameField.getText().trim();
+        String education = eduField.getText().trim();
+        String department = deptField.getText().trim();
+        String level = lvlField.getText().trim();
+        String phoneTxt = phoneField.getText().trim();
+        String email = emailField.getText().trim();
+        String salaryTxt = salaryField.getText().trim();
+
+        // validate đơn giản
+        if (fullName.isEmpty() || education.isEmpty() || department.isEmpty() || level.isEmpty() || phoneTxt.isEmpty() || salaryTxt.isEmpty())
+        {
+        javax.swing.JOptionPane.showMessageDialog(this, "Vui lòng nhập đủ các trường bắt buộc.");
+        return;
+        }
+        java.math.BigDecimal salary;
+        long phoneNumber;
+            try {
+                salary = new java.math.BigDecimal(salaryTxt);
+                phoneNumber = Long.parseLong(phoneTxt);
+            } catch (NumberFormatException ex) {
+                javax.swing.JOptionPane.showMessageDialog(this, "Salary/Phone không hợp lệ.");
+            return;
+        }
+    // Chú ý: EID là cột computed, KHÔNG chèn → DB tự tạo theo No
+        String insertSql =
+        "INSERT INTO dbo.Employees (Full_Name, Phone, Email, Education, Department, [Level], Salary) " +
+        "VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+        try (Connection conn = connectSQL.getConnection();
+         PreparedStatement ps = conn.prepareStatement(insertSql)) {
+
+        ps.setString(1, fullName);
+        ps.setLong(2, phoneNumber);
+        ps.setString(3, email.isBlank() ? null : email); // Email có UNIQUE, có thể null
+        ps.setString(4, education);
+        ps.setString(5, department);
+        ps.setString(6, level);
+        ps.setBigDecimal(7, salary);
+
+        int rows = ps.executeUpdate();
+        if (rows > 0) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Đã thêm nhân viên!");
+            loadTable();   // Reload bảng
+            // clear form
+            nameField.setText("");
+            eduField.setText("");
+            deptField.setText("");
+            lvlField.setText("");
+            phoneField.setText("");
+            emailField.setText("");
+            salaryField.setText("");
+        }
+    } catch (SQLException ex) {
+        ex.printStackTrace();
+        javax.swing.JOptionPane.showMessageDialog(this, "Lỗi thêm: " + ex.getMessage());
+    }  
     }//GEN-LAST:event_addButtonActionPerformed
+
+    private void eduFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eduFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_eduFieldActionPerformed
+
+    private void lvlFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lvlFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lvlFieldActionPerformed
+
+    private void phoneFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phoneFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_phoneFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -255,13 +392,19 @@ public class main_gui extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
     private javax.swing.JButton delButton;
+    private javax.swing.JTextField deptField;
     private javax.swing.JLabel deptLabel;
     private javax.swing.JTable eTable;
+    private javax.swing.JTextField eduField;
     private javax.swing.JLabel eduLabel;
+    private javax.swing.JTextField emailField;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextField lvlField;
     private javax.swing.JLabel lvlLabel;
+    private javax.swing.JLabel mailLabel;
     private javax.swing.JTextField nameField;
     private javax.swing.JLabel nameLabel;
+    private javax.swing.JTextField phoneField;
     private javax.swing.JLabel phoneLabel;
     private javax.swing.JTextField salaryField;
     private javax.swing.JLabel salaryLabel;

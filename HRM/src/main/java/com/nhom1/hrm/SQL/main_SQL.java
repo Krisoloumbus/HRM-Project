@@ -5,7 +5,7 @@ import java.sql.Connection;
 public class main_SQL {
     public static void main(String[] args) {
         try {
-            Connection conn = testconnectsql.getConnection();
+            Connection conn = connectSQL.getConnection();
             System.out.println("Connected");
             try {
                 table.taobangifchuaco(conn);
