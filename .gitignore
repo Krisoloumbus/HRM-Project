@@ -18,6 +18,7 @@ buildNumber.properties
 
 # Environments
 .env
+*.env
 .venv
 env/
 venv/
