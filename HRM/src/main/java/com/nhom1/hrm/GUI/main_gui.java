@@ -20,46 +20,67 @@ public class main_gui extends javax.swing.JFrame {
     /**
      * Creates new form main_gui
      */
-    private void loadTable() {
-    DefaultTableModel model = new DefaultTableModel(
+    // 6.1: Nạp dữ liệu bảng
+private void loadTable() {
+    javax.swing.table.DefaultTableModel model = new javax.swing.table.DefaultTableModel(
         new Object[]{"No","EID","Full Name","Education","Department","Level","Phone","Email","Salary","CreatedAt"}, 0
     ) { @Override public boolean isCellEditable(int r,int c){ return false; } };
 
-    String sql =
-        "SELECT " +
-        "  No, EID, " +
-        "  Full_Name AS FullName, " +
-        "  Education, Department, [Level], " +   // Level là từ khóa, nên để [Level]
-        "  Phone, Email, Salary, CreatedAt " +
-        "FROM dbo.Employees " +
-        "ORDER BY No";
-
-    try (Connection conn = connectSQL.getConnection();
-         PreparedStatement ps = conn.prepareStatement(sql);
-         ResultSet rs = ps.executeQuery()) {
-
-        while (rs.next()) {
+    try (java.sql.Connection c = com.nhom1.hrm.SQL.connectSQL.getConnection()) {
+        com.nhom1.hrm.SQL.table.taobangifchuaco(c);
+        var dao = new com.nhom1.hrm.SQL.middleMan();
+        for (var e : dao.findAll(c)) {
             model.addRow(new Object[]{
-                rs.getInt("No"),
-                rs.getString("EID"),
-                rs.getString("FullName"),
-                rs.getString("Education"),
-                rs.getString("Department"),
-                rs.getString("Level"),
-                rs.getObject("Phone"),             // NUMERIC(10,0) -> Object
-                rs.getString("Email"),
-                rs.getBigDecimal("Salary"),        // MONEY → BigDecimal
-                rs.getTimestamp("CreatedAt")
+                e.getNo(), e.getEID(), e.getName(), e.getEducation(), e.getDepartment(),
+                e.getLevel(), e.getPhone(), e.getEmail(), e.getSalary(), e.getCreatedAt()
             });
         }
         eTable.setModel(model);
         eTable.setAutoCreateRowSorter(true);
         eTable.setFillsViewportHeight(true);
-
-    } catch (SQLException ex) {
+    } catch (Exception ex) {
         ex.printStackTrace();
         javax.swing.JOptionPane.showMessageDialog(this, "Lỗi nạp bảng: " + ex.getMessage());
     }
+}
+
+// 6.2: Đọc form -> Employee
+private com.nhom1.hrm.models.Employee readForm() {
+    var e = new com.nhom1.hrm.models.Employee();
+    e.setName(nameField.getText().trim());
+    e.setEducation(eduField.getText().trim());
+    e.setDepartment(deptField.getText().trim());
+    e.setLevel(lvlField.getText().trim());
+
+    String phoneTxt = phoneField.getText().trim();
+    e.setPhone(phoneTxt.isEmpty() ? null : Long.parseLong(phoneTxt));
+
+    String emailTxt = emailField.getText().trim();
+    e.setEmail(emailTxt.isEmpty() ? null : emailTxt);
+
+    String salaryTxt = salaryField.getText().trim();
+    e.setSalary(salaryTxt.isEmpty() ? java.math.BigDecimal.ZERO
+        : new java.math.BigDecimal(salaryTxt));
+
+    return e;
+}
+
+// 6.3: Validate tối thiểu
+private boolean validateForm() {
+    if (nameField.getText().isBlank()
+        || eduField.getText().isBlank()
+        || deptField.getText().isBlank()
+        || lvlField.getText().isBlank()
+        || salaryField.getText().isBlank()
+        || phoneField.getText().isBlank()) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Vui lòng nhập đủ các trường bắt buộc.");
+        return false;
+    }
+    try { new java.math.BigDecimal(salaryField.getText().trim()); }
+    catch (NumberFormatException e) { javax.swing.JOptionPane.showMessageDialog(this,"Salary không hợp lệ."); return false; }
+    try { Long.parseLong(phoneField.getText().trim()); }
+    catch (NumberFormatException e) { javax.swing.JOptionPane.showMessageDialog(this,"Phone phải là số."); return false; }
+    return true;
 }
 
 
@@ -284,63 +305,30 @@ public class main_gui extends javax.swing.JFrame {
     //add data to Table with add button (addbutton)
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         // TODO add your handling code here:
-        String fullName = nameField.getText().trim();
-        String education = eduField.getText().trim();
-        String department = deptField.getText().trim();
-        String level = lvlField.getText().trim();
-        String phoneIn = phoneField.getText().trim();
-        String email = emailField.getText().trim();
-        String salaryIn = salaryField.getText().trim();
+        if (!validateForm()) return;
+    var emp = readForm();
 
-        // validate đơn giản
-        if (fullName.isEmpty() || education.isEmpty() || department.isEmpty() || level.isEmpty() || phoneIn.isEmpty() || salaryIn.isEmpty())
-        {
-        javax.swing.JOptionPane.showMessageDialog(this, "Vui lòng nhập đủ các trường bắt buộc.");
-        return;
-        }
-        java.math.BigDecimal salary;
-        long phoneNumber;
-            try {
-                salary = new java.math.BigDecimal(salaryIn);
-                phoneNumber = Long.parseLong(phoneIn);
-            } catch (NumberFormatException ex) {
-                javax.swing.JOptionPane.showMessageDialog(this, "Salary/Phone không hợp lệ.");
-            return;
-        }
-    // Chú ý: EID là cột computed, KHÔNG chèn → DB tự tạo theo No
-        String insertSql =
-        "INSERT INTO dbo.Employees (Full_Name, Phone, Email, Education, Department, [Level], Salary) " +
-        "VALUES (?, ?, ?, ?, ?, ?, ?)";
-
-        try (Connection conn = connectSQL.getConnection();
-         PreparedStatement ps = conn.prepareStatement(insertSql)) {
-
-        ps.setString(1, fullName);
-        ps.setLong(2, phoneNumber);
-        ps.setString(3, email.isBlank() ? null : email); // Email có UNIQUE, có thể null
-        ps.setString(4, education);
-        ps.setString(5, department);
-        ps.setString(6, level);
-        ps.setBigDecimal(7, salary);
-
-        int rows = ps.executeUpdate();
+    try (java.sql.Connection c = com.nhom1.hrm.SQL.connectSQL.getConnection()) {
+        com.nhom1.hrm.SQL.table.taobangifchuaco(c);
+        var dao = new com.nhom1.hrm.SQL.middleMan();
+        int rows = dao.insert(c, emp);
         if (rows > 0) {
             javax.swing.JOptionPane.showMessageDialog(this, "Đã thêm nhân viên!");
-            loadTable();   // Reload bảng
-            // clear form
-            nameField.setText("");
-            eduField.setText("");
-            deptField.setText("");
-            lvlField.setText("");
-            phoneField.setText("");
-            emailField.setText("");
-            salaryField.setText("");
+            clearForm();
+            loadTable();
         }
-    } catch (SQLException ex) {
+    } catch (Exception ex) {
         ex.printStackTrace();
         javax.swing.JOptionPane.showMessageDialog(this, "Lỗi thêm: " + ex.getMessage());
-    }  
-    }//GEN-LAST:event_addButtonActionPerformed
+    }
+}
+
+//Comeback later
+private void clearForm() {
+    nameField.setText(""); eduField.setText(""); deptField.setText(""); lvlField.setText("");
+    phoneField.setText(""); emailField.setText(""); salaryField.setText("");
+}
+//GEN-LAST:event_addButtonActionPerformed
 
     private void eduFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eduFieldActionPerformed
         // TODO add your handling code here:
