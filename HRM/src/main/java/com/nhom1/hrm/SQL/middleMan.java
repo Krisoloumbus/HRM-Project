@@ -13,7 +13,7 @@ import com.nhom1.hrm.models.Employee;
 public class middleMan extends Employee {
  public List<Employee> findAll(Connection c) throws SQLException {
         String sql = """
-            SELECT No, EID, Full_Name, Phone, Email, Education, Department, [Level], Salary, CreatedAt
+            SELECT No, EID, Full_Name, Phone, Email, Education, Department, [Level], Salary
             FROM dbo.Employees ORDER BY No
         """;
         List<Employee> out = new ArrayList<>();
@@ -24,14 +24,12 @@ public class middleMan extends Employee {
                 e.setNo(rs.getInt("No"));
                 e.setEID(rs.getString("EID"));
                 e.setName(rs.getString("Full_Name"));
-                Object p = rs.getObject("Phone");
-                e.setPhone(p == null ? null : ((Number)p).longValue());
+                e.setPhone(rs.getString("Phone"));
                 e.setEmail(rs.getString("Email"));
-                e.setEducation(rs.getString("Education"));
+                e.setEdu(rs.getString("Education"));
                 e.setDepartment(rs.getString("Department"));
                 e.setLevel(rs.getString("Level"));
                 e.setSalary(rs.getBigDecimal("Salary"));
-                e.setCreatedAt(rs.getTimestamp("CreatedAt"));
                 out.add(e);
             }
         }
@@ -47,11 +45,9 @@ public class middleMan extends Employee {
         """;
         try (PreparedStatement ps = c.prepareStatement(sql)) {
             ps.setString(1, e.getName());
-            if (e.getPhone() == null) ps.setNull(2, Types.NUMERIC);
-            else ps.setLong(2, e.getPhone());
-            if (e.getEmail() == null || e.getEmail().isBlank()) ps.setNull(3, Types.VARCHAR);
-            else ps.setString(3, e.getEmail());
-            ps.setString(4, e.getEducation());
+            ps.setString(2, e.getPhone());
+            ps.setString(3, e.getEmail());
+            ps.setString(4, e.getEdu());
             ps.setString(5, e.getDepartment());
             ps.setString(6, e.getLevel());
             ps.setBigDecimal(7, e.getSalary() != null ? e.getSalary() : BigDecimal.ZERO);

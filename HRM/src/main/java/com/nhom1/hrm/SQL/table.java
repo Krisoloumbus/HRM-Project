@@ -14,14 +14,13 @@ public class table {
             CREATE TABLE dbo.Employees(
                 No INT IDENTITY(1,1) CONSTRAINT PK_Employees PRIMARY KEY,
                 EID AS ('HRM' + RIGHT('00000' + CAST(No AS VARCHAR(5)), 5)) PERSISTED UNIQUE,
-                Full_Name NVARCHAR(100) NOT NULL,
+                Full_Name NVARCHAR(255) NOT NULL,
                 Phone NUMERIC(10,0) NOT NULL,
-                Email VARCHAR(255) UNIQUE,
-                Education VARCHAR(50) NOT NULL,
-                Department VARCHAR(50) NOT NULL,
-                Level VARCHAR(50) NOT NULL,
-                Salary MONEY NOT NULL,
-                CreatedAt DATETIME2 DEFAULT SYSUTCDATETIME()
+                Email VARCHAR(255) NULL,
+                Education VARCHAR(255) NOT NULL,
+                Department VARCHAR(255) NOT NULL,
+                Level VARCHAR(255) NOT NULL,
+                Salary DECIMAL(19,4) NOT NULL
             );
         END
                 """;

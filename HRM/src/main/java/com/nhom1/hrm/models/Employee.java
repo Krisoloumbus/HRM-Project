@@ -14,17 +14,17 @@ public class Employee {
     private Integer number;
     private String eid;
     private String name;
-    private Education edu;
-    private Department dept;
+    private String edu;
+    private String dept;
     private String email;
-    private Level level;
-    private Object phone;
+    private String level;
+    private String phone;
     private BigDecimal salary;
 
     public Employee(){}
     public Employee (Integer Number, String EID, String Name, 
-    Education Edu, Department Dept, Level Level, String Email,
-    Object Phone, BigDecimal Salary) {
+    String Edu, String Dept, String Level, String Email,
+    String Phone, BigDecimal Salary) {
         this.number = Number;
         this.email = Email;
         this.eid =  EID;
@@ -40,32 +40,22 @@ public class Employee {
     public Integer getNo() {return number;}
     public String getEID(){return eid;}
     public String getEmail(){return email;}
-    public Object getPhone(){return phone;}
+    public String getPhone(){return phone;}
     public String getName(){return name;}
-    public Education getEdu(){return edu;}
-    public Department getDepartment(){return dept;}
-    public Level getLevel (){return level;}
+    public String getEdu(){return edu;}
+    public String getDepartment(){return dept;}
+    public String getLevel (){return level;}
     public BigDecimal getSalary (){return salary;}
 
     // Set
     public void setNo (Integer sNumber) {this.number = sNumber;}
-    public void setPhone (Object sPhone) {this.phone = sPhone;}
+    public void setPhone (String sPhone) {this.phone = sPhone;}
     public void setEmail (String sEmail) {this.email = sEmail;}
     public void setEID (String sEID){this.eid = sEID;}
     public void setName (String sName){this.name = sName;}
-    public void setEdu (Education sEdu){this.edu = sEdu;}
-    public void setDepartment (Department sDept){this.dept = sDept;}
-    public void setLevel (Level sLevel){this.level = sLevel;}
+    public void setEdu (String sEdu){this.edu = sEdu;}
+    public void setDepartment (String sDept){this.dept = sDept;}
+    public void setLevel (String sLevel){this.level = sLevel;}
     public void setSalary (BigDecimal sSalary){this.salary = sSalary;}
-     
-    //Output
-    public void EOutput(){
-        System.out.print("Employee EID: " + getEID() +
-        "\n" + "Employee Name: " + getName() +
-        "\n" + "Employee Education: " + getEdu() +
-        "\n" + "Department: " + getDepartment() +
-        "\n" + "Level: " + getLevel() +
-        "\n" + "Salary: " + getSalary());
-    }
 }
 
