@@ -177,6 +177,7 @@ private boolean validateForm() {
 
         mailLabel.setText("Email");
 
+        //Combo Box section
         lvlBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "INTERN", "FRESHER", "JUNIOR", "MIDDLE", "SENIOR", "LEAD", "MANAGER", "DIRECTOR" }));
         lvlBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
