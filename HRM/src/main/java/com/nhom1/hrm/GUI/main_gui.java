@@ -1,11 +1,5 @@
 package com.nhom1.hrm.GUI;
 
-import javax.swing.table.DefaultTableModel;
-
-import com.nhom1.hrm.SQL.connectSQL;
-
-import java.sql.*;
-
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -115,6 +109,9 @@ private boolean validateForm() {
         phoneField = new javax.swing.JTextField();
         mailLabel = new javax.swing.JLabel();
         emailField = new javax.swing.JTextField();
+        lvlBox = new javax.swing.JComboBox<>();
+        eduBox = new javax.swing.JComboBox<>();
+        deptBox = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -149,22 +146,16 @@ private boolean validateForm() {
 
         eTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "No", "EID", "Full Name", "Education"
+
             }
         ));
         jScrollPane3.setViewportView(eTable);
-        if (eTable.getColumnModel().getColumnCount() > 0) {
-            eTable.getColumnModel().getColumn(0).setHeaderValue("No");
-            eTable.getColumnModel().getColumn(1).setHeaderValue("EID");
-            eTable.getColumnModel().getColumn(2).setHeaderValue("Full Name");
-            eTable.getColumnModel().getColumn(3).setHeaderValue("Education");
-        }
 
         eduField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -185,6 +176,17 @@ private boolean validateForm() {
         });
 
         mailLabel.setText("Email");
+
+        lvlBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "INTERN", "FRESHER", "JUNIOR", "MIDDLE", "SENIOR", "LEAD", "MANAGER", "DIRECTOR" }));
+        lvlBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lvlBoxActionPerformed(evt);
+            }
+        });
+
+        eduBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "UNIVERSITY", "COLLEDGE" }));
+
+        deptBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "HR", "IT", "FINANCE", "MARKETING", "SALES", "OPERATIONS", "DESIGN" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -211,7 +213,12 @@ private boolean validateForm() {
                             .addComponent(salaryField)
                             .addComponent(deptField)
                             .addComponent(phoneField)
-                            .addComponent(emailField))))
+                            .addComponent(emailField))
+                        .addGap(39, 39, 39)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lvlBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(eduBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(deptBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(27, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -241,15 +248,18 @@ private boolean validateForm() {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(eduField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(eduLabel))
+                    .addComponent(eduLabel)
+                    .addComponent(eduBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lvlLabel)
-                    .addComponent(lvlField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                    .addComponent(lvlField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lvlBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(deptField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(deptLabel))
+                    .addComponent(deptLabel)
+                    .addComponent(deptBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(phoneField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -274,33 +284,32 @@ private boolean validateForm() {
         // TODO add your handling code here:
     }//GEN-LAST:event_nameFieldActionPerformed
 
+    //Comeback later
+    private void clearForm() {
+        nameField.setText(""); eduField.setText(""); deptField.setText(""); lvlField.setText("");
+        phoneField.setText(""); emailField.setText(""); salaryField.setText("");
+    }
 
     //add data to Table with add button (addbutton)
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         // TODO add your handling code here:
         if (!validateForm()) return;
-    var emp = readForm();
-
-    try (java.sql.Connection c = com.nhom1.hrm.SQL.connectSQL.getConnection()) {
-        com.nhom1.hrm.SQL.table.taobangifchuaco(c);
-        var dao = new com.nhom1.hrm.SQL.middleMan();
-        int rows = dao.insert(c, emp);
-        if (rows > 0) {
-            javax.swing.JOptionPane.showMessageDialog(this, "Đã thêm nhân viên!");
-            clearForm();
-            loadTable();
+        var emp = readForm();
+        try (java.sql.Connection c = com.nhom1.hrm.SQL.connectSQL.getConnection()) {
+            com.nhom1.hrm.SQL.table.taobangifchuaco(c);
+            var dao = new com.nhom1.hrm.SQL.middleMan();
+            int rows = dao.insert(c, emp);
+            if (rows > 0) {
+                javax.swing.JOptionPane.showMessageDialog(this, "Đã thêm nhân viên!");
+                clearForm();
+                loadTable();
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            javax.swing.JOptionPane.showMessageDialog(this, "Lỗi thêm: " + ex.getMessage());
         }
-    } catch (Exception ex) {
-        ex.printStackTrace();
-        javax.swing.JOptionPane.showMessageDialog(this, "Lỗi thêm: " + ex.getMessage());
     }
-}
 
-//Comeback later
-private void clearForm() {
-    nameField.setText(""); eduField.setText(""); deptField.setText(""); lvlField.setText("");
-    phoneField.setText(""); emailField.setText(""); salaryField.setText("");
-}
 //GEN-LAST:event_addButtonActionPerformed
 
     private void eduFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eduFieldActionPerformed
@@ -314,6 +323,10 @@ private void clearForm() {
     private void phoneFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phoneFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_phoneFieldActionPerformed
+
+    private void lvlBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lvlBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lvlBoxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -353,13 +366,16 @@ private void clearForm() {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
     private javax.swing.JButton delButton;
+    private javax.swing.JComboBox<String> deptBox;
     private javax.swing.JTextField deptField;
     private javax.swing.JLabel deptLabel;
     private javax.swing.JTable eTable;
+    private javax.swing.JComboBox<String> eduBox;
     private javax.swing.JTextField eduField;
     private javax.swing.JLabel eduLabel;
     private javax.swing.JTextField emailField;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JComboBox<String> lvlBox;
     private javax.swing.JTextField lvlField;
     private javax.swing.JLabel lvlLabel;
     private javax.swing.JLabel mailLabel;

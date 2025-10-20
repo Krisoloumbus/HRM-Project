@@ -11,3 +11,6 @@ Phase 2:
 
 Phase 3:
 - Applying AGILE
+
+Code:
+combo box -> name+Box
