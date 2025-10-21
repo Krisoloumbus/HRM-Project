@@ -1,5 +1,9 @@
 package com.nhom1.hrm.GUI;
 
+import com.nhom1.hrm.models.Department;
+import com.nhom1.hrm.models.Education;
+import com.nhom1.hrm.models.Level;
+
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -365,19 +369,19 @@ private boolean validateForm() {
         });
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify//GEN-BEGIN:variables - I just modified JComboBox :))))))
+    private javax.swing.JComboBox<Level> lvlBox;
+    private javax.swing.JComboBox<Department> deptBox;
+    private javax.swing.JComboBox<Education> eduBox;
     private javax.swing.JButton addButton;
     private javax.swing.JButton delButton;
-    private javax.swing.JComboBox<String> deptBox;
     private javax.swing.JTextField deptField;
     private javax.swing.JLabel deptLabel;
     private javax.swing.JTable eTable;
-    private javax.swing.JComboBox<String> eduBox;
     private javax.swing.JTextField eduField;
     private javax.swing.JLabel eduLabel;
     private javax.swing.JTextField emailField;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JComboBox<String> lvlBox;
     private javax.swing.JTextField lvlField;
     private javax.swing.JLabel lvlLabel;
     private javax.swing.JLabel mailLabel;
