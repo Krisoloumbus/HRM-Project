@@ -28,7 +28,7 @@ public class middleMan extends Employee {
                 e.setEmail(rs.getString("Email"));
                 e.setEdu(rs.getString("Education"));
                 e.setDepartment(rs.getString("Department"));
-                e.setLevel(rs.getString("Level"));
+                e.setLevel(rs.getString("Job_Level"));
                 e.setSalary(rs.getBigDecimal("Salary"));
                 out.add(e);
             }
@@ -40,7 +40,7 @@ public class middleMan extends Employee {
     public int insert(Connection c, Employee e) throws SQLException {
         String sql = """
             INSERT INTO dbo.Employees
-            (Full_Name, Phone, Email, Education, Department, [Level], Salary)
+            (Full_Name, Phone, Email, Education, Department, Job_Level, Salary)
             VALUES (?, ?, ?, ?, ?, ?, ?)
         """;
         try (PreparedStatement ps = c.prepareStatement(sql)) {

@@ -19,7 +19,7 @@ public class table {
                 Email VARCHAR(255) NULL,
                 Education VARCHAR(255) NOT NULL,
                 Department VARCHAR(255) NOT NULL,
-                Level VARCHAR(255) NOT NULL,
+                Job_Level VARCHAR(255) NOT NULL,
                 Salary DECIMAL(19,4) NOT NULL
             );
         END

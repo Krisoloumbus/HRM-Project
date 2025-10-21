@@ -18,7 +18,7 @@ public class main_gui extends javax.swing.JFrame {
     // 6.1: Nạp dữ liệu bảng
 private void loadTable() {
     javax.swing.table.DefaultTableModel model = new javax.swing.table.DefaultTableModel(
-        new Object[]{"No","EID","Full Name","Education","Department","Level","Phone","Email","Salary"}, 0
+        new Object[]{"No","EID","Full Name","Education","Department","Job_Level","Phone","Email","Salary"}, 0
     ) { @Override public boolean isCellEditable(int r,int c){ return false; } };
 
     try (java.sql.Connection c = com.nhom1.hrm.SQL.connectSQL.getConnection()) {
@@ -131,7 +131,7 @@ private boolean validateForm() {
 
         deptLabel.setText("Department");
 
-        lvlLabel.setText("Level");
+        lvlLabel.setText("Job Level");
 
         phoneLabel.setText("Phone");
 
@@ -177,7 +177,7 @@ private boolean validateForm() {
 
         mailLabel.setText("Email");
 
-        //Combo Box section
+        //Combo Box section start
         lvlBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "INTERN", "FRESHER", "JUNIOR", "MIDDLE", "SENIOR", "LEAD", "MANAGER", "DIRECTOR" }));
         lvlBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -188,6 +188,7 @@ private boolean validateForm() {
         eduBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "UNIVERSITY", "COLLEDGE" }));
 
         deptBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "HR", "IT", "FINANCE", "MARKETING", "SALES", "OPERATIONS", "DESIGN" }));
+        //Combo Box section end
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
