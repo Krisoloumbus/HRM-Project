@@ -54,12 +54,4 @@ public class middleMan extends Employee {
             return ps.executeUpdate();
         }
     }
-
-    public int deleteByEid(Connection c, String eid) throws SQLException {
-        try (PreparedStatement ps = c.prepareStatement(
-                "DELETE FROM dbo.Employees WHERE EID = ?")) {
-            ps.setString(1, eid);
-            return ps.executeUpdate();
-        }
-    }
 }
