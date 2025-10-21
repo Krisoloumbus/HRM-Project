@@ -18,7 +18,7 @@ public class main_gui extends javax.swing.JFrame {
     // 6.1: Nạp dữ liệu bảng
 private void loadTable() {
     javax.swing.table.DefaultTableModel model = new javax.swing.table.DefaultTableModel(
-        new Object[]{"No","EID","Full Name","Education","Department","Job_Level","Phone","Email","Salary"}, 0
+        new Object[]{"No","EID","Full Name","Education","Department","Job Level","Phone","Email","Salary"}, 0
     ) { @Override public boolean isCellEditable(int r,int c){ return false; } };
 
     try (java.sql.Connection c = com.nhom1.hrm.SQL.connectSQL.getConnection()) {

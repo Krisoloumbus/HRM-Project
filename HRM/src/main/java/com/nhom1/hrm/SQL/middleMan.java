@@ -13,7 +13,7 @@ import com.nhom1.hrm.models.Employee;
 public class middleMan extends Employee {
  public List<Employee> findAll(Connection c) throws SQLException {
         String sql = """
-            SELECT No, EID, Full_Name, Phone, Email, Education, Department, [Level], Salary
+            SELECT No, EID, Full_Name, Phone, Email, Education, Department, Job_Level, Salary
             FROM dbo.Employees ORDER BY No
         """;
         List<Employee> out = new ArrayList<>();
