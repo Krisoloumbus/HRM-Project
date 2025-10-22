@@ -14,3 +14,5 @@ Phase 3:
 
 Code:
 combo box -> name+Box
+
+Apply enum for Education, Department, Level.

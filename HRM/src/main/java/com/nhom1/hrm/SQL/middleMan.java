@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.nhom1.hrm.models.Education;
 import com.nhom1.hrm.models.Employee;
 
 public class middleMan extends Employee {
@@ -26,7 +27,8 @@ public class middleMan extends Employee {
                 e.setName(rs.getString("Full_Name"));
                 e.setPhone(rs.getString("Phone"));
                 e.setEmail(rs.getString("Email"));
-                e.setEdu(rs.getString("Education"));
+                //e.setEdu(rs.getString("Education"));
+                e.setEdu(Education.fromCodeToDB(rs.getString("Education")));
                 e.setDepartment(rs.getString("Department"));
                 e.setLevel(rs.getString("Job_Level"));
                 e.setSalary(rs.getBigDecimal("Salary"));
@@ -47,9 +49,9 @@ public class middleMan extends Employee {
             ps.setString(1, e.getName());
             ps.setString(2, e.getPhone());
             ps.setString(3, e.getEmail());
-            ps.setString(4, e.getEdu());
-            ps.setString(5, e.getDepartment());
-            ps.setString(6, e.getLevel());
+            ps.setString(4, e.getEdu().getCodeDB());
+            ps.setString(5, e.getDepartment().getCodeDB());
+            ps.setString(6, e.getLevel().getCodeDB());
             ps.setBigDecimal(7, e.getSalary() != null ? e.getSalary() : BigDecimal.ZERO);
             return ps.executeUpdate();
         }
