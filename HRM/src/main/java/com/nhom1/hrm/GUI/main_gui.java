@@ -19,7 +19,7 @@ public class main_gui extends javax.swing.JFrame {
     /**
      * Creates new form main_gui
      */
-    // 6.1: Nạp dữ liệu bảng
+    //Nạp dữ liệu bảng
 private void loadTable() {
     javax.swing.table.DefaultTableModel model = new javax.swing.table.DefaultTableModel(
         new Object[]{"No","EID","Full Name","Education","Department","Job Level","Phone","Email","Salary"}, 0
@@ -43,7 +43,7 @@ private void loadTable() {
     }
 }
 
-// 6.2: Đọc form -> Employee
+//Đọc form -> Employee
 private com.nhom1.hrm.models.Employee readForm() {
     var e = new com.nhom1.hrm.models.Employee();
     e.setName(nameField.getText().trim());
@@ -303,8 +303,8 @@ private boolean validateForm() {
         var emp = readForm();
         try (java.sql.Connection c = com.nhom1.hrm.SQL.connectSQL.getConnection()) {
             com.nhom1.hrm.SQL.table.taobangifchuaco(c);
-            var dao = new com.nhom1.hrm.SQL.middleMan();
-            int rows = dao.insert(c, emp);
+            var middleMan = new com.nhom1.hrm.SQL.middleMan();
+            int rows = middleMan.insert(c, emp);
             if (rows > 0) {
                 javax.swing.JOptionPane.showMessageDialog(this, "Đã thêm nhân viên!");
                 clearForm();
