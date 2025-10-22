@@ -47,9 +47,9 @@ private void loadTable() {
 private com.nhom1.hrm.models.Employee readForm() {
     var e = new com.nhom1.hrm.models.Employee();
     e.setName(nameField.getText().trim());
-    //e.setEdu(eduField.getText().trim());
-    //e.setDepartment(deptField.getText().trim());
-    //e.setLevel(lvlField.getText().trim());
+    e.setEdu((Education) eduBox.getSelectedItem());
+    e.setDepartment((Department) deptBox.getSelectedItem());
+    e.setLevel((Level) lvlBox.getSelectedItem());
     e.setPhone(phoneField.getText().trim());
     String emailTxt = emailField.getText().trim();
     e.setEmail(emailTxt.isEmpty() ? null : emailTxt);
@@ -61,12 +61,12 @@ private com.nhom1.hrm.models.Employee readForm() {
     return e;
 }
 
-// 6.3: Validate tối thiểu
+// Validate tối thiểu
 private boolean validateForm() {
     if (nameField.getText().isBlank()
-        || eduBox.getSelectedItem().toString().isBlank()
-        || deptBox.getSelectedItem().toString().isBlank()
-        || lvlBox.getSelectedItem().toString().isBlank()
+        || eduBox.getSelectedItem() == null
+        || deptBox.getSelectedItem() == null
+        || lvlBox.getSelectedItem() == null
         || salaryField.getText().isBlank()
         || phoneField.getText().isBlank()) {
         javax.swing.JOptionPane.showMessageDialog(this, "Vui lòng nhập đủ các trường bắt buộc.");
@@ -166,16 +166,18 @@ private boolean validateForm() {
 
         mailLabel.setText("Email");
 
-        lvlBox.setModel(new javax.swing.DefaultComboBoxModel<>());
+        //JcomboBox section start
+        lvlBox.setModel(new javax.swing.DefaultComboBoxModel<>(Level.values()));
         lvlBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 lvlBoxActionPerformed(evt);
             }
         });
 
-        eduBox.setModel(new javax.swing.DefaultComboBoxModel<>());
+        eduBox.setModel(new javax.swing.DefaultComboBoxModel<>(Education.values()));
 
-        deptBox.setModel(new javax.swing.DefaultComboBoxModel<>());
+        deptBox.setModel(new javax.swing.DefaultComboBoxModel<>(Department.values()));
+        //JcomboBox section end
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -268,7 +270,7 @@ private boolean validateForm() {
 
     //Comeback later
     private void clearForm() {
-        nameField.setText(""); eduBox.getSelectedItem(); deptBox.getSelectedItem(); lvlBox.getSelectedItem();
+        nameField.setText(""); eduBox.setSelectedItem(0); deptBox.setSelectedItem(0); lvlBox.setSelectedItem(0);
         phoneField.setText(""); emailField.setText(""); salaryField.setText("");
     }
 
@@ -341,7 +343,7 @@ private boolean validateForm() {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<Level> lvlBox;
     private javax.swing.JComboBox<Education> eduBox;
-    private javax.swing.JComboBox<Level> deptBox;
+    private javax.swing.JComboBox<Department> deptBox;
     private javax.swing.JButton addButton;
     private javax.swing.JButton delButton;
     private javax.swing.JLabel deptLabel;
