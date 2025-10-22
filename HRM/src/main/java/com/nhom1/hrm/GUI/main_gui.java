@@ -182,16 +182,16 @@ private boolean validateForm() {
         mailLabel.setText("Email");
 
         //Combo Box section start
-        lvlBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "INTERN", "FRESHER", "JUNIOR", "MIDDLE", "SENIOR", "LEAD", "MANAGER", "DIRECTOR" }));
+        lvlBox.setModel(new javax.swing.DefaultComboBoxModel<>(Level.values()));
         lvlBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 lvlBoxActionPerformed(evt);
             }
         });
 
-        eduBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "UNIVERSITY", "COLLEDGE" }));
+        eduBox.setModel(new javax.swing.DefaultComboBoxModel<>(Education.values()));
 
-        deptBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "HR", "IT", "FINANCE", "MARKETING", "SALES", "OPERATIONS", "DESIGN" }));
+        deptBox.setModel(new javax.swing.DefaultComboBoxModel<>(Department.values()));
         //Combo Box section end
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
