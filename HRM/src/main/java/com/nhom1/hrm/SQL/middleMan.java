@@ -8,8 +8,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.nhom1.hrm.models.Department;
 import com.nhom1.hrm.models.Education;
 import com.nhom1.hrm.models.Employee;
+import com.nhom1.hrm.models.Level;
 
 public class middleMan extends Employee {
  public List<Employee> findAll(Connection c) throws SQLException {
@@ -29,8 +31,10 @@ public class middleMan extends Employee {
                 e.setEmail(rs.getString("Email"));
                 //e.setEdu(rs.getString("Education"));
                 e.setEdu(Education.fromCodeToDB(rs.getString("Education")));
-                e.setDepartment(rs.getString("Department"));
-                e.setLevel(rs.getString("Job_Level"));
+                //e.setDepartment(rs.getString("Department"));
+                e.setDepartment(Department.fromCodeToDB(rs.getString("Department")));
+                //e.setLevel(rs.getString("Job_Level"));
+                e.setLevel(Level.fromCodeToDB(rs.getString("Job_Level")));
                 e.setSalary(rs.getBigDecimal("Salary"));
                 out.add(e);
             }

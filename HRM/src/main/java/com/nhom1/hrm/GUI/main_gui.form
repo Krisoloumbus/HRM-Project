@@ -38,19 +38,15 @@
                           <Component id="deptLabel" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="169" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="lvlField" pref="360" max="32767" attributes="0"/>
-                          <Component id="eduField" alignment="1" max="32767" attributes="0"/>
-                          <Component id="nameField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="salaryField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="deptField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="phoneField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="emailField" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="lvlBox" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="nameField" alignment="0" pref="360" max="32767" attributes="0"/>
+                              <Component id="salaryField" alignment="0" max="32767" attributes="0"/>
+                              <Component id="phoneField" alignment="0" max="32767" attributes="0"/>
+                              <Component id="emailField" max="32767" attributes="0"/>
+                          </Group>
                           <Component id="eduBox" min="-2" max="-2" attributes="0"/>
+                          <Component id="lvlBox" min="-2" max="-2" attributes="0"/>
                           <Component id="deptBox" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -91,21 +87,18 @@
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="eduField" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="eduLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="eduBox" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lvlLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lvlField" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lvlBox" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="40" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="deptField" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="deptLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="deptBox" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="deptLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="deptBox" alignment="1" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -207,18 +200,6 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JTextField" name="eduField">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="eduFieldActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JTextField" name="lvlField">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="lvlFieldActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JTextField" name="deptField">
-    </Component>
     <Component class="javax.swing.JTextField" name="phoneField">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="phoneFieldActionPerformed"/>

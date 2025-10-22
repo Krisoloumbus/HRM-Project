@@ -47,9 +47,9 @@ private void loadTable() {
 private com.nhom1.hrm.models.Employee readForm() {
     var e = new com.nhom1.hrm.models.Employee();
     e.setName(nameField.getText().trim());
-    e.setEdu(eduField.getText().trim());
-    e.setDepartment(deptField.getText().trim());
-    e.setLevel(lvlField.getText().trim());
+    //e.setEdu(eduField.getText().trim());
+    //e.setDepartment(deptField.getText().trim());
+    //e.setLevel(lvlField.getText().trim());
     e.setPhone(phoneField.getText().trim());
     String emailTxt = emailField.getText().trim();
     e.setEmail(emailTxt.isEmpty() ? null : emailTxt);
@@ -64,9 +64,9 @@ private com.nhom1.hrm.models.Employee readForm() {
 // 6.3: Validate tối thiểu
 private boolean validateForm() {
     if (nameField.getText().isBlank()
-        || eduField.getText().isBlank()
-        || deptField.getText().isBlank()
-        || lvlField.getText().isBlank()
+        || eduBox.getSelectedItem().toString().isBlank()
+        || deptBox.getSelectedItem().toString().isBlank()
+        || lvlBox.getSelectedItem().toString().isBlank()
         || salaryField.getText().isBlank()
         || phoneField.getText().isBlank()) {
         javax.swing.JOptionPane.showMessageDialog(this, "Vui lòng nhập đủ các trường bắt buộc.");
@@ -107,9 +107,6 @@ private boolean validateForm() {
         delButton = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         eTable = new javax.swing.JTable();
-        eduField = new javax.swing.JTextField();
-        lvlField = new javax.swing.JTextField();
-        deptField = new javax.swing.JTextField();
         phoneField = new javax.swing.JTextField();
         mailLabel = new javax.swing.JLabel();
         emailField = new javax.swing.JTextField();
@@ -135,7 +132,7 @@ private boolean validateForm() {
 
         deptLabel.setText("Department");
 
-        lvlLabel.setText("Job Level");
+        lvlLabel.setText("Level");
 
         phoneLabel.setText("Phone");
 
@@ -161,18 +158,6 @@ private boolean validateForm() {
         ));
         jScrollPane3.setViewportView(eTable);
 
-        eduField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                eduFieldActionPerformed(evt);
-            }
-        });
-
-        lvlField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lvlFieldActionPerformed(evt);
-            }
-        });
-
         phoneField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 phoneFieldActionPerformed(evt);
@@ -181,18 +166,16 @@ private boolean validateForm() {
 
         mailLabel.setText("Email");
 
-        //Combo Box section start
-        lvlBox.setModel(new javax.swing.DefaultComboBoxModel<>(Level.values()));
+        lvlBox.setModel(new javax.swing.DefaultComboBoxModel<>());
         lvlBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 lvlBoxActionPerformed(evt);
             }
         });
 
-        eduBox.setModel(new javax.swing.DefaultComboBoxModel<>(Education.values()));
+        eduBox.setModel(new javax.swing.DefaultComboBoxModel<>());
 
-        deptBox.setModel(new javax.swing.DefaultComboBoxModel<>(Department.values()));
-        //Combo Box section end
+        deptBox.setModel(new javax.swing.DefaultComboBoxModel<>());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -212,18 +195,14 @@ private boolean validateForm() {
                             .addComponent(nameLabel)
                             .addComponent(deptLabel))
                         .addGap(169, 169, 169)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lvlField, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
-                            .addComponent(eduField, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(nameField)
-                            .addComponent(salaryField)
-                            .addComponent(deptField)
-                            .addComponent(phoneField)
-                            .addComponent(emailField))
-                        .addGap(39, 39, 39)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lvlBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(nameField, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
+                                .addComponent(salaryField)
+                                .addComponent(phoneField)
+                                .addComponent(emailField))
                             .addComponent(eduBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lvlBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(deptBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(27, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -253,19 +232,16 @@ private boolean validateForm() {
                     .addComponent(salaryField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(eduField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(eduLabel)
                     .addComponent(eduBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lvlLabel)
-                    .addComponent(lvlField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lvlBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(deptField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(deptLabel)
-                    .addComponent(deptBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(deptLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(deptBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(phoneField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -292,7 +268,7 @@ private boolean validateForm() {
 
     //Comeback later
     private void clearForm() {
-        nameField.setText(""); eduField.setText(""); deptField.setText(""); lvlField.setText("");
+        nameField.setText(""); eduBox.getSelectedItem(); deptBox.getSelectedItem(); lvlBox.getSelectedItem();
         phoneField.setText(""); emailField.setText(""); salaryField.setText("");
     }
 
@@ -317,14 +293,6 @@ private boolean validateForm() {
     }
 
 //GEN-LAST:event_addButtonActionPerformed
-
-    private void eduFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eduFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_eduFieldActionPerformed
-
-    private void lvlFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lvlFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lvlFieldActionPerformed
 
     private void phoneFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phoneFieldActionPerformed
         // TODO add your handling code here:
@@ -369,20 +337,18 @@ private boolean validateForm() {
         });
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables - I just modified JComboBox :))))))
+    // I just modified JComboBox :))))))
+    // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<Level> lvlBox;
-    private javax.swing.JComboBox<Department> deptBox;
     private javax.swing.JComboBox<Education> eduBox;
+    private javax.swing.JComboBox<Level> deptBox;
     private javax.swing.JButton addButton;
     private javax.swing.JButton delButton;
-    private javax.swing.JTextField deptField;
     private javax.swing.JLabel deptLabel;
     private javax.swing.JTable eTable;
-    private javax.swing.JTextField eduField;
     private javax.swing.JLabel eduLabel;
     private javax.swing.JTextField emailField;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextField lvlField;
     private javax.swing.JLabel lvlLabel;
     private javax.swing.JLabel mailLabel;
     private javax.swing.JTextField nameField;
