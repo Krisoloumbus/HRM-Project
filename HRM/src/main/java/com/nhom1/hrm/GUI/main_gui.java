@@ -168,11 +168,6 @@ private boolean validateForm() {
 
         //JcomboBox section start
         lvlBox.setModel(new javax.swing.DefaultComboBoxModel<>(Level.values()));
-        lvlBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lvlBoxActionPerformed(evt);
-            }
-        });
 
         eduBox.setModel(new javax.swing.DefaultComboBoxModel<>(Education.values()));
 
@@ -268,8 +263,8 @@ private boolean validateForm() {
         // TODO add your handling code here:
     }//GEN-LAST:event_nameFieldActionPerformed
 
-    //Comeback later
-    private void clearForm() {
+    //Set selection to database
+    private void setdata() {
         nameField.setText(""); eduBox.setSelectedItem(0); deptBox.setSelectedItem(0); lvlBox.setSelectedItem(0);
         phoneField.setText(""); emailField.setText(""); salaryField.setText("");
     }
@@ -285,7 +280,7 @@ private boolean validateForm() {
             int rows = middleMan.insert(c, emp);
             if (rows > 0) {
                 javax.swing.JOptionPane.showMessageDialog(this, "Đã thêm nhân viên!");
-                clearForm();
+                setdata();
                 loadTable();
             }
         } catch (Exception ex) {
@@ -331,7 +326,7 @@ private boolean validateForm() {
         }
         //</editor-fold>
 
-        /* Create and display the form */
+        //Create and display the form
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new main_gui().setVisible(true);
