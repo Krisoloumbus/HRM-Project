@@ -43,7 +43,7 @@ private void loadTable() {
     }
 }
 
-//Đọc form -> Employee
+// Create new from Employee
 private com.nhom1.hrm.models.Employee readForm() {
     var e = new com.nhom1.hrm.models.Employee();
     e.setName(nameField.getText().trim());
