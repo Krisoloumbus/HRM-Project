@@ -20,6 +20,11 @@ public class main_gui extends javax.swing.JFrame {
      * Creates new form main_gui
      */
     //Nạp dữ liệu bảng
+/*private void afterInit() {
+    deptBox.setModel(new javax.swing.DefaultComboBoxModel<>(Department.values()));
+    lvlBox.setModel(new javax.swing.DefaultComboBoxModel<>(Level.values()));
+    eduBox.setModel(new javax.swing.DefaultComboBoxModel<>(Education.values()));
+}*/
 private void loadTable() {
     javax.swing.table.DefaultTableModel model = new javax.swing.table.DefaultTableModel(
         new Object[]{"No","EID","Full Name","Education","Department","Job Level","Phone","Email","Salary"}, 0
@@ -82,6 +87,7 @@ private boolean validateForm() {
 
     public main_gui() {
         initComponents();
+        //afterInit();
         loadTable();
     }
 
@@ -144,6 +150,11 @@ private boolean validateForm() {
         });
 
         delButton.setText("DELETE");
+        delButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delButtonActionPerformed(evt);
+            }
+        });
 
         eTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -166,13 +177,18 @@ private boolean validateForm() {
 
         mailLabel.setText("Email");
 
-        //JcomboBox section start
-        lvlBox.setModel(new javax.swing.DefaultComboBoxModel<>(Level.values()));
+        lvlBox.setModel(new javax.swing.DefaultComboBoxModel<>(Level.values())
+        );
+        lvlBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lvlBoxActionPerformed(evt);
+            }
+        });
 
         eduBox.setModel(new javax.swing.DefaultComboBoxModel<>(Education.values()));
 
-        deptBox.setModel(new javax.swing.DefaultComboBoxModel<>(Department.values()));
-        //JcomboBox section end
+        deptBox.setModel(new javax.swing.DefaultComboBoxModel<>(Department.values())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -299,6 +315,10 @@ private boolean validateForm() {
         // TODO add your handling code here:
     }//GEN-LAST:event_lvlBoxActionPerformed
 
+    private void delButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_delButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -336,16 +356,16 @@ private boolean validateForm() {
 
     // I just modified JComboBox :))))))
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<Level> lvlBox;
-    private javax.swing.JComboBox<Education> eduBox;
-    private javax.swing.JComboBox<Department> deptBox;
     private javax.swing.JButton addButton;
     private javax.swing.JButton delButton;
+    private javax.swing.JComboBox<Department> deptBox;
     private javax.swing.JLabel deptLabel;
     private javax.swing.JTable eTable;
+    private javax.swing.JComboBox<Education> eduBox;
     private javax.swing.JLabel eduLabel;
     private javax.swing.JTextField emailField;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JComboBox<Level> lvlBox;
     private javax.swing.JLabel lvlLabel;
     private javax.swing.JLabel mailLabel;
     private javax.swing.JTextField nameField;
