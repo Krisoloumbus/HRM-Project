@@ -354,7 +354,7 @@ private boolean validateForm() {
         });
     }
 
-    // I just modified JComboBox :))))))
+    // I just modified JComboBox using nextbeans :3
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
     private javax.swing.JButton delButton;
