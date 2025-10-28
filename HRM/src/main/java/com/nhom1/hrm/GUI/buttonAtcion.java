@@ -8,13 +8,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
-public final class button extends gui{
-    private button(){}
+public final class buttonAtcion {
+    private buttonAtcion(){}
     public static void onAdd(JTextField nameField, JComboBox eduBox, JComboBox deptBox, JComboBox lvlBox,
-                             JTextField phoneField, JTextField emailField, JTextField salaryField,
-                             JTable eTable) {
+    JTextField phoneField, JTextField emailField, JTextField salaryField, JTable eTable)
+    {
         if (!validate.validateForm(nameField, eduBox, deptBox, lvlBox, emailField, phoneField, salaryField)) return;
-
         var emp = validate.read(nameField, eduBox, deptBox, lvlBox, phoneField, emailField, salaryField);
         try (Connection c = com.nhom1.hrm.SQL.connectSQL.getConnection()) {
             com.nhom1.hrm.SQL.table.taobangifchuaco(c);
@@ -27,16 +26,15 @@ public final class button extends gui{
             JOptionPane.showMessageDialog(null, "Lỗi thêm: " + ex.getMessage());
         }
     }
-public static void onDelete(JTable eTable) {
-        int[] sel = eTable.getSelectedRows();
+
+public static void onDelete(JTable eTable)
+    {int[] sel = eTable.getSelectedRows();
         if (sel == null || sel.length == 0) {
             JOptionPane.showMessageDialog(null, "Hãy chọn ít nhất một dòng để xóa.");
             return;
         }
-        int ok = JOptionPane.showConfirmDialog(null, "Xóa " + sel.length + " bản ghi?", "Xác nhận",
-                                               JOptionPane.YES_NO_OPTION);
+        int ok = JOptionPane.showConfirmDialog(null, "Xóa " + sel.length + " bản ghi?", "Xác nhận", JOptionPane.YES_NO_OPTION);
         if (ok != JOptionPane.YES_OPTION) return;
-
         try (Connection c = com.nhom1.hrm.SQL.connectSQL.getConnection()) {
             var middleMan = new com.nhom1.hrm.SQL.middleMan();
             Arrays.sort(sel);

@@ -239,12 +239,12 @@ public class gui extends javax.swing.JFrame {
 
     private void delButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delButtonActionPerformed
         // TODO add your handling code here:
-        button.onDelete(eTable);
+        buttonAtcion.onDelete(eTable);
     }//GEN-LAST:event_delButtonActionPerformed
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         // TODO add your handling code here:
-        button.onAdd(nameField, eduBox, deptBox, lvlBox, phoneField, mailField, salaryField, eTable);
+        buttonAtcion.onAdd(nameField, eduBox, deptBox, lvlBox, phoneField, mailField, salaryField, eTable);
     }//GEN-LAST:event_addButtonActionPerformed
 
     /**

@@ -16,3 +16,11 @@ Code:
 combo box -> name+Box
 
 Apply enum for Education, Department, Level.
+
+GUI:
+ButtunAction: Done
+gui: Not
+afterInit: Not
+input:Not
+tableaction: Not
+validate: Not
