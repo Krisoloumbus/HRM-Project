@@ -6,7 +6,7 @@ package com.nhom1.hrm;
 
 import javax.swing.SwingUtilities;
 
-import com.nhom1.hrm.GUI.main_gui;
+import com.nhom1.hrm.GUI.gui;
 import com.nhom1.hrm.SQL.connectSQL;
 import com.nhom1.hrm.SQL.table;
 import com.nhom1.hrm.models.Employee;
@@ -24,6 +24,6 @@ public class HRM extends Employee {
             javax.swing.JOptionPane.showMessageDialog(null, "Không thể tạo bảng/ket noi DB: " + e.getMessage());
         }
         // Launch GUI
-        SwingUtilities.invokeLater(() -> new main_gui().setVisible(true));
+        SwingUtilities.invokeLater(() -> new gui().setVisible(true));
     }
 }

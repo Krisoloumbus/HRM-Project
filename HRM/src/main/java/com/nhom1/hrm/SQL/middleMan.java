@@ -70,4 +70,7 @@ public class middleMan extends Employee {
                 return ps.executeUpdate();
         }
     }
+
+    //Searching
+    
 }

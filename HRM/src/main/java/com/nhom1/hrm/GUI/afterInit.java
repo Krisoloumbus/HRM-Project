@@ -15,9 +15,10 @@ public final class afterInit {
     public static void afterInit(JComboBox<Department> deptBox, JComboBox<Level> lvlBox, JComboBox<Education> eduBox,
     JTable eTable, JButton addButton, JButton delButton)
     {
-        deptBox.setModel(new DefaultComboBoxModel<>());
-        lvlBox.setModel(new DefaultComboBoxModel<>());
-        eduBox.setModel(new DefaultComboBoxModel<>());
+        deptBox.setModel(new DefaultComboBoxModel<>(Department.values()));
+        lvlBox.setModel(new DefaultComboBoxModel<>(Level.values()));
+        eduBox.setModel(new DefaultComboBoxModel<>(Education.values()));
+
         if (deptBox.getItemCount() > 0) deptBox.setSelectedIndex(0);
         if (lvlBox.getItemCount() > 0) lvlBox.setSelectedIndex(0);
         if (eduBox.getItemCount() > 0) eduBox.setSelectedIndex(0);
