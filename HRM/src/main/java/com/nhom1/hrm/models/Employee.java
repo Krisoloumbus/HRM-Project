@@ -17,13 +17,13 @@ public class Employee {
     private Education edu;
     private Department dept;
     private String email;
-    private Level level;
+    private JobLevel level;
     private String phone;
     private BigDecimal salary;
 
     public Employee(){}
     public Employee (Integer Number, String EID, String Name, 
-    Education Edu, Department Dept, Level Level, String Email,
+    Education Edu, Department Dept, JobLevel Level, String Email,
     String Phone, BigDecimal Salary) {
         this.number = Number;
         this.email = Email;
@@ -44,7 +44,7 @@ public class Employee {
     public String getName(){return name;}
     public Education getEdu(){return edu;}
     public Department getDepartment(){return dept;}
-    public Level getLevel (){return level;}
+    public JobLevel getLevel (){return level;}
     public BigDecimal getSalary (){return salary;}
 
     // Set
@@ -55,6 +55,6 @@ public class Employee {
     public void setName (String sName){this.name = sName;}
     public void setEdu (Education sEdu){this.edu = sEdu;}
     public void setDepartment (Department sDept){this.dept = sDept;}
-    public void setLevel (Level sLevel){this.level = sLevel;}
+    public void setLevel (JobLevel sLevel){this.level = sLevel;}
     public void setSalary (BigDecimal sSalary){this.salary = sSalary;}
 }

@@ -9,12 +9,12 @@ import javax.swing.JTextField;
 import com.nhom1.hrm.models.Department;
 import com.nhom1.hrm.models.Education;
 import com.nhom1.hrm.models.Employee;
-import com.nhom1.hrm.models.Level;
+import com.nhom1.hrm.models.JobLevel;
 
-public final class validate {
-    private validate(){}
-    public static boolean validateForm(JTextField nameField, JComboBox<Education> eduBox,
-       JComboBox<Department> deptBox, JComboBox<Level> lvlBox, JTextField maField,
+public final class function {
+    private function(){}
+    public static boolean validateInput(JTextField nameField, JComboBox<Education> eduBox,
+       JComboBox<Department> deptBox, JComboBox<JobLevel> lvlBox, JTextField maField,
        JTextField phoneField, JTextField salaryField) {
         if (nameField.getText().isBlank()
             || maField.getText().isBlank()
@@ -34,15 +34,15 @@ public final class validate {
         return true;
     }
 
-    public static Employee read(JTextField nameField, JComboBox<Education> eduBox,
-    JComboBox<Department> deptBox, JComboBox<Level> lvlBox,
+    public static Employee newEmployeeToDB(JTextField nameField, JComboBox<Education> eduBox,
+    JComboBox<Department> deptBox, JComboBox<JobLevel> lvlBox,
     JTextField phoneField, JTextField emailField, JTextField salaryField)
     {
         var e = new com.nhom1.hrm.models.Employee();
         e.setName(nameField.getText().trim());
         e.setEdu((Education) eduBox.getSelectedItem());
         e.setDepartment((Department) deptBox.getSelectedItem());
-        e.setLevel((Level) lvlBox.getSelectedItem());
+        e.setLevel((JobLevel) lvlBox.getSelectedItem());
         e.setPhone(phoneField.getText().trim());
         var emailTxt = emailField.getText().trim();
         e.setEmail(emailTxt.isEmpty() ? null : emailTxt);
@@ -51,8 +51,8 @@ public final class validate {
         return e;
     }
 
-    public static void clear(JTextField nameField, JComboBox<Education> eduBox, 
-    JComboBox<Department> deptBox, JComboBox<Level> lvlBox,
+    public static void setInput(JTextField nameField, JComboBox<Education> eduBox, 
+    JComboBox<Department> deptBox, JComboBox<JobLevel> lvlBox,
     JTextField phoneField, JTextField emailField,JTextField salaryField) 
     {
         nameField.setText("");

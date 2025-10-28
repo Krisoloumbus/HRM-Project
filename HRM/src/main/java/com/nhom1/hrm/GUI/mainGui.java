@@ -6,22 +6,22 @@ package com.nhom1.hrm.GUI;
 
 import com.nhom1.hrm.models.Department;
 import com.nhom1.hrm.models.Education;
-import com.nhom1.hrm.models.Level;
+import com.nhom1.hrm.models.JobLevel;
 
 /**
  *
  * @author Kris
  */
-public class gui extends javax.swing.JFrame {
+public class mainGui extends javax.swing.JFrame {
 
     /**
      * Creates new form gui
      */
-    public gui() {
+    public mainGui() {
         initComponents();
         afterInit.afterInit(deptBox, lvlBox, eduBox, eTable, addButton, delButton);
         try {
-            tableAction.loadTable(eTable);
+            guiTable.loadTable(eTable);
         } catch (Exception e) {
             e.printStackTrace();
             javax.swing.JOptionPane.showMessageDialog(this, "Lỗi nạp bảng: " + e.getMessage());
@@ -264,20 +264,20 @@ public class gui extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(gui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(mainGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(gui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(mainGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(gui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(mainGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(gui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(mainGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new gui().setVisible(true);
+                new mainGui().setVisible(true);
             }
         });
     }
@@ -293,7 +293,7 @@ public class gui extends javax.swing.JFrame {
     private javax.swing.JComboBox<Education> eduBox;
     private javax.swing.JLabel eduLabel;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JComboBox<Level> lvlBox;
+    private javax.swing.JComboBox<JobLevel> lvlBox;
     private javax.swing.JLabel lvlLabel;
     private javax.swing.JTextField mailField;
     private javax.swing.JLabel mailLabel;

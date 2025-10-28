@@ -8,19 +8,23 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
+import com.nhom1.hrm.models.Department;
+import com.nhom1.hrm.models.Education;
+import com.nhom1.hrm.models.JobLevel;
+
 public final class buttonAtcion {
     private buttonAtcion(){}
-    public static void onAdd(JTextField nameField, JComboBox eduBox, JComboBox deptBox, JComboBox lvlBox,
+    public static void onAdd(JTextField nameField, JComboBox<Education> eduBox, JComboBox<Department> deptBox, JComboBox<JobLevel> lvlBox,
     JTextField phoneField, JTextField emailField, JTextField salaryField, JTable eTable)
     {
-        if (!validate.validateForm(nameField, eduBox, deptBox, lvlBox, emailField, phoneField, salaryField)) return;
-        var emp = validate.read(nameField, eduBox, deptBox, lvlBox, phoneField, emailField, salaryField);
+        if (!function.validateInput(nameField, eduBox, deptBox, lvlBox, emailField, phoneField, salaryField)) return;
+        var emp = function.newEmployeeToDB(nameField, eduBox, deptBox, lvlBox, phoneField, emailField, salaryField);
         try (Connection c = com.nhom1.hrm.SQL.connectSQL.getConnection()) {
             com.nhom1.hrm.SQL.table.taobangifchuaco(c);
             new com.nhom1.hrm.SQL.middleMan().insert(c, emp);
             JOptionPane.showMessageDialog(null, "Đã thêm nhân viên!");
-            tableAction.loadTable(eTable);
-            validate.clear(nameField, eduBox, deptBox, lvlBox, phoneField, emailField, salaryField);
+            guiTable.loadTable(eTable);
+            function.setInput(nameField, eduBox, deptBox, lvlBox, phoneField, emailField, salaryField);
         } catch (Exception ex) {
             ex.printStackTrace();
             JOptionPane.showMessageDialog(null, "Lỗi thêm: " + ex.getMessage());
@@ -46,7 +50,7 @@ public static void onDelete(JTable eTable)
                 if (eid != null && !eid.isBlank()) middleMan.delByEID(c, eid);
             }
             JOptionPane.showMessageDialog(null, "Đã xóa!");
-            tableAction.loadTable(eTable);
+            guiTable.loadTable(eTable);
         } catch (Exception ex) {
             ex.printStackTrace();
             JOptionPane.showMessageDialog(null, "Lỗi xóa: " + ex.getMessage());

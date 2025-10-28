@@ -8,15 +8,15 @@ import javax.swing.ListSelectionModel;
 
 import com.nhom1.hrm.models.Department;
 import com.nhom1.hrm.models.Education;
-import com.nhom1.hrm.models.Level;
+import com.nhom1.hrm.models.JobLevel;
 
 public final class afterInit {
     private afterInit(){}
-    public static void afterInit(JComboBox<Department> deptBox, JComboBox<Level> lvlBox, JComboBox<Education> eduBox,
+    public static void afterInit(JComboBox<Department> deptBox, JComboBox<JobLevel> lvlBox, JComboBox<Education> eduBox,
     JTable eTable, JButton addButton, JButton delButton)
     {
         deptBox.setModel(new DefaultComboBoxModel<>(Department.values()));
-        lvlBox.setModel(new DefaultComboBoxModel<>(Level.values()));
+        lvlBox.setModel(new DefaultComboBoxModel<>(JobLevel.values()));
         eduBox.setModel(new DefaultComboBoxModel<>(Education.values()));
 
         if (deptBox.getItemCount() > 0) deptBox.setSelectedIndex(0);

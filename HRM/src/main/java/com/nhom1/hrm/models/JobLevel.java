@@ -1,6 +1,6 @@
 package com.nhom1.hrm.models;
 
-public enum Level {
+public enum JobLevel {
     INTERN("INTERN","INTERN"), 
     FRESHER("FRESHER","FRESHER"), 
     JUNIOR("JUNIOR","JUNIOR"), 
@@ -13,7 +13,7 @@ public enum Level {
     private final String toDB; // code to save in DB
     private final String toUI; // code to show item in combo box
 
-    Level(String toDB, String toUI){
+    JobLevel(String toDB, String toUI){
         this.toDB = toDB;
         this.toUI = toUI;
     }
@@ -26,9 +26,9 @@ public enum Level {
         return toUI;
     } // combo box show item
     
-    public static Level fromCodeToDB(String toDB){
+    public static JobLevel fromCodeToDB(String toDB){
         if (toDB == null) return null;
-        for (Level lvl : values()) {
+        for (JobLevel lvl : values()) {
             if (lvl.toDB.equals(toDB)) return lvl;
         }
         return null;

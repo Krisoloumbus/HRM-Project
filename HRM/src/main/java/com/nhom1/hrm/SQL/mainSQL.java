@@ -2,7 +2,7 @@ package com.nhom1.hrm.SQL;
 
 import java.sql.Connection;
 
-public class main_SQL {
+public class mainSQL{
     public static void main(String[] args) {
         try {
             Connection conn = connectSQL.getConnection();
