@@ -19,8 +19,9 @@ Apply enum for Education, Department, Level.
 
 GUI:
 ButtunAction: Done
-gui: Not
-afterInit: Not
-input:Not
-tableaction: Not
-validate: Not
+gui -> mainGui: Done
+afterInit: 50-50
+input:Del
+tableaction -> guiTable: Done
+validate -> function: Done
+main_SQL -> mainSQL: only re-name
