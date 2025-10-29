@@ -13,7 +13,7 @@ public final class guiTable{
     private guiTable(){}
     public static void loadTable(JTable eTable)throws Exception{
         DefaultTableModel eModel = new DefaultTableModel(
-            new Object[]{"No","EID","Full Name","Education","Phone","Email","Department","Level","Salary"},0
+            new Object[]{"No","EID","Full Name","Gender","Education","Phone","Email","Department","Level","Salary"},0
         ) {
             @Override public boolean isCellEditable(int rows, int collumn){return false;}
         };
@@ -21,7 +21,7 @@ public final class guiTable{
             table.taobangifchuaco(con);
             var eMiddleman = new middleMan();
             for (var e : eMiddleman.findAll(con)){
-                eModel.addRow(new Object[]{e.getNo(), e.getEID(), e.getName(), e.getEdu(), e.getPhone(),
+                eModel.addRow(new Object[]{e.getNo(), e.getEID(), e.getName(), e.getGender(), e.getEdu(), e.getPhone(),
                 e.getEmail(), e.getDepartment(), e.getLevel(), e.getSalary()});
             }
             eTable.setModel(eModel);

@@ -14,6 +14,7 @@ public class Employee {
     private Integer number;
     private String eid;
     private String name;
+    private Gender gender;
     private Education edu;
     private Department dept;
     private String email;
@@ -22,7 +23,7 @@ public class Employee {
     private BigDecimal salary;
 
     public Employee(){}
-    public Employee (Integer Number, String EID, String Name, 
+    public Employee (Integer Number, String EID, String Name, Gender Gender,
     Education Edu, Department Dept, JobLevel Level, String Email,
     String Phone, BigDecimal Salary) {
         this.number = Number;
@@ -34,9 +35,11 @@ public class Employee {
         this.dept = Dept;
         this.level =Level;
         this.salary = Salary;
+        this.gender = Gender;
     }
 
     // Get
+    public Gender getGender() {return gender;}
     public Integer getNo() {return number;}
     public String getEID(){return eid;}
     public String getEmail(){return email;}
@@ -48,6 +51,7 @@ public class Employee {
     public BigDecimal getSalary (){return salary;}
 
     // Set
+    public void setGender (Gender sGender) {this.gender = sGender;}
     public void setNo (Integer sNumber) {this.number = sNumber;}
     public void setPhone (String sPhone) {this.phone = sPhone;}
     public void setEmail (String sEmail) {this.email = sEmail;}

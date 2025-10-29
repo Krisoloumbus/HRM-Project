@@ -15,6 +15,7 @@ public class table {
                 No INT IDENTITY(1,1) CONSTRAINT PK_Employees PRIMARY KEY,
                 EID AS ('HRM' + RIGHT('00000' + CAST(No AS VARCHAR(5)), 5)) PERSISTED UNIQUE,
                 Full_Name NVARCHAR(255) NOT NULL,
+                Gender VARCHAR(10) NOT NULL,
                 Phone NUMERIC(10,0) NOT NULL,
                 Email VARCHAR(255) NULL,
                 Education VARCHAR(255) NOT NULL,

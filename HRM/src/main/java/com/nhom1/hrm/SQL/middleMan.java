@@ -16,7 +16,7 @@ import com.nhom1.hrm.models.JobLevel;
 public class middleMan extends Employee {
  public List<Employee> findAll(Connection c) throws SQLException {
         String sql = """
-            SELECT No, EID, Full_Name, Phone, Email, Education, Department, Job_Level, Salary
+            SELECT No, EID, Full_Name, Gender, Phone, Email, Education, Department, Job_Level, Salary
             FROM dbo.Employees ORDER BY No
         """;
         List<Employee> out = new ArrayList<>();
@@ -46,17 +46,18 @@ public class middleMan extends Employee {
     public int insert(Connection c, Employee e) throws SQLException {
         String sql = """
             INSERT INTO dbo.Employees
-            (Full_Name, Phone, Email, Education, Department, Job_Level, Salary)
+            (Full_Name, Gender, Phone, Email, Education, Department, Job_Level, Salary)
             VALUES (?, ?, ?, ?, ?, ?, ?)
         """;
         try (PreparedStatement ps = c.prepareStatement(sql)) {
             ps.setString(1, e.getName());
-            ps.setString(2, e.getPhone());
-            ps.setString(3, e.getEmail());
-            ps.setString(4, e.getEdu().getCodeDB());
-            ps.setString(5, e.getDepartment().getCodeDB());
-            ps.setString(6, e.getLevel().getCodeDB());
-            ps.setBigDecimal(7, e.getSalary() != null ? e.getSalary() : BigDecimal.ZERO);
+            ps.setString(2, e.getGender().getCodeDB());
+            ps.setString(3, e.getPhone());
+            ps.setString(4, e.getEmail());
+            ps.setString(5, e.getEdu().getCodeDB());
+            ps.setString(6, e.getDepartment().getCodeDB());
+            ps.setString(7, e.getLevel().getCodeDB());
+            ps.setBigDecimal(8, e.getSalary() != null ? e.getSalary() : BigDecimal.ZERO);
             return ps.executeUpdate();
         }
     }
@@ -70,7 +71,4 @@ public class middleMan extends Employee {
                 return ps.executeUpdate();
         }
     }
-
-    //Searching
-    
 }

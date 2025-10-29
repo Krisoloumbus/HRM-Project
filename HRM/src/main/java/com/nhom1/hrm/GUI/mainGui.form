@@ -32,7 +32,7 @@
                               <Component id="eduLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="eduBox" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="326" max="32767" attributes="0"/>
+                              <EmptySpace pref="347" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
@@ -55,22 +55,7 @@
                               <EmptySpace min="-2" pref="265" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="deptLabel" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="deptBox" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="addButton" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                                      <Component id="delButton" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <EmptySpace min="-2" pref="210" max="-2" attributes="0"/>
-                          </Group>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lvlLabel" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -82,6 +67,25 @@
                                   <Component id="salaryField" min="-2" pref="120" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="182" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="addButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                              <Component id="delButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="deptLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="genderBox" min="-2" max="-2" attributes="0"/>
+                                  <Component id="deptBox" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="210" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -117,6 +121,8 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="nameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="nameField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="genderBox" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -139,21 +145,22 @@
                   <Component id="phoneField" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="salaryField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="mailLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="mailField" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                  </Group>
                   <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="addButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="delButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="mailLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="mailField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
@@ -275,6 +282,21 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="delButtonActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Gender:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="genderBox">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="0"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Gender&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>
