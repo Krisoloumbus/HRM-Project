@@ -4,6 +4,8 @@
 
 package com.nhom1.hrm;
 
+import java.sql.Connection;
+
 import javax.swing.SwingUtilities;
 
 import com.nhom1.hrm.GUI.mainGui;
@@ -17,8 +19,9 @@ import com.nhom1.hrm.models.Employee;
  */
 public class HRM extends Employee {
     public static void main(String[] args) {
-        try (java.sql.Connection c = connectSQL.getConnection()) {
-            table.taobangifchuaco(c);;
+        try (Connection c = connectSQL.getConnection()) {
+            table.taobangifchuaco(c);
+            javax.swing.JOptionPane.showMessageDialog(null, "Connected to Data");
         } catch (Exception e) {
             e.printStackTrace();
             javax.swing.JOptionPane.showMessageDialog(null, "Không thể tạo bảng/ket noi DB: " + e.getMessage());

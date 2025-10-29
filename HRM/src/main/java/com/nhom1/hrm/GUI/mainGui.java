@@ -19,7 +19,7 @@ public class mainGui extends javax.swing.JFrame {
      */
     public mainGui() {
         initComponents();
-        afterInit.afterInit(deptBox, lvlBox, eduBox, eTable, addButton, delButton);
+        afterInit.setgetComboBox(deptBox, lvlBox, eduBox, eTable, addButton, delButton);
         try {
             guiTable.loadTable(eTable);
         } catch (Exception e) {

@@ -12,7 +12,7 @@ import com.nhom1.hrm.models.JobLevel;
 
 public final class afterInit {
     private afterInit(){}
-    public static void afterInit(JComboBox<Department> deptBox, JComboBox<JobLevel> lvlBox, JComboBox<Education> eduBox,
+    public static void setgetComboBox(JComboBox<Department> deptBox, JComboBox<JobLevel> lvlBox, JComboBox<Education> eduBox,
     JTable eTable, JButton addButton, JButton delButton)
     {
         deptBox.setModel(new DefaultComboBoxModel<>(Department.values()));
