@@ -8,5 +8,6 @@ package com.nhom1.hrm.UI;
  *
  * @author Kris
  */
-public class cards {
+public class homePanel {
+    
 }
