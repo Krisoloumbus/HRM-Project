@@ -33,6 +33,9 @@ public class AppShell extends javax.swing.JFrame {
 
         jSplitPane1 = new javax.swing.JSplitPane();
         sidePanel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        homeButton = new javax.swing.JButton();
+        aboutButton = new javax.swing.JButton();
         contentPanel = new javax.swing.JPanel();
         homePanel = new javax.swing.JPanel();
         titleLabel = new javax.swing.JLabel();
@@ -58,8 +61,10 @@ public class AppShell extends javax.swing.JFrame {
         delButton = new javax.swing.JButton();
         genderLabel = new javax.swing.JLabel();
         genderBox = new javax.swing.JComboBox<>();
-        settingPanel = new javax.swing.JPanel();
         aboutPanel = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
+        jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,17 +73,30 @@ public class AppShell extends javax.swing.JFrame {
         jSplitPane1.setOpaque(false);
 
         sidePanel.setBackground(new java.awt.Color(51, 102, 255));
+        sidePanel.setLayout(new java.awt.GridLayout(10, 1));
 
-        javax.swing.GroupLayout sidePanelLayout = new javax.swing.GroupLayout(sidePanel);
-        sidePanel.setLayout(sidePanelLayout);
-        sidePanelLayout.setHorizontalGroup(
-            sidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        sidePanelLayout.setVerticalGroup(
-            sidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 634, Short.MAX_VALUE)
-        );
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("HRM");
+        sidePanel.add(jLabel1);
+
+        homeButton.setBackground(new java.awt.Color(0, 51, 204));
+        homeButton.setText("HOME");
+        homeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeButtonActionPerformed(evt);
+            }
+        });
+        sidePanel.add(homeButton);
+
+        aboutButton.setBackground(new java.awt.Color(0, 51, 255));
+        aboutButton.setText("ABOUT");
+        aboutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aboutButtonActionPerformed(evt);
+            }
+        });
+        sidePanel.add(aboutButton);
 
         jSplitPane1.setLeftComponent(sidePanel);
 
@@ -261,11 +279,42 @@ public class AppShell extends javax.swing.JFrame {
 
         contentPanel.add(homePanel, "card2");
 
-        settingPanel.setLayout(new java.awt.CardLayout());
-        contentPanel.add(settingPanel, "card3");
+        jTextArea2.setColumns(20);
+        jTextArea2.setRows(5);
+        jTextArea2.setText("Testing\n");
+        jScrollPane2.setViewportView(jTextArea2);
 
-        aboutPanel.setLayout(new java.awt.CardLayout());
-        contentPanel.add(aboutPanel, "card4");
+        javax.swing.GroupLayout aboutPanelLayout = new javax.swing.GroupLayout(aboutPanel);
+        aboutPanel.setLayout(aboutPanelLayout);
+        aboutPanelLayout.setHorizontalGroup(
+            aboutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(aboutPanelLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(513, Short.MAX_VALUE))
+        );
+        aboutPanelLayout.setVerticalGroup(
+            aboutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(aboutPanelLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(527, Short.MAX_VALUE))
+        );
+
+        contentPanel.add(aboutPanel, "card3");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 770, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 634, Short.MAX_VALUE)
+        );
+
+        contentPanel.add(jPanel2, "card3");
 
         jSplitPane1.setRightComponent(contentPanel);
 
@@ -291,6 +340,14 @@ public class AppShell extends javax.swing.JFrame {
         // TODO add your handling code here:
         buttonAtcion.onDelete(eTable);
     }//GEN-LAST:event_delButtonActionPerformed
+
+    private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_homeButtonActionPerformed
+
+    private void aboutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_aboutButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -328,6 +385,7 @@ public class AppShell extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton aboutButton;
     private javax.swing.JPanel aboutPanel;
     private javax.swing.JButton addButton;
     private javax.swing.JPanel contentPanel;
@@ -341,9 +399,14 @@ public class AppShell extends javax.swing.JFrame {
     private javax.swing.JLabel eduLabel;
     private javax.swing.JComboBox<Gender> genderBox;
     private javax.swing.JLabel genderLabel;
+    private javax.swing.JButton homeButton;
     private javax.swing.JPanel homePanel;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JComboBox<JobLevel> lvlBox;
     private javax.swing.JLabel lvlLabel;
     private javax.swing.JTextField mailField;
@@ -354,7 +417,6 @@ public class AppShell extends javax.swing.JFrame {
     private javax.swing.JLabel phoneLabel;
     private javax.swing.JTextField salaryField;
     private javax.swing.JLabel salaryLabel;
-    private javax.swing.JPanel settingPanel;
     private javax.swing.JPanel sidePanel;
     private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
