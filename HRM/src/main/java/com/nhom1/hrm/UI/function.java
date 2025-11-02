@@ -1,4 +1,4 @@
-package com.nhom1.hrm.AppUI;
+package com.nhom1.hrm.UI;
 
 import java.math.BigDecimal;
 

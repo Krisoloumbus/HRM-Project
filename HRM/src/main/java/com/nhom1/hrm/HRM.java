@@ -8,9 +8,9 @@ import java.sql.Connection;
 
 import javax.swing.SwingUtilities;
 
-import com.nhom1.hrm.AppUI.AppShell;
 import com.nhom1.hrm.SQL.connectSQL;
 import com.nhom1.hrm.SQL.table;
+import com.nhom1.hrm.UI.AppShell;
 import com.nhom1.hrm.models.Employee;
 
 /**
