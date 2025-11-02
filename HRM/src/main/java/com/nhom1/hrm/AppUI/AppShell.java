@@ -4,6 +4,11 @@
  */
 package com.nhom1.hrm.AppUI;
 
+import com.nhom1.hrm.models.Department;
+import com.nhom1.hrm.models.Education;
+import com.nhom1.hrm.models.Gender;
+import com.nhom1.hrm.models.JobLevel;
+
 /**
  *
  * @author Kris
