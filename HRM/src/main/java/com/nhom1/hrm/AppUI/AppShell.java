@@ -20,6 +20,13 @@ public class AppShell extends javax.swing.JFrame {
      */
     public AppShell() {
         initComponents();
+        afterInit.setgetComboBox(deptBox, lvlBox, eduBox, genderBox, eTable, addButton, delButton);
+        try {
+            guiTable.loadTable(eTable);
+        } catch (Exception e) {
+            e.printStackTrace();
+            javax.swing.JOptionPane.showMessageDialog(this, "Lỗi nạp bảng: " + e.getMessage());
+        }
     }
 
     /**
