@@ -20,6 +20,15 @@ public class AppShell extends javax.swing.JFrame {
      */
     public AppShell() {
         initComponents();
+
+        cards deck = new cards();
+        jSplitPane1.setRightComponent(deck);
+        deck.addCard("HOME", homePanel);
+        deck.addCard("ABOUT", aboutPanel);
+        deck.showCard("HOME");
+        buttonAtcion.switchCardOnClick(homeButton, deck, "HOME");
+        buttonAtcion.switchCardOnClick(aboutButton, deck, "ABOUT");
+
         afterInit.setgetComboBox(deptBox, lvlBox, eduBox, genderBox, eTable, addButton, delButton);
         try {
             guiTable.loadTable(eTable);

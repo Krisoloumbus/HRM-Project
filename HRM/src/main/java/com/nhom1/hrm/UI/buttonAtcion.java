@@ -3,6 +3,7 @@ package com.nhom1.hrm.UI;
 import java.sql.Connection;
 import java.util.Arrays;
 
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -31,8 +32,8 @@ public final class buttonAtcion {
             JOptionPane.showMessageDialog(null, "Lỗi thêm: " + ex.getMessage());
         }
     }
-
-public static void onDelete(JTable eTable)
+    
+    public static void onDelete(JTable eTable)
     {int[] sel = eTable.getSelectedRows();
         if (sel == null || sel.length == 0) {
             JOptionPane.showMessageDialog(null, "Hãy chọn ít nhất một dòng để xóa.");
@@ -56,5 +57,9 @@ public static void onDelete(JTable eTable)
             ex.printStackTrace();
             JOptionPane.showMessageDialog(null, "Lỗi xóa: " + ex.getMessage());
         }
+    }
+    
+    public static void switchCardOnClick(JButton button, cards deck, String cardName) {
+        button.addActionListener(e -> deck.showCard(cardName));
     }
 }

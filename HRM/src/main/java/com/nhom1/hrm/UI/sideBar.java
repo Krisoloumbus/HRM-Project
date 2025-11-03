@@ -4,10 +4,10 @@
  */
 package com.nhom1.hrm.UI;
 
+
 /**
  *
  * @author Kris
  */
-public class sideBar {
-    
+public class sideBar {   
 }

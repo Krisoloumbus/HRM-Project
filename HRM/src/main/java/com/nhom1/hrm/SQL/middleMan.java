@@ -11,6 +11,7 @@ import java.util.List;
 import com.nhom1.hrm.models.Department;
 import com.nhom1.hrm.models.Education;
 import com.nhom1.hrm.models.Employee;
+import com.nhom1.hrm.models.Gender;
 import com.nhom1.hrm.models.JobLevel;
 
 public class middleMan extends Employee {
@@ -29,12 +30,10 @@ public class middleMan extends Employee {
                 e.setName(rs.getString("Full_Name"));
                 e.setPhone(rs.getString("Phone"));
                 e.setEmail(rs.getString("Email"));
-                //e.setEdu(rs.getString("Education"));
                 e.setEdu(Education.fromCodeToDB(rs.getString("Education")));
-                //e.setDepartment(rs.getString("Department"));
                 e.setDepartment(Department.fromCodeToDB(rs.getString("Department")));
-                //e.setLevel(rs.getString("Job_Level"));
                 e.setLevel(JobLevel.fromCodeToDB(rs.getString("Job_Level")));
+                e.setGender(Gender.fromCodeToDB(rs.getString("Gender")));
                 e.setSalary(rs.getBigDecimal("Salary"));
                 out.add(e);
             }
@@ -47,7 +46,7 @@ public class middleMan extends Employee {
         String sql = """
             INSERT INTO dbo.Employees
             (Full_Name, Gender, Phone, Email, Education, Department, Job_Level, Salary)
-            VALUES (?, ?, ?, ?, ?, ?, ?)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
         """;
         try (PreparedStatement ps = c.prepareStatement(sql)) {
             ps.setString(1, e.getName());
