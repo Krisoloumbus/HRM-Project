@@ -15,7 +15,7 @@ import com.nhom1.hrm.models.Gender;
 import com.nhom1.hrm.models.JobLevel;
 
 public class middleMan extends Employee {
- public List<Employee> findAll(Connection c) throws SQLException {
+    public List<Employee> findAll(Connection c) throws SQLException {
         String sql = """
             SELECT No, EID, Full_Name, Gender, Phone, Email, Education, Department, Job_Level, Salary
             FROM dbo.Employees ORDER BY No
