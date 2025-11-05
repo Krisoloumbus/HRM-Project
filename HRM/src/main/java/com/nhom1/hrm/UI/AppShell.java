@@ -176,6 +176,12 @@ public class AppShell extends javax.swing.JFrame {
 
         genderLabel.setText("Gender:");
 
+        genderBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                genderBoxActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout homePanelLayout = new javax.swing.GroupLayout(homePanel);
         homePanel.setLayout(homePanelLayout);
         homePanelLayout.setHorizontalGroup(
@@ -380,6 +386,10 @@ public class AppShell extends javax.swing.JFrame {
     private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_aboutMenuItemActionPerformed
+
+    private void genderBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genderBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_genderBoxActionPerformed
 
     /**
      * @param args the command line arguments
