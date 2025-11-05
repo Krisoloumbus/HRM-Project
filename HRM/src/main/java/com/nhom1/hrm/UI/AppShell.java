@@ -29,7 +29,7 @@ public class AppShell extends javax.swing.JFrame {
         deck.addCard("ABOUT", aboutPanel);
         deck.showCard("HOME");
         sideBar.switchCardOnClick(homeButton, deck, "HOME");
-        menuBar.switchCardOnClick(aboutMenuItem, deck, "ABOUT");
+        menuBar.aboutSwitchCardOnClick(aboutMenuItem, deck, "ABOUT");
 
         afterInit.setgetComboBox(deptBox, lvlBox, eduBox, genderBox, eTable, addButton, delButton);
         try {
