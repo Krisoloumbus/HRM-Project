@@ -84,6 +84,7 @@ public class AppShell extends javax.swing.JFrame {
         eMenuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         editMenu = new javax.swing.JMenu();
+        selectedMenuItem = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
         aboutMenuItem = new javax.swing.JMenuItem();
 
@@ -335,6 +336,10 @@ public class AppShell extends javax.swing.JFrame {
         eMenuBar.add(fileMenu);
 
         editMenu.setText("Edit");
+
+        selectedMenuItem.setText("Selected");
+        editMenu.add(selectedMenuItem);
+
         eMenuBar.add(editMenu);
 
         helpMenu.setText("Help");
@@ -447,6 +452,7 @@ public class AppShell extends javax.swing.JFrame {
     private javax.swing.JLabel phoneLabel;
     private javax.swing.JTextField salaryField;
     private javax.swing.JLabel salaryLabel;
+    private javax.swing.JMenuItem selectedMenuItem;
     private javax.swing.JPanel sidePanel;
     private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
