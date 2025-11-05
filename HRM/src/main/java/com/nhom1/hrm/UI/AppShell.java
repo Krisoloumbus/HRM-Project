@@ -28,6 +28,7 @@ public class AppShell extends javax.swing.JFrame {
         deck.showCard("HOME");
         buttonAtcion.switchCardOnClick(homeButton, deck, "HOME");
         buttonAtcion.switchCardOnClick(aboutButton, deck, "ABOUT");
+        menuBar.switchCardOnClick(aboutMenuItem, deck, "ABOUT");
 
         afterInit.setgetComboBox(deptBox, lvlBox, eduBox, genderBox, eTable, addButton, delButton);
         try {
