@@ -20,7 +20,8 @@ public class AppShell extends javax.swing.JFrame {
      */
     public AppShell() {
         initComponents();
-
+        
+        customColor.setCustomRendererForAll(genderBox, lvlBox, eduBox, deptBox);
         cards deck = new cards();
         eSplitPane.setRightComponent(deck);
         deck.addCard("HOME", homePanel);
@@ -116,7 +117,7 @@ public class AppShell extends javax.swing.JFrame {
         contentPanel.setLayout(new java.awt.CardLayout());
 
         titleLabel.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        titleLabel.setText("EMPLOYEE INFORMATION");
+        titleLabel.setText("EMPLOYEE MANAGEMENT");
 
         nameLabel.setText("Name:");
 
@@ -201,8 +202,7 @@ public class AppShell extends javax.swing.JFrame {
                                         .addComponent(phoneField))
                                     .addGroup(homePanelLayout.createSequentialGroup()
                                         .addComponent(dateLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(dateField)))
+                                        .addGap(0, 0, Short.MAX_VALUE)))
                                 .addGap(265, 265, 265)))
                         .addGroup(homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, homePanelLayout.createSequentialGroup()
@@ -230,9 +230,12 @@ public class AppShell extends javax.swing.JFrame {
                                     .addComponent(deptBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(210, 210, 210))))
                     .addGroup(homePanelLayout.createSequentialGroup()
-                        .addComponent(nameLabel)
-                        .addGap(34, 34, 34)
-                        .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(dateField, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, homePanelLayout.createSequentialGroup()
+                                .addComponent(nameLabel)
+                                .addGap(34, 34, 34)
+                                .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap())))
             .addGroup(homePanelLayout.createSequentialGroup()
                 .addGap(32, 32, 32)
