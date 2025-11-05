@@ -84,6 +84,7 @@ public class AppShell extends javax.swing.JFrame {
         fileMenu = new javax.swing.JMenu();
         editMenu = new javax.swing.JMenu();
         helpMenu = new javax.swing.JMenu();
+        aboutMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -345,6 +346,15 @@ public class AppShell extends javax.swing.JFrame {
         eMenuBar.add(editMenu);
 
         helpMenu.setText("Help");
+
+        aboutMenuItem.setText("About");
+        aboutMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aboutMenuItemActionPerformed(evt);
+            }
+        });
+        helpMenu.add(aboutMenuItem);
+
         eMenuBar.add(helpMenu);
 
         setJMenuBar(eMenuBar);
@@ -377,6 +387,10 @@ public class AppShell extends javax.swing.JFrame {
     private void aboutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_aboutButtonActionPerformed
+
+    private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_aboutMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -415,6 +429,7 @@ public class AppShell extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aboutButton;
+    private javax.swing.JMenuItem aboutMenuItem;
     private javax.swing.JPanel aboutPanel;
     private javax.swing.JButton addButton;
     private javax.swing.JPanel contentPanel;
