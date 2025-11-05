@@ -52,7 +52,6 @@ public class AppShell extends javax.swing.JFrame {
         sidePanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         homeButton = new javax.swing.JButton();
-        aboutButton = new javax.swing.JButton();
         contentPanel = new javax.swing.JPanel();
         homePanel = new javax.swing.JPanel();
         titleLabel = new javax.swing.JLabel();
@@ -111,15 +110,6 @@ public class AppShell extends javax.swing.JFrame {
             }
         });
         sidePanel.add(homeButton);
-
-        aboutButton.setBackground(new java.awt.Color(0, 51, 255));
-        aboutButton.setText("ABOUT");
-        aboutButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                aboutButtonActionPerformed(evt);
-            }
-        });
-        sidePanel.add(aboutButton);
 
         eSplitPane.setLeftComponent(sidePanel);
 
@@ -385,10 +375,6 @@ public class AppShell extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_homeButtonActionPerformed
 
-    private void aboutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_aboutButtonActionPerformed
-
     private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_aboutMenuItemActionPerformed
@@ -429,7 +415,6 @@ public class AppShell extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton aboutButton;
     private javax.swing.JMenuItem aboutMenuItem;
     private javax.swing.JPanel aboutPanel;
     private javax.swing.JButton addButton;
