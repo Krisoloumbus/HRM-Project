@@ -22,7 +22,7 @@ public class AppShell extends javax.swing.JFrame {
         initComponents();
 
         cards deck = new cards();
-        jSplitPane1.setRightComponent(deck);
+        eSplitPane.setRightComponent(deck);
         deck.addCard("HOME", homePanel);
         deck.addCard("ABOUT", aboutPanel);
         deck.showCard("HOME");
@@ -47,7 +47,7 @@ public class AppShell extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jSplitPane1 = new javax.swing.JSplitPane();
+        eSplitPane = new javax.swing.JSplitPane();
         sidePanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         homeButton = new javax.swing.JButton();
@@ -71,32 +71,37 @@ public class AppShell extends javax.swing.JFrame {
         phoneField = new javax.swing.JTextField();
         mailField = new javax.swing.JTextField();
         salaryField = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        eScrollPane = new javax.swing.JScrollPane();
         eTable = new javax.swing.JTable();
         addButton = new javax.swing.JButton();
         delButton = new javax.swing.JButton();
         genderLabel = new javax.swing.JLabel();
         genderBox = new javax.swing.JComboBox<>();
         aboutPanel = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        eMenuBar = new javax.swing.JMenuBar();
+        fileMenu = new javax.swing.JMenu();
+        editMenu = new javax.swing.JMenu();
+        helpMenu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jSplitPane1.setDividerLocation(100);
-        jSplitPane1.setOneTouchExpandable(true);
-        jSplitPane1.setOpaque(false);
+        eSplitPane.setDividerLocation(100);
+        eSplitPane.setOneTouchExpandable(true);
+        eSplitPane.setOpaque(false);
 
         sidePanel.setBackground(new java.awt.Color(51, 102, 255));
         sidePanel.setLayout(new java.awt.GridLayout(10, 1));
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("HRM");
         sidePanel.add(jLabel1);
 
         homeButton.setBackground(new java.awt.Color(0, 51, 204));
+        homeButton.setForeground(new java.awt.Color(153, 204, 255));
         homeButton.setText("HOME");
         homeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,11 +119,12 @@ public class AppShell extends javax.swing.JFrame {
         });
         sidePanel.add(aboutButton);
 
-        jSplitPane1.setLeftComponent(sidePanel);
+        eSplitPane.setLeftComponent(sidePanel);
 
         contentPanel.setBackground(new java.awt.Color(51, 204, 255));
         contentPanel.setLayout(new java.awt.CardLayout());
 
+        titleLabel.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         titleLabel.setText("EMPLOYEE INFORMATION");
 
         nameLabel.setText("Name:");
@@ -160,7 +166,7 @@ public class AppShell extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(eTable);
+        eScrollPane.setViewportView(eTable);
 
         addButton.setText("ADD");
         addButton.addActionListener(new java.awt.event.ActionListener() {
@@ -238,14 +244,13 @@ public class AppShell extends javax.swing.JFrame {
                         .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
             .addGroup(homePanelLayout.createSequentialGroup()
-                .addGroup(homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(homePanelLayout.createSequentialGroup()
-                        .addGap(410, 410, 410)
-                        .addComponent(titleLabel))
-                    .addGroup(homePanelLayout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 832, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(32, 32, 32)
+                .addComponent(eScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 832, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, homePanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(titleLabel)
+                .addGap(273, 273, 273))
         );
         homePanelLayout.setVerticalGroup(
             homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -289,32 +294,29 @@ public class AppShell extends javax.swing.JFrame {
                             .addComponent(mailLabel)
                             .addComponent(mailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)))
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(eScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         contentPanel.add(homePanel, "card2");
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jTextArea2.setText("Testing\n");
-        jScrollPane2.setViewportView(jTextArea2);
+        jLabel2.setText("Team 1 project");
 
         javax.swing.GroupLayout aboutPanelLayout = new javax.swing.GroupLayout(aboutPanel);
         aboutPanel.setLayout(aboutPanelLayout);
         aboutPanelLayout.setHorizontalGroup(
             aboutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(aboutPanelLayout.createSequentialGroup()
-                .addGap(266, 266, 266)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(270, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addContainerGap(785, Short.MAX_VALUE))
         );
         aboutPanelLayout.setVerticalGroup(
             aboutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(aboutPanelLayout.createSequentialGroup()
-                .addGap(250, 250, 250)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(298, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addContainerGap(624, Short.MAX_VALUE))
         );
 
         contentPanel.add(aboutPanel, "card3");
@@ -323,18 +325,29 @@ public class AppShell extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 770, Short.MAX_VALUE)
+            .addGap(0, 870, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 634, Short.MAX_VALUE)
+            .addGap(0, 646, Short.MAX_VALUE)
         );
 
         contentPanel.add(jPanel2, "card3");
 
-        jSplitPane1.setRightComponent(contentPanel);
+        eSplitPane.setRightComponent(contentPanel);
 
-        getContentPane().add(jSplitPane1, java.awt.BorderLayout.CENTER);
+        getContentPane().add(eSplitPane, java.awt.BorderLayout.CENTER);
+
+        fileMenu.setText("File");
+        eMenuBar.add(fileMenu);
+
+        editMenu.setText("Edit");
+        eMenuBar.add(editMenu);
+
+        helpMenu.setText("Help");
+        eMenuBar.add(helpMenu);
+
+        setJMenuBar(eMenuBar);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -410,19 +423,22 @@ public class AppShell extends javax.swing.JFrame {
     private javax.swing.JButton delButton;
     private javax.swing.JComboBox<Department> deptBox;
     private javax.swing.JLabel deptLabel;
+    private javax.swing.JMenuBar eMenuBar;
+    private javax.swing.JScrollPane eScrollPane;
+    private javax.swing.JSplitPane eSplitPane;
     private javax.swing.JTable eTable;
+    private javax.swing.JMenu editMenu;
     private javax.swing.JComboBox<Education> eduBox;
     private javax.swing.JLabel eduLabel;
+    private javax.swing.JMenu fileMenu;
     private javax.swing.JComboBox<Gender> genderBox;
     private javax.swing.JLabel genderLabel;
+    private javax.swing.JMenu helpMenu;
     private javax.swing.JButton homeButton;
     private javax.swing.JPanel homePanel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JComboBox<JobLevel> lvlBox;
     private javax.swing.JLabel lvlLabel;
     private javax.swing.JTextField mailField;
