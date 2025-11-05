@@ -21,7 +21,7 @@ public class HRM extends Employee {
     public static void main(String[] args) {
         try (Connection c = connectSQL.getConnection()) {
             table.taobangifchuaco(c);
-            javax.swing.JOptionPane.showMessageDialog(null, "Connected to Data");
+            javax.swing.JOptionPane.showMessageDialog(null, "Connected to DB");
         } catch (Exception e) {
             e.printStackTrace();
             javax.swing.JOptionPane.showMessageDialog(null, "Không thể tạo bảng/ket noi DB: " + e.getMessage());

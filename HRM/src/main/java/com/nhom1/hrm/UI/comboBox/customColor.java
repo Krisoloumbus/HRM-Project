@@ -1,4 +1,4 @@
-package com.nhom1.hrm.UI;
+package com.nhom1.hrm.UI.comboBox;
 
 import javax.swing.JComboBox;
 
