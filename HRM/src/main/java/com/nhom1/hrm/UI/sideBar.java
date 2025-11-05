@@ -4,10 +4,15 @@
  */
 package com.nhom1.hrm.UI;
 
+import javax.swing.JButton;
 
 /**
  *
  * @author Kris
  */
 public class sideBar {   
+    
+    public static void switchCardOnClick(JButton button, cards deck, String cardName) {
+        button.addActionListener(e -> deck.showCard(cardName));
+    }
 }
