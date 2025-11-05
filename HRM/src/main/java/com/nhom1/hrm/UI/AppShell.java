@@ -207,7 +207,7 @@ public class AppShell extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, homePanelLayout.createSequentialGroup()
                                 .addGap(8, 8, 8)
                                 .addGroup(homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(mailField, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(mailField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
                                     .addComponent(phoneField))
                                 .addGap(199, 199, 199))
                             .addGroup(homePanelLayout.createSequentialGroup()
@@ -237,15 +237,13 @@ public class AppShell extends javax.swing.JFrame {
                                 .addComponent(delButton)))
                         .addGap(186, 186, 186))))
             .addGroup(homePanelLayout.createSequentialGroup()
-                .addGroup(homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(homePanelLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(eScrollPane))
-                    .addGroup(homePanelLayout.createSequentialGroup()
-                        .addGap(249, 249, 249)
-                        .addComponent(titleLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 262, Short.MAX_VALUE)))
+                .addGap(249, 249, 249)
+                .addComponent(titleLabel)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(homePanelLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(eScrollPane)
+                .addContainerGap())
         );
         homePanelLayout.setVerticalGroup(
             homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -282,13 +280,13 @@ public class AppShell extends javax.swing.JFrame {
                         .addGroup(homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(mailLabel)
                             .addComponent(mailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, homePanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                        .addGap(19, 19, 19))
+                    .addGroup(homePanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(addButton)
                             .addComponent(delButton))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                        .addGap(12, 12, 12)))
                 .addComponent(eScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 413, Short.MAX_VALUE)
                 .addGap(20, 20, 20))
         );
@@ -304,7 +302,7 @@ public class AppShell extends javax.swing.JFrame {
             .addGroup(aboutPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addContainerGap(743, Short.MAX_VALUE))
+                .addContainerGap(824, Short.MAX_VALUE))
         );
         aboutPanelLayout.setVerticalGroup(
             aboutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -320,7 +318,7 @@ public class AppShell extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 828, Short.MAX_VALUE)
+            .addGap(0, 909, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

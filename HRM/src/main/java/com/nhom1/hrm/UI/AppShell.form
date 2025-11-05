@@ -166,7 +166,7 @@
                                       <Group type="102" alignment="1" attributes="0">
                                           <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="1" attributes="0">
-                                              <Component id="mailField" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="mailField" alignment="0" pref="206" max="32767" attributes="0"/>
                                               <Component id="phoneField" max="32767" attributes="0"/>
                                           </Group>
                                           <EmptySpace min="-2" pref="199" max="-2" attributes="0"/>
@@ -211,18 +211,14 @@
                           </Group>
                       </Group>
                       <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                                  <Component id="eScrollPane" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="249" max="-2" attributes="0"/>
-                                  <Component id="titleLabel" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="262" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
+                          <EmptySpace min="-2" pref="249" max="-2" attributes="0"/>
+                          <Component id="titleLabel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                          <Component id="eScrollPane" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -260,21 +256,21 @@
                               <Component id="salaryField" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="mailLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="mailField" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace pref="12" max="32767" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="addButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="delButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Component id="eScrollPane" pref="413" max="32767" attributes="0"/>
@@ -454,7 +450,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="743" max="32767" attributes="0"/>
+                          <EmptySpace pref="824" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -486,7 +482,7 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="828" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="909" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
