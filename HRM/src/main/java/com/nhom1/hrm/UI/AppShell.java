@@ -103,6 +103,7 @@ public class AppShell extends javax.swing.JFrame {
         sidePanel.add(jLabel1);
 
         homeButton.setBackground(new java.awt.Color(0, 51, 204));
+        homeButton.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         homeButton.setForeground(new java.awt.Color(153, 204, 255));
         homeButton.setText("HOME");
         homeButton.addActionListener(new java.awt.event.ActionListener() {
@@ -120,20 +121,28 @@ public class AppShell extends javax.swing.JFrame {
         titleLabel.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         titleLabel.setText("EMPLOYEE MANAGEMENT");
 
+        nameLabel.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         nameLabel.setText("Name:");
 
+        salaryLabel.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         salaryLabel.setText("Salary:");
 
+        eduLabel.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         eduLabel.setText("Education");
 
+        lvlLabel.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         lvlLabel.setText("Level:");
 
+        deptLabel.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         deptLabel.setText("Department:");
 
+        phoneLabel.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         phoneLabel.setText("Phone");
 
+        mailLabel.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         mailLabel.setText("Email:");
 
+        dateLabel.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         dateLabel.setText("Date of birth:");
 
         nameField.addActionListener(new java.awt.event.ActionListener() {
@@ -175,6 +184,7 @@ public class AppShell extends javax.swing.JFrame {
             }
         });
 
+        genderLabel.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         genderLabel.setText("Gender:");
 
         genderBox.addActionListener(new java.awt.event.ActionListener() {
