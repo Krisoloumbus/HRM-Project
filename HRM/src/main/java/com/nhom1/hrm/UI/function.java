@@ -54,6 +54,21 @@ public final class function {
         return e;
     }
 
+    //testing
+    public static Employee existingEmployeeFromForm(
+        String eid,
+        JTextField nameField, JComboBox<Education> eduBox,
+        JComboBox<Department> deptBox, JComboBox<JobLevel> lvlBox,
+        JComboBox<Gender> genderBox,
+        JTextField phoneField, JTextField emailField, JTextField salaryField)
+    {
+        Employee e = newEmployeeToDB(
+                nameField, eduBox, deptBox, lvlBox,
+                genderBox, phoneField, emailField, salaryField);
+        e.setEID(eid);
+        return e;
+    }
+
     public static void setInput(JTextField nameField, JComboBox<Education> eduBox, 
     JComboBox<Department> deptBox, JComboBox<JobLevel> lvlBox, JComboBox<Gender> genderBox,
     JTextField phoneField, JTextField emailField,JTextField salaryField) 

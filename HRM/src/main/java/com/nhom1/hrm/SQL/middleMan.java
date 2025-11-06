@@ -70,4 +70,25 @@ public class middleMan extends Employee {
                 return ps.executeUpdate();
         }
     }
+
+    //Update selected - testing
+    public int update(Connection c, Employee e) throws SQLException {
+        String sql = """
+            UPDATE dbo.Employees
+            SET Full_Name = ?, Gender = ?, Phone = ?, Email = ?,
+            Education = ?, Department = ?, Job_Level = ?, Salary = ?
+            WHERE EID = ?
+        """;
+        try (PreparedStatement ps = c.prepareStatement(sql)) {
+            ps.setString(1, e.getName());
+            ps.setString(2, e.getGender().getCodeDB());
+            ps.setString(3, e.getPhone());
+            ps.setString(4, e.getEmail());
+            ps.setString(5, e.getEdu().getCodeDB());
+            ps.setString(6, e.getDepartment().getCodeDB());
+            ps.setString(7, e.getLevel().getCodeDB());
+            ps.setBigDecimal(8, e.getSalary() != null ? e.getSalary() : BigDecimal.ZERO);
+            return ps.executeUpdate();
+        }
+    }
 }
