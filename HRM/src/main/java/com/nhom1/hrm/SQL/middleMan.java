@@ -88,6 +88,7 @@ public class middleMan extends Employee {
             ps.setString(6, e.getDepartment().getCodeDB());
             ps.setString(7, e.getLevel().getCodeDB());
             ps.setBigDecimal(8, e.getSalary() != null ? e.getSalary() : BigDecimal.ZERO);
+            ps.setString(9, e.getEID()); //
             return ps.executeUpdate();
         }
     }

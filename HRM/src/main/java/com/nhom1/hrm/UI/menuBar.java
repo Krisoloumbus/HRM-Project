@@ -5,6 +5,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 import com.nhom1.hrm.models.Department;
 import com.nhom1.hrm.models.Education;
@@ -19,35 +20,44 @@ public class menuBar {
     }
 
     //TESTING
-    public String selectedMenuItem(JTextField nameField, JComboBox<Education> eduBox, JComboBox<Department> deptBox, JComboBox<JobLevel> lvlBox,
-    JComboBox<Gender>genderBox, JTextField phoneField, JTextField emailField, JTextField salaryField, JTable eTable){
-        int sel = eTable.getSelectedRow();
-        if (sel == -1) {
-            JOptionPane.showMessageDialog(null, "Hãy chọn ít nhất một dòng để edit.");
+    public static String onSelected(
+            JTable eTable,
+            JTextField nameField,
+            JTextField dateField,          // hiện DB chưa lưu DOB, để trống
+            JComboBox<Education> eduBox,
+            JComboBox<Department> deptBox,
+            JComboBox<JobLevel> lvlBox,
+            JComboBox<Gender> genderBox,
+            JTextField phoneField,
+            JTextField mailField,
+            JTextField salaryField) {
+
+        int viewRow = eTable.getSelectedRow();
+        if (viewRow == -1) {
+            JOptionPane.showMessageDialog(null, "Hãy chọn một dòng trong bảng.");
             return null;
         }
-       int ok = JOptionPane.showConfirmDialog(null, "Edit " + sel + " bản ghi?", "Xác nhận", JOptionPane.YES_NO_OPTION);
-        if (ok != JOptionPane.YES_OPTION) return null;
-        int modelRow = eTable.convertRowIndexToModel(sel);
-        var model = eTable.getModel();
 
-        // cột 1 = EID
-        String eid = model.getValueAt(modelRow, 1).toString();
+        int row = eTable.convertRowIndexToModel(viewRow);
+        DefaultTableModel model = (DefaultTableModel) eTable.getModel();
 
-        nameField.setText(String.valueOf(model.getValueAt(modelRow, 2)));
-        genderBox.setSelectedItem((Gender) model.getValueAt(modelRow, 3));
-        eduBox.setSelectedItem((Education) model.getValueAt(modelRow, 4));
-        phoneField.setText(String.valueOf(model.getValueAt(modelRow, 5)));
+        // cột 0 = No, cột 1 = EID → chỉ đọc EID, không sửa
+        String eid = model.getValueAt(row, 1).toString();
 
-        Object emailObj = model.getValueAt(modelRow, 6);
-        emailField.setText(emailObj != null ? emailObj.toString() : "");
+        nameField.setText(String.valueOf(model.getValueAt(row, 2)));
+        genderBox.setSelectedItem((Gender) model.getValueAt(row, 3));
+        eduBox.setSelectedItem((Education) model.getValueAt(row, 4));
+        phoneField.setText(String.valueOf(model.getValueAt(row, 5)));
 
-        deptBox.setSelectedItem((Department) model.getValueAt(modelRow, 7));
-        lvlBox.setSelectedItem((JobLevel) model.getValueAt(modelRow, 8));
-        salaryField.setText(String.valueOf(model.getValueAt(modelRow, 9)));
+        Object emailObj = model.getValueAt(row, 6);
+        mailField.setText(emailObj != null ? emailObj.toString() : "");
 
-        // hiện tại chưa lưu ngày sinh xuống DB, tạm để trống
-        //dateField.setText("");
+        deptBox.setSelectedItem((Department) model.getValueAt(row, 7));
+        lvlBox.setSelectedItem((JobLevel) model.getValueAt(row, 8));
+        salaryField.setText(String.valueOf(model.getValueAt(row, 9)));
+
+        // hiện bạn chưa lưu DOB xuống SQL, tạm để ô rỗng
+        dateField.setText("");
 
         return eid;
     }

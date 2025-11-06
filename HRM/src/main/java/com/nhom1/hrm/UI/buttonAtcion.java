@@ -84,7 +84,6 @@ public final class buttonAtcion {
                 genderBox, phoneField, emailField, salaryField);
 
         try (Connection c = com.nhom1.hrm.SQL.connectSQL.getConnection()) {
-            com.nhom1.hrm.SQL.table.taobangifchuaco(c);
             new com.nhom1.hrm.SQL.middleMan().update(c, emp);
             JOptionPane.showMessageDialog(null, "Đã cập nhật nhân viên!");
             guiTable.loadTable(eTable);

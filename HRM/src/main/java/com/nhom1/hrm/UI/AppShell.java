@@ -19,6 +19,7 @@ public class AppShell extends javax.swing.JFrame {
     /**
      * Creates new form AppShell
      */
+    private String editingEID = null;
     public AppShell() {
         initComponents();
         
@@ -30,7 +31,7 @@ public class AppShell extends javax.swing.JFrame {
         deck.showCard("HOME");
         sideBar.switchCardOnClick(homeButton, deck, "HOME");
         menuBar.aboutSwitchCardOnClick(aboutMenuItem, deck, "ABOUT");
-
+        
         afterInit.setgetComboBox(deptBox, lvlBox, eduBox, genderBox, eTable, addButton, delButton);
         try {
             guiTable.loadTable(eTable);
@@ -399,10 +400,12 @@ public class AppShell extends javax.swing.JFrame {
 
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
         // TODO add your handling code here:
+        buttonAtcion.onUpdate(editingEID, nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, mailField, salaryField, eTable);
     }//GEN-LAST:event_updateButtonActionPerformed
 
     private void selectedMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectedMenuItemActionPerformed
         // TODO add your handling code here:
+        editingEID = menuBar.onSelected(eTable, nameField, dateField, eduBox, deptBox, lvlBox, genderBox, phoneField, mailField, salaryField);
     }//GEN-LAST:event_selectedMenuItemActionPerformed
 
     /**
