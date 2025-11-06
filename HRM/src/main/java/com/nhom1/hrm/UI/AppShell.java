@@ -19,7 +19,7 @@ public class AppShell extends javax.swing.JFrame {
     /**
      * Creates new form AppShell
      */
-    private String editingEID = null;
+    private String editingByEID = null;
     public AppShell() {
         initComponents();
         
@@ -400,12 +400,12 @@ public class AppShell extends javax.swing.JFrame {
 
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
         // TODO add your handling code here:
-        buttonAtcion.onUpdate(editingEID, nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, mailField, salaryField, eTable);
+        buttonAtcion.onUpdate(editingByEID, nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, mailField, salaryField, eTable);
     }//GEN-LAST:event_updateButtonActionPerformed
 
     private void selectedMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectedMenuItemActionPerformed
         // TODO add your handling code here:
-        editingEID = menuBar.onSelected(eTable, nameField, dateField, eduBox, deptBox, lvlBox, genderBox, phoneField, mailField, salaryField);
+        editingByEID = menuBar.onSelected(eTable, nameField, dateField, eduBox, deptBox, lvlBox, genderBox, phoneField, mailField, salaryField);
     }//GEN-LAST:event_selectedMenuItemActionPerformed
 
     /**
