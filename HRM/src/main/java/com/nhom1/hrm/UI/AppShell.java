@@ -78,6 +78,7 @@ public class AppShell extends javax.swing.JFrame {
         genderBox = new javax.swing.JComboBox<>();
         nameField = new javax.swing.JTextField();
         dateField = new javax.swing.JTextField();
+        updateButton = new javax.swing.JButton();
         aboutPanel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -182,6 +183,13 @@ public class AppShell extends javax.swing.JFrame {
             }
         });
 
+        updateButton.setText("UPDATE");
+        updateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout homePanelLayout = new javax.swing.GroupLayout(homePanel);
         homePanel.setLayout(homePanelLayout);
         homePanelLayout.setHorizontalGroup(
@@ -208,7 +216,7 @@ public class AppShell extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, homePanelLayout.createSequentialGroup()
                                 .addGap(8, 8, 8)
                                 .addGroup(homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(mailField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
+                                    .addComponent(mailField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
                                     .addComponent(phoneField))
                                 .addGap(199, 199, 199))
                             .addGroup(homePanelLayout.createSequentialGroup()
@@ -235,8 +243,10 @@ public class AppShell extends javax.swing.JFrame {
                             .addGroup(homePanelLayout.createSequentialGroup()
                                 .addComponent(addButton)
                                 .addGap(18, 18, 18)
-                                .addComponent(delButton)))
-                        .addGap(186, 186, 186))))
+                                .addComponent(delButton)
+                                .addGap(18, 18, 18)
+                                .addComponent(updateButton)))
+                        .addGap(129, 129, 129))))
             .addGroup(homePanelLayout.createSequentialGroup()
                 .addGap(249, 249, 249)
                 .addComponent(titleLabel)
@@ -286,7 +296,8 @@ public class AppShell extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(addButton)
-                            .addComponent(delButton))
+                            .addComponent(delButton)
+                            .addComponent(updateButton))
                         .addGap(12, 12, 12)))
                 .addComponent(eScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 413, Short.MAX_VALUE)
                 .addGap(20, 20, 20))
@@ -338,6 +349,11 @@ public class AppShell extends javax.swing.JFrame {
         editMenu.setText("Edit");
 
         selectedMenuItem.setText("Selected");
+        selectedMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectedMenuItemActionPerformed(evt);
+            }
+        });
         editMenu.add(selectedMenuItem);
 
         eMenuBar.add(editMenu);
@@ -380,6 +396,14 @@ public class AppShell extends javax.swing.JFrame {
     private void genderBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genderBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_genderBoxActionPerformed
+
+    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_updateButtonActionPerformed
+
+    private void selectedMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectedMenuItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_selectedMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -455,5 +479,6 @@ public class AppShell extends javax.swing.JFrame {
     private javax.swing.JMenuItem selectedMenuItem;
     private javax.swing.JPanel sidePanel;
     private javax.swing.JLabel titleLabel;
+    private javax.swing.JButton updateButton;
     // End of variables declaration//GEN-END:variables
 }

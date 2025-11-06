@@ -18,6 +18,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Selected"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selectedMenuItemActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -173,7 +176,7 @@
                                       <Group type="102" alignment="1" attributes="0">
                                           <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="1" attributes="0">
-                                              <Component id="mailField" alignment="0" pref="206" max="32767" attributes="0"/>
+                                              <Component id="mailField" alignment="0" pref="109" max="32767" attributes="0"/>
                                               <Component id="phoneField" max="32767" attributes="0"/>
                                           </Group>
                                           <EmptySpace min="-2" pref="199" max="-2" attributes="0"/>
@@ -211,9 +214,11 @@
                                           <Component id="addButton" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="delButton" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="updateButton" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace min="-2" pref="186" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="129" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -276,6 +281,7 @@
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="addButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="delButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="updateButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                               </Group>
@@ -441,6 +447,14 @@
                 <Component class="javax.swing.JTextField" name="nameField">
                 </Component>
                 <Component class="javax.swing.JTextField" name="dateField">
+                </Component>
+                <Component class="javax.swing.JButton" name="updateButton">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="UPDATE"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updateButtonActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
