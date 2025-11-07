@@ -28,7 +28,7 @@ public final class buttonAtcion {
             new com.nhom1.hrm.SQL.middleMan().insert(c, emp);
             JOptionPane.showMessageDialog(null, "Đã thêm nhân viên!");
             guiTable.loadTable(eTable);
-            function.setInput(nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, emailField, salaryField);
+            function.resetInput(nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, emailField, salaryField);
         } catch (Exception ex) {
             ex.printStackTrace();
             JOptionPane.showMessageDialog(null, "Lỗi thêm: " + ex.getMessage());
@@ -70,31 +70,12 @@ public final class buttonAtcion {
             return;
         }
         if (!function.validateInput(nameField, eduBox, genderBox, deptBox, lvlBox, emailField, phoneField, salaryField)) return;
-
         Employee emp = function.existingEmployeeFromDB(eid, nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, emailField, salaryField);
-
         try (Connection c = connectSQL.getConnection()) {
             new middleMan().update(c, emp);
-
             JOptionPane.showMessageDialog(null, "Đã cập nhật nhân viên!");
-
-            //For some unknwon reason, I can't reload table with this line
             guiTable.loadTable(eTable);
-
-            /*//Alter way
-            int viewRow = eTable.getSelectedRow();
-            if (viewRow != -1) {
-                int row = eTable.convertRowIndexToModel(viewRow);
-                DefaultTableModel dfModel = (DefaultTableModel) eTable.getModel();
-                dfModel.setValueAt(emp.getName(),          row, 2); // Full Name
-                dfModel.setValueAt(emp.getGender(),        row, 3); // Gender (enum)
-                dfModel.setValueAt(emp.getEdu(),           row, 4); // Education
-                dfModel.setValueAt(emp.getPhone(),         row, 5); // Phone
-                dfModel.setValueAt(emp.getEmail(),         row, 6); // Email
-                dfModel.setValueAt(emp.getDepartment(),    row, 7); // Department
-                dfModel.setValueAt(emp.getLevel(),         row, 8); // Level
-                dfModel.setValueAt(emp.getSalary(),        row, 9); // Salary
-                }*/
+            function.resetInput(nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, emailField, salaryField);
         } catch (Exception ex) {
             ex.printStackTrace();
             JOptionPane.showMessageDialog(null, "Lỗi cập nhật: " + ex.getMessage());

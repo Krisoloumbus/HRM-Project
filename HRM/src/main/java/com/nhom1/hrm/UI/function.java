@@ -64,7 +64,7 @@ public final class function {
         return e;
     }
 
-    public static void setInput(JTextField nameField, JComboBox<Education> eduBox, 
+    public static void resetInput(JTextField nameField, JComboBox<Education> eduBox, 
     JComboBox<Department> deptBox, JComboBox<JobLevel> lvlBox, JComboBox<Gender> genderBox,
     JTextField phoneField, JTextField emailField,JTextField salaryField) 
     {
