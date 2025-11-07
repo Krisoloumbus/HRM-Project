@@ -1,6 +1,7 @@
 package com.nhom1.hrm.models;
 
 public enum Education {
+    Default("---SELECT---","---SELECT---"),
     UNIVERSITY("UNIVERSITY","UNIVERSITY"), 
     COLLEDGE("COLLEDGE","COLLEDGE");
         

@@ -1,6 +1,7 @@
 package com.nhom1.hrm.models;
 
 public enum Gender {
+    Default("---SELECT---","---SELECT---"),
     MALE("Male","Male"), 
     FEMALE("Female","Female");
 

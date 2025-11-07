@@ -1,6 +1,7 @@
 package com.nhom1.hrm.models;
 
 public enum Department {
+    Default("---SELECT---","---SELECT---"),
     HR("HR", "HR"), 
     IT("IT","IT"), 
     FINANCE("FINANCE","FINANCE"), 

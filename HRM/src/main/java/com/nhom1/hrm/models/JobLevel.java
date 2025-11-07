@@ -1,6 +1,7 @@
 package com.nhom1.hrm.models;
 
 public enum JobLevel {
+    Default("---SELECT---","---SELECT---"),
     INTERN("INTERN","INTERN"), 
     FRESHER("FRESHER","FRESHER"), 
     JUNIOR("JUNIOR","JUNIOR"), 

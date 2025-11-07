@@ -19,10 +19,10 @@ public final class function {
        JTextField phoneField, JTextField salaryField) {
         if (nameField.getText().isBlank()
             || maField.getText().isBlank()
-            || genderBox.getSelectedItem() == null
-            || eduBox.getSelectedItem() == null
-            || deptBox.getSelectedItem() == null
-            || lvlBox.getSelectedItem() == null
+            || genderBox.getSelectedItem() == Gender.Default
+            || eduBox.getSelectedItem() == Education.Default
+            || deptBox.getSelectedItem() == Department.Default
+            || lvlBox.getSelectedItem() == JobLevel.Default
             || salaryField.getText().isBlank()
             || phoneField.getText().isBlank()) {
             JOptionPane.showMessageDialog(null, "Vui lòng nhập đủ thông tin.");
@@ -72,7 +72,7 @@ public final class function {
         phoneField.setText("");
         emailField.setText("");
         salaryField.setText("");
-        if (genderBox.getItemCount()>0) genderBox.setSelectedIndex(0);
+        if (genderBox.getItemCount() > 0) genderBox.setSelectedIndex(0);
         if (deptBox.getItemCount() > 0) deptBox.setSelectedIndex(0);
         if (lvlBox.getItemCount()  > 0) lvlBox.setSelectedIndex(0);
         if (eduBox.getItemCount()  > 0) eduBox.setSelectedIndex(0);
