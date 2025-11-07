@@ -401,6 +401,7 @@ public class AppShell extends javax.swing.JFrame {
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
         // TODO add your handling code here:
         buttonAtcion.onUpdate(editingByEID, nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, mailField, salaryField, eTable);
+        editingByEID = null;
     }//GEN-LAST:event_updateButtonActionPerformed
 
     private void selectedMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectedMenuItemActionPerformed

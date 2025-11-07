@@ -7,7 +7,6 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.table.DefaultTableModel;
 
 import com.nhom1.hrm.SQL.connectSQL;
 import com.nhom1.hrm.SQL.middleMan;
@@ -72,16 +71,17 @@ public final class buttonAtcion {
         }
         if (!function.validateInput(nameField, eduBox, genderBox, deptBox, lvlBox, emailField, phoneField, salaryField)) return;
 
-        Employee emp = function.existingEmployeeFromForm(eid, nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, emailField, salaryField);
+        Employee emp = function.existingEmployeeFromDB(eid, nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, emailField, salaryField);
 
         try (Connection c = connectSQL.getConnection()) {
             new middleMan().update(c, emp);
+
             JOptionPane.showMessageDialog(null, "Đã cập nhật nhân viên!");
 
             //For some unknwon reason, I can't reload table with this line
-            //guiTable.loadTable(eTable);
+            guiTable.loadTable(eTable);
 
-            /*Alter way*/
+            /*//Alter way
             int viewRow = eTable.getSelectedRow();
             if (viewRow != -1) {
                 int row = eTable.convertRowIndexToModel(viewRow);
@@ -94,7 +94,7 @@ public final class buttonAtcion {
                 dfModel.setValueAt(emp.getDepartment(),    row, 7); // Department
                 dfModel.setValueAt(emp.getLevel(),         row, 8); // Level
                 dfModel.setValueAt(emp.getSalary(),        row, 9); // Salary
-                }
+                }*/
         } catch (Exception ex) {
             ex.printStackTrace();
             JOptionPane.showMessageDialog(null, "Lỗi cập nhật: " + ex.getMessage());
