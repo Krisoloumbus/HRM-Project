@@ -26,7 +26,7 @@ public final class buttonAtcion {
             new com.nhom1.hrm.SQL.middleMan().insert(c, emp);
             JOptionPane.showMessageDialog(null, "Đã thêm nhân viên!");
             guiTable.loadTable(eTable);
-            function.setInput(nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, emailField, salaryField);;
+            function.setInput(nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, emailField, salaryField);
         } catch (Exception ex) {
             ex.printStackTrace();
             JOptionPane.showMessageDialog(null, "Lỗi thêm: " + ex.getMessage());
