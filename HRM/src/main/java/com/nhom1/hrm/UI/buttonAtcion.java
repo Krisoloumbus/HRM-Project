@@ -8,6 +8,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
+import com.nhom1.hrm.SQL.connectSQL;
+import com.nhom1.hrm.SQL.middleMan;
 import com.nhom1.hrm.models.Department;
 import com.nhom1.hrm.models.Education;
 import com.nhom1.hrm.models.Employee;
@@ -60,31 +62,21 @@ public final class buttonAtcion {
     }
 
     //testing
-     public static void onUpdate(
-            String eid,
-            JTextField nameField, JComboBox<Education> eduBox,
-            JComboBox<Department> deptBox, JComboBox<JobLevel> lvlBox,
-            JComboBox<Gender> genderBox,
-            JTextField phoneField, JTextField emailField,
-            JTextField salaryField, JTable eTable) {
-
+    public static void onUpdate(
+        String eid, JTextField nameField, JComboBox<Education> eduBox, JComboBox<Department> deptBox, JComboBox<JobLevel> lvlBox,
+        JComboBox<Gender>genderBox, JTextField phoneField, JTextField emailField, JTextField salaryField, JTable eTable){
         if (eid == null || eid.isBlank()) {
             JOptionPane.showMessageDialog(null, "Không có nhân viên nào đang được chọn để cập nhật.");
             return;
         }
-
-        if (!function.validateInput(
-                nameField, eduBox, genderBox,
-                deptBox, lvlBox, emailField, phoneField, salaryField)) {
-            return;
-        }
+        if (!function.validateInput(nameField, eduBox, genderBox, deptBox, lvlBox, emailField, phoneField, salaryField)) return;
 
         Employee emp = function.existingEmployeeFromForm(
                 eid, nameField, eduBox, deptBox, lvlBox,
                 genderBox, phoneField, emailField, salaryField);
 
-        try (Connection c = com.nhom1.hrm.SQL.connectSQL.getConnection()) {
-            new com.nhom1.hrm.SQL.middleMan().update(c, emp);
+        try (Connection c = connectSQL.getConnection()) {
+            new middleMan().update(c, emp);
             JOptionPane.showMessageDialog(null, "Đã cập nhật nhân viên!");
             guiTable.loadTable(eTable);
         } catch (Exception ex) {
