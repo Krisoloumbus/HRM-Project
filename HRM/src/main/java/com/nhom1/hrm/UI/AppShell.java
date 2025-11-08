@@ -422,7 +422,7 @@ public class AppShell extends javax.swing.JFrame {
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         // TODO add your handling code here:
-        buttonAtcion.onSearch();
+        buttonAtcion.onSearch(nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, mailField, salaryField, eTable);
     }//GEN-LAST:event_searchButtonActionPerformed
 
     /**

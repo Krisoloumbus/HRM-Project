@@ -2,11 +2,13 @@ package com.nhom1.hrm.UI;
 
 import java.sql.Connection;
 import java.util.Arrays;
+import java.util.List;
 
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 import com.nhom1.hrm.SQL.connectSQL;
 import com.nhom1.hrm.SQL.middleMan;
@@ -83,7 +85,70 @@ public final class buttonAtcion {
     }
 
     //Searching
-    public static void onSearch() {
-        
+    public static void onSearch(JTextField nameField, JComboBox<Education> eduBox, JComboBox<Department> deptBox, JComboBox<JobLevel> lvlBox,
+        JComboBox<Gender>genderBox, JTextField phoneField, JTextField emailField, JTextField salaryField, JTable eTable) {
+        String name = nameField.getText().trim();
+        String phone = phoneField.getText().trim();
+        String email = emailField.getText().trim();
+
+        Gender     gender = (Gender)     genderBox.getSelectedItem();
+        Education  edu    = (Education)  eduBox.getSelectedItem();
+        Department dept   = (Department) deptBox.getSelectedItem();
+        JobLevel   lvl    = (JobLevel)   lvlBox.getSelectedItem();
+        try (Connection c = connectSQL.getConnection()) {
+            middleMan mm = new middleMan();
+            List<Employee> results = mm.searchEmployees(c, name, gender, edu, lvl, dept, phone, email);
+            DefaultTableModel dfModel = (DefaultTableModel) eTable.getModel();
+            dfModel.setRowCount(0);
+
+            int no = 1;
+            for (Employee e : results) {
+                dfModel.addRow(new Object[]{
+                        no ++,
+                        e.getEID(),
+                        e.getName(),
+                        e.getGender(),
+                        e.getEdu(),
+                        e.getPhone(),
+                        e.getEmail(),
+                        e.getDepartment(),
+                        e.getLevel(),
+                        e.getSalary()
+                });
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Search error: " + ex.getMessage());
+        }
+    }
+
+    //Refresh
+    public  static void onRefresh(JTextField nameField, JComboBox<Education> eduBox, JComboBox<Department> deptBox, JComboBox<JobLevel> lvlBox,
+    JComboBox<Gender>genderBox, JTextField phoneField, JTextField emailField, JTextField salaryField, JTable eTable)
+    {
+        boolean noFilter = nameField.getText().isBlank()
+        && emailField.getText().isBlank()
+        && phoneField.getText().isBlank()
+        && salaryField.getText().isBlank()
+        && genderBox.getSelectedItem() == Gender.Default
+        && eduBox.getSelectedItem()    == Education.Default
+        && deptBox.getSelectedItem()   == Department.Default
+        && lvlBox.getSelectedItem()    == JobLevel.Default;
+        if (!noFilter) {
+            try {
+                function.resetInput(nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, emailField, salaryField);
+                guiTable.loadTable(eTable);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Refresh error: " + ex.getMessage());
+            } return;
+        } else {
+            try {
+                guiTable.loadTable(eTable);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Refresh error: " + ex.getMessage());
+            } return;
+        }           
     }
 }

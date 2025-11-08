@@ -15,10 +15,10 @@ import com.nhom1.hrm.models.JobLevel;
 public final class function {
     private function(){}
     public static boolean validateInput(JTextField nameField, JComboBox<Education> eduBox, JComboBox<Gender> genderBox,
-       JComboBox<Department> deptBox, JComboBox<JobLevel> lvlBox, JTextField maField,
+       JComboBox<Department> deptBox, JComboBox<JobLevel> lvlBox, JTextField mailField,
        JTextField phoneField, JTextField salaryField) {
         if (nameField.getText().isBlank()
-            || maField.getText().isBlank()
+            || mailField.getText().isBlank()
             || genderBox.getSelectedItem() == Gender.Default
             || eduBox.getSelectedItem() == Education.Default
             || deptBox.getSelectedItem() == Department.Default

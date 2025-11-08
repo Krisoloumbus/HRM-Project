@@ -15,6 +15,7 @@ import com.nhom1.hrm.models.Gender;
 import com.nhom1.hrm.models.JobLevel;
 
 public class middleMan extends Employee {
+    //This is not Searching
     public List<Employee> findAll(Connection c) throws SQLException {
         String sql = """
             SELECT No, EID, Full_Name, Gender, Phone, Email, Education, Department, Job_Level, Salary
@@ -90,6 +91,70 @@ public class middleMan extends Employee {
             ps.setBigDecimal(8, e.getSalary() != null ? e.getSalary() : BigDecimal.ZERO);
             ps.setString(9, e.getEID()); //
             return ps.executeUpdate();
+        }
+    }
+
+    //Searching
+    public List<Employee> searchEmployees(Connection c, String name, Gender gender,
+    Education edu, JobLevel lvl, Department dept, String phone, String email) throws  SQLException {
+        StringBuilder sbSQL = new StringBuilder("SELECT EID, Full_Name, Gender, Education, Phone, Email, " + 
+        "Department, Job_Level, Salary " + "FROM dbo.Employees WHERE 1=1");
+            ArrayList<Object> params = new ArrayList<>();
+            if(name != null && name.isBlank()){
+                sbSQL.append("AND Full_Name LIKE ?");
+                params.add("%" + name + "%");
+            }
+
+            if (gender != Gender.Default){
+                sbSQL.append("AND Gender = ?");
+                params.add(gender.getCodeDB());
+            }
+
+            if (edu != Education.Default){
+                sbSQL.append("AND Education = ?");
+                params.add(edu.getCodeDB());
+            }
+
+            if (lvl != JobLevel.Default) {
+                sbSQL.append("AND Job_Level = ?");
+                params.add(lvl.getCodeDB());
+            }
+
+            if (dept != Department.Default) {
+                sbSQL.append("AND Department = ?");
+                params.add(dept.getCodeDB());
+            }
+
+            if(phone != null && phone.isBlank()){
+                sbSQL.append("AND Phone LIKE ?");
+                params.add("%" + phone + "%");
+            }
+
+            if(email != null && email.isBlank()){
+                sbSQL.append("AND Email LIKE ?");
+                params.add("%" + email + "%");
+            }
+            try (PreparedStatement ps = c.prepareStatement(sbSQL.toString())){
+                for (int i = 0; i < params.size(); i ++) {
+                    ps.setObject(i + 1, params.get(i));
+                }
+                try (ResultSet rs = ps.executeQuery()) {
+                List<Employee> list = new ArrayList<>();
+                while (rs.next()) {
+                    Employee e = new Employee();
+                    e.setEID(rs.getString("EID"));
+                    e.setName(rs.getString("Full_Name"));
+                    e.setGender(Gender.fromCodeToDB(rs.getString("Gender")));
+                    e.setEdu(Education.fromCodeToDB(rs.getString("Education")));
+                    e.setPhone(rs.getString("Phone"));
+                    e.setEmail(rs.getString("Email"));
+                    e.setDepartment(Department.fromCodeToDB(rs.getString("Department")));
+                    e.setLevel(JobLevel.fromCodeToDB(rs.getString("Job_Level")));
+                    e.setSalary(rs.getBigDecimal("Salary"));
+                    list.add(e);
+                }
+                return list;
+            }
         }
     }
 }
