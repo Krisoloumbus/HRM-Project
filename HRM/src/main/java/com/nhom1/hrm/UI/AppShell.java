@@ -55,6 +55,9 @@ public class AppShell extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         homeButton = new javax.swing.JButton();
         contentPanel = new javax.swing.JPanel();
+        aboutPanel = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
         homePanel = new javax.swing.JPanel();
         titleLabel = new javax.swing.JLabel();
         nameLabel = new javax.swing.JLabel();
@@ -81,9 +84,7 @@ public class AppShell extends javax.swing.JFrame {
         dateField = new javax.swing.JTextField();
         updateButton = new javax.swing.JButton();
         searchButton = new javax.swing.JButton();
-        aboutPanel = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        refreshButton = new javax.swing.JButton();
         eMenuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         editMenu = new javax.swing.JMenu();
@@ -121,6 +122,40 @@ public class AppShell extends javax.swing.JFrame {
 
         contentPanel.setBackground(new java.awt.Color(51, 204, 255));
         contentPanel.setLayout(new java.awt.CardLayout());
+
+        jLabel2.setText("Team 1 project");
+
+        javax.swing.GroupLayout aboutPanelLayout = new javax.swing.GroupLayout(aboutPanel);
+        aboutPanel.setLayout(aboutPanelLayout);
+        aboutPanelLayout.setHorizontalGroup(
+            aboutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(aboutPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addContainerGap(748, Short.MAX_VALUE))
+        );
+        aboutPanelLayout.setVerticalGroup(
+            aboutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(aboutPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addContainerGap(625, Short.MAX_VALUE))
+        );
+
+        contentPanel.add(aboutPanel, "card3");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 833, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 647, Short.MAX_VALUE)
+        );
+
+        contentPanel.add(jPanel2, "card3");
 
         titleLabel.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         titleLabel.setText("EMPLOYEE MANAGEMENT");
@@ -199,6 +234,13 @@ public class AppShell extends javax.swing.JFrame {
             }
         });
 
+        refreshButton.setText("REFRESH");
+        refreshButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout homePanelLayout = new javax.swing.GroupLayout(homePanel);
         homePanel.setLayout(homePanelLayout);
         homePanelLayout.setHorizontalGroup(
@@ -213,21 +255,11 @@ public class AppShell extends javax.swing.JFrame {
                     .addComponent(nameLabel))
                 .addGroup(homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(homePanelLayout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(nameField)
-                        .addGap(578, 578, 578))
-                    .addGroup(homePanelLayout.createSequentialGroup()
                         .addGroup(homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(homePanelLayout.createSequentialGroup()
                                 .addGap(8, 8, 8)
                                 .addComponent(eduBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, homePanelLayout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addGroup(homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(mailField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
-                                    .addComponent(phoneField))
-                                .addGap(199, 199, 199))
                             .addGroup(homePanelLayout.createSequentialGroup()
                                 .addGap(6, 6, 6)
                                 .addComponent(dateField)
@@ -248,16 +280,29 @@ public class AppShell extends javax.swing.JFrame {
                                 .addGap(38, 38, 38)
                                 .addGroup(homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lvlBox, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(salaryField, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(salaryField, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(188, 188, 188))
+                    .addGroup(homePanelLayout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addGroup(homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(homePanelLayout.createSequentialGroup()
+                                .addComponent(nameField)
+                                .addGap(578, 578, 578))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, homePanelLayout.createSequentialGroup()
+                                .addGroup(homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(mailField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+                                    .addComponent(phoneField))
+                                .addGap(101, 101, 101)
                                 .addComponent(addButton)
                                 .addGap(18, 18, 18)
                                 .addComponent(delButton)
                                 .addGap(18, 18, 18)
                                 .addComponent(updateButton)
                                 .addGap(18, 18, 18)
-                                .addComponent(searchButton)))
-                        .addGap(37, 37, 37))))
+                                .addComponent(searchButton)
+                                .addGap(18, 18, 18)
+                                .addComponent(refreshButton)
+                                .addGap(43, 43, 43))))))
             .addGroup(homePanelLayout.createSequentialGroup()
                 .addGap(249, 249, 249)
                 .addComponent(titleLabel)
@@ -309,47 +354,14 @@ public class AppShell extends javax.swing.JFrame {
                             .addComponent(addButton)
                             .addComponent(delButton)
                             .addComponent(updateButton)
-                            .addComponent(searchButton))
+                            .addComponent(searchButton)
+                            .addComponent(refreshButton))
                         .addGap(12, 12, 12)))
                 .addComponent(eScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 413, Short.MAX_VALUE)
                 .addGap(20, 20, 20))
         );
 
         contentPanel.add(homePanel, "card2");
-
-        jLabel2.setText("Team 1 project");
-
-        javax.swing.GroupLayout aboutPanelLayout = new javax.swing.GroupLayout(aboutPanel);
-        aboutPanel.setLayout(aboutPanelLayout);
-        aboutPanelLayout.setHorizontalGroup(
-            aboutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(aboutPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
-                .addContainerGap(824, Short.MAX_VALUE))
-        );
-        aboutPanelLayout.setVerticalGroup(
-            aboutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(aboutPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
-                .addContainerGap(625, Short.MAX_VALUE))
-        );
-
-        contentPanel.add(aboutPanel, "card3");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 909, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 647, Short.MAX_VALUE)
-        );
-
-        contentPanel.add(jPanel2, "card3");
 
         eSplitPane.setRightComponent(contentPanel);
 
@@ -425,6 +437,11 @@ public class AppShell extends javax.swing.JFrame {
         buttonAtcion.onSearch(nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, mailField, salaryField, eTable);
     }//GEN-LAST:event_searchButtonActionPerformed
 
+    private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed
+        // TODO add your handling code here:
+        buttonAtcion.onRefresh(nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, mailField, salaryField, eTable);
+    }//GEN-LAST:event_refreshButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -494,6 +511,7 @@ public class AppShell extends javax.swing.JFrame {
     private javax.swing.JLabel nameLabel;
     private javax.swing.JTextField phoneField;
     private javax.swing.JLabel phoneLabel;
+    private javax.swing.JButton refreshButton;
     private javax.swing.JTextField salaryField;
     private javax.swing.JLabel salaryLabel;
     private javax.swing.JButton searchButton;
