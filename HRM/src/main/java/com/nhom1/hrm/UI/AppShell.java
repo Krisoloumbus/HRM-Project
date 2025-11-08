@@ -116,7 +116,7 @@ public class AppShell extends javax.swing.JFrame {
         homeButton.setBackground(new java.awt.Color(0, 0, 153));
         homeButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         homeButton.setForeground(new java.awt.Color(255, 255, 255));
-        homeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/home2.png"))); // NOI18N
+        homeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/home20.png"))); // NOI18N
         homeButton.setText("HOME");
         homeButton.setBorder(null);
         homeButton.setFocusPainted(false);
@@ -175,6 +175,7 @@ public class AppShell extends javax.swing.JFrame {
         ));
         eScrollPane.setViewportView(eTable);
 
+        addButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/checked14.png"))); // NOI18N
         addButton.setText("ADD");
         addButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -182,6 +183,7 @@ public class AppShell extends javax.swing.JFrame {
             }
         });
 
+        delButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/cancel14.png"))); // NOI18N
         delButton.setText("DELETE");
         delButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -198,6 +200,7 @@ public class AppShell extends javax.swing.JFrame {
             }
         });
 
+        updateButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/refresh14.png"))); // NOI18N
         updateButton.setText("UPDATE");
         updateButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -205,6 +208,7 @@ public class AppShell extends javax.swing.JFrame {
             }
         });
 
+        searchButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/exclamation-mark14.png"))); // NOI18N
         searchButton.setText("SEARCH");
         searchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -212,6 +216,7 @@ public class AppShell extends javax.swing.JFrame {
             }
         });
 
+        refreshButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/reload14.png"))); // NOI18N
         refreshButton.setText("REFRESH");
         refreshButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -350,7 +355,7 @@ public class AppShell extends javax.swing.JFrame {
             .addGroup(aboutPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addContainerGap(687, Short.MAX_VALUE))
+                .addContainerGap(756, Short.MAX_VALUE))
         );
         aboutPanelLayout.setVerticalGroup(
             aboutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -366,7 +371,7 @@ public class AppShell extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 772, Short.MAX_VALUE)
+            .addGap(0, 841, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -384,6 +389,7 @@ public class AppShell extends javax.swing.JFrame {
 
         editMenu.setText("Edit");
 
+        selectedMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/checked14.png"))); // NOI18N
         selectedMenuItem.setText("Selected");
         selectedMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -396,6 +402,7 @@ public class AppShell extends javax.swing.JFrame {
 
         helpMenu.setText("Help");
 
+        aboutMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/question-mark-14.png"))); // NOI18N
         aboutMenuItem.setText("About");
         aboutMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
