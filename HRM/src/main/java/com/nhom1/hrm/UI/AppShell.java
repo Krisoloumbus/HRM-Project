@@ -4,6 +4,8 @@
  */
 package com.nhom1.hrm.UI;
 
+import javax.swing.ImageIcon;
+
 import com.nhom1.hrm.UI.comboBox.customColor;
 import com.nhom1.hrm.models.Department;
 import com.nhom1.hrm.models.Education;
@@ -39,6 +41,9 @@ public class AppShell extends javax.swing.JFrame {
             e.printStackTrace();
             javax.swing.JOptionPane.showMessageDialog(this, "Lỗi nạp bảng: " + e.getMessage());
         }
+
+        //Set App Icon when run
+        setIconImage(new ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/appIcon.png")).getImage());
     }
 
     /**
@@ -52,12 +57,9 @@ public class AppShell extends javax.swing.JFrame {
 
         eSplitPane = new javax.swing.JSplitPane();
         sidePanel = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        logoLabel = new javax.swing.JLabel();
         homeButton = new javax.swing.JButton();
         contentPanel = new javax.swing.JPanel();
-        aboutPanel = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
         homePanel = new javax.swing.JPanel();
         titleLabel = new javax.swing.JLabel();
         nameLabel = new javax.swing.JLabel();
@@ -85,6 +87,9 @@ public class AppShell extends javax.swing.JFrame {
         updateButton = new javax.swing.JButton();
         searchButton = new javax.swing.JButton();
         refreshButton = new javax.swing.JButton();
+        aboutPanel = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
         eMenuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         editMenu = new javax.swing.JMenu();
@@ -101,11 +106,11 @@ public class AppShell extends javax.swing.JFrame {
         sidePanel.setBackground(new java.awt.Color(0, 51, 255));
         sidePanel.setLayout(new java.awt.GridLayout(10, 1));
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("HRM");
-        sidePanel.add(jLabel1);
+        logoLabel.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        logoLabel.setForeground(new java.awt.Color(255, 255, 255));
+        logoLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/appLogo.png"))); // NOI18N
+        sidePanel.add(logoLabel);
 
         homeButton.setBackground(new java.awt.Color(0, 51, 255));
         homeButton.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -122,40 +127,6 @@ public class AppShell extends javax.swing.JFrame {
 
         contentPanel.setBackground(new java.awt.Color(51, 204, 255));
         contentPanel.setLayout(new java.awt.CardLayout());
-
-        jLabel2.setText("Team 1 project");
-
-        javax.swing.GroupLayout aboutPanelLayout = new javax.swing.GroupLayout(aboutPanel);
-        aboutPanel.setLayout(aboutPanelLayout);
-        aboutPanelLayout.setHorizontalGroup(
-            aboutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(aboutPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
-                .addContainerGap(748, Short.MAX_VALUE))
-        );
-        aboutPanelLayout.setVerticalGroup(
-            aboutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(aboutPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
-                .addContainerGap(625, Short.MAX_VALUE))
-        );
-
-        contentPanel.add(aboutPanel, "card3");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 833, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 647, Short.MAX_VALUE)
-        );
-
-        contentPanel.add(jPanel2, "card3");
 
         titleLabel.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         titleLabel.setText("EMPLOYEE MANAGEMENT");
@@ -290,7 +261,7 @@ public class AppShell extends javax.swing.JFrame {
                                 .addGap(578, 578, 578))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, homePanelLayout.createSequentialGroup()
                                 .addGroup(homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(mailField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+                                    .addComponent(mailField, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(phoneField))
                                 .addGap(101, 101, 101)
                                 .addComponent(addButton)
@@ -357,11 +328,45 @@ public class AppShell extends javax.swing.JFrame {
                             .addComponent(searchButton)
                             .addComponent(refreshButton))
                         .addGap(12, 12, 12)))
-                .addComponent(eScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 413, Short.MAX_VALUE)
+                .addComponent(eScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 543, Short.MAX_VALUE)
                 .addGap(20, 20, 20))
         );
 
         contentPanel.add(homePanel, "card2");
+
+        jLabel2.setText("Team 1 project");
+
+        javax.swing.GroupLayout aboutPanelLayout = new javax.swing.GroupLayout(aboutPanel);
+        aboutPanel.setLayout(aboutPanelLayout);
+        aboutPanelLayout.setHorizontalGroup(
+            aboutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(aboutPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addContainerGap(687, Short.MAX_VALUE))
+        );
+        aboutPanelLayout.setVerticalGroup(
+            aboutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(aboutPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addContainerGap(868, Short.MAX_VALUE))
+        );
+
+        contentPanel.add(aboutPanel, "card3");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 772, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 890, Short.MAX_VALUE)
+        );
+
+        contentPanel.add(jPanel2, "card3");
 
         eSplitPane.setRightComponent(contentPanel);
 
@@ -500,9 +505,9 @@ public class AppShell extends javax.swing.JFrame {
     private javax.swing.JMenu helpMenu;
     private javax.swing.JButton homeButton;
     private javax.swing.JPanel homePanel;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel logoLabel;
     private javax.swing.JComboBox<JobLevel> lvlBox;
     private javax.swing.JLabel lvlLabel;
     private javax.swing.JTextField mailField;
