@@ -80,6 +80,7 @@ public class AppShell extends javax.swing.JFrame {
         nameField = new javax.swing.JTextField();
         dateField = new javax.swing.JTextField();
         updateButton = new javax.swing.JButton();
+        searchButton = new javax.swing.JButton();
         aboutPanel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -191,6 +192,13 @@ public class AppShell extends javax.swing.JFrame {
             }
         });
 
+        searchButton.setText("SEARCH");
+        searchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout homePanelLayout = new javax.swing.GroupLayout(homePanel);
         homePanel.setLayout(homePanelLayout);
         homePanelLayout.setHorizontalGroup(
@@ -246,8 +254,10 @@ public class AppShell extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(delButton)
                                 .addGap(18, 18, 18)
-                                .addComponent(updateButton)))
-                        .addGap(129, 129, 129))))
+                                .addComponent(updateButton)
+                                .addGap(18, 18, 18)
+                                .addComponent(searchButton)))
+                        .addGap(37, 37, 37))))
             .addGroup(homePanelLayout.createSequentialGroup()
                 .addGap(249, 249, 249)
                 .addComponent(titleLabel)
@@ -298,7 +308,8 @@ public class AppShell extends javax.swing.JFrame {
                         .addGroup(homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(addButton)
                             .addComponent(delButton)
-                            .addComponent(updateButton))
+                            .addComponent(updateButton)
+                            .addComponent(searchButton))
                         .addGap(12, 12, 12)))
                 .addComponent(eScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 413, Short.MAX_VALUE)
                 .addGap(20, 20, 20))
@@ -409,6 +420,11 @@ public class AppShell extends javax.swing.JFrame {
         editingByEID = menuBar.onSelected(eTable, nameField, dateField, eduBox, deptBox, lvlBox, genderBox, phoneField, mailField, salaryField);
     }//GEN-LAST:event_selectedMenuItemActionPerformed
 
+    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
+        // TODO add your handling code here:
+        buttonAtcion.onSearch();
+    }//GEN-LAST:event_searchButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -480,6 +496,7 @@ public class AppShell extends javax.swing.JFrame {
     private javax.swing.JLabel phoneLabel;
     private javax.swing.JTextField salaryField;
     private javax.swing.JLabel salaryLabel;
+    private javax.swing.JButton searchButton;
     private javax.swing.JMenuItem selectedMenuItem;
     private javax.swing.JPanel sidePanel;
     private javax.swing.JLabel titleLabel;

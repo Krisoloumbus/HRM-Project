@@ -81,4 +81,9 @@ public final class buttonAtcion {
             JOptionPane.showMessageDialog(null, "Lỗi cập nhật: " + ex.getMessage());
         }
     }
+
+    //Searching
+    public static void onSearch() {
+        
+    }
 }
