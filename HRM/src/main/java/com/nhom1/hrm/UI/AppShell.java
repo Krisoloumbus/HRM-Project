@@ -43,7 +43,8 @@ public class AppShell extends javax.swing.JFrame {
         }
 
         //Set App Icon when run
-        setIconImage(new ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/appIcon.png")).getImage());
+        //D:\Coding\Java\HRM-Project\HRM\src\main\java\com\nhom1\hrm\Asset\appIconf.png
+        setIconImage(new ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/appIconf.png")).getImage());
     }
 
     /**
@@ -103,7 +104,7 @@ public class AppShell extends javax.swing.JFrame {
         eSplitPane.setOneTouchExpandable(true);
         eSplitPane.setOpaque(false);
 
-        sidePanel.setBackground(new java.awt.Color(0, 51, 255));
+        sidePanel.setBackground(new java.awt.Color(0, 0, 153));
         sidePanel.setLayout(new java.awt.GridLayout(10, 1));
 
         logoLabel.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
@@ -112,10 +113,14 @@ public class AppShell extends javax.swing.JFrame {
         logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/appLogo.png"))); // NOI18N
         sidePanel.add(logoLabel);
 
-        homeButton.setBackground(new java.awt.Color(0, 51, 255));
-        homeButton.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        homeButton.setBackground(new java.awt.Color(0, 0, 153));
+        homeButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         homeButton.setForeground(new java.awt.Color(255, 255, 255));
+        homeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/home2.png"))); // NOI18N
         homeButton.setText("HOME");
+        homeButton.setBorder(null);
+        homeButton.setFocusPainted(false);
+        homeButton.setIconTextGap(5);
         homeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 homeButtonActionPerformed(evt);
@@ -127,6 +132,8 @@ public class AppShell extends javax.swing.JFrame {
 
         contentPanel.setBackground(new java.awt.Color(51, 204, 255));
         contentPanel.setLayout(new java.awt.CardLayout());
+
+        homePanel.setBackground(new java.awt.Color(255, 255, 255));
 
         titleLabel.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         titleLabel.setText("EMPLOYEE MANAGEMENT");
@@ -328,7 +335,7 @@ public class AppShell extends javax.swing.JFrame {
                             .addComponent(searchButton)
                             .addComponent(refreshButton))
                         .addGap(12, 12, 12)))
-                .addComponent(eScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 543, Short.MAX_VALUE)
+                .addComponent(eScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 655, Short.MAX_VALUE)
                 .addGap(20, 20, 20))
         );
 
