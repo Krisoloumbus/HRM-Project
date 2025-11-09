@@ -1,0 +1,2 @@
+SELECT *
+FROM [123].[dbo].[Employees] WHERE Full_Name = '?'

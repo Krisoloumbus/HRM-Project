@@ -11,8 +11,9 @@ public enum JobLevel {
     MANAGER("MANAGER","MANAGER"), 
     DIRECTOR("DIRECTOR","DIRECTOR");
 
-    private final String toDB; // code to save in DB
-    private final String toUI; // code to show item in combo box
+    //Save as string type to DB and UI
+    private final String toDB;
+    private final String toUI;
 
     JobLevel(String toDB, String toUI){
         this.toDB = toDB;
@@ -22,10 +23,11 @@ public enum JobLevel {
     public String getCodeDB(){return toDB;};
     public String getCodeUI(){return toUI;};
     
+    //To show Item in Combo Box selection
     @Override 
     public String toString(){
         return toUI;
-    } // combo box show item
+    }
     
     public static JobLevel fromCodeToDB(String toDB){
         if (toDB == null) return null;

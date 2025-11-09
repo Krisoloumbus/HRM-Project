@@ -4,9 +4,10 @@ public enum Education {
     Default("---SELECT---","---SELECT---"),
     UNIVERSITY("UNIVERSITY","UNIVERSITY"), 
     COLLEDGE("COLLEDGE","COLLEDGE");
-        
-    private final String toDB; // code to save in DB
-    private final String toUI; // code to show item in combo box
+
+    //Save as string type to DB and UI
+    private final String toDB;
+    private final String toUI;
 
     Education(String toDB, String toUI){
         this.toDB = toDB;
@@ -16,10 +17,11 @@ public enum Education {
     public String getCodeDB(){return toDB;};
     public String getCodeUI(){return toUI;};
     
+    //To show Item in Combo Box selection
     @Override 
     public String toString(){
         return toUI;
-    } // combo box show item
+    }
     
     public static Education fromCodeToDB(String toDB){
         if (toDB == null) return null;
