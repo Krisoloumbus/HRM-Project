@@ -19,11 +19,10 @@ public class menuBar {
         aboutItem.addActionListener(e -> deck.showCard(cardName));
     }
 
-    //TESTING
     public static String onSelected(
             JTable eTable,
             JTextField nameField,
-            JTextField dateField,          // hiện DB chưa lưu DOB, để trống
+            JTextField dateField,          //I gonna comeback for this later
             JComboBox<Education> eduBox,
             JComboBox<Department> deptBox,
             JComboBox<JobLevel> lvlBox,
@@ -41,7 +40,7 @@ public class menuBar {
         int row = eTable.convertRowIndexToModel(viewRow);
         DefaultTableModel model = (DefaultTableModel) eTable.getModel();
 
-        // cột 0 = No, cột 1 = EID → chỉ đọc EID, không sửa
+        //Only reading EID column
         String eid = model.getValueAt(row, 1).toString();
 
         nameField.setText(String.valueOf(model.getValueAt(row, 2)));

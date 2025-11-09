@@ -40,7 +40,7 @@ public final class function {
     JComboBox<Department> deptBox, JComboBox<JobLevel> lvlBox, JComboBox<Gender> genderBox,
     JTextField phoneField, JTextField emailField, JTextField salaryField)
     {
-        var e = new com.nhom1.hrm.models.Employee();
+        var e = new Employee();
         e.setName(nameField.getText().trim());
         e.setEdu((Education) eduBox.getSelectedItem());
         e.setGender((Gender) genderBox.getSelectedItem());

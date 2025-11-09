@@ -17,10 +17,10 @@ public final class guiTable{
         ) {
             @Override public boolean isCellEditable(int rows, int collumn){return false;}
         };
-        try (Connection con = connectSQL.getConnection()){
-            table.taobangifchuaco(con);
-            var eMiddleman = new middleMan();
-            for (var e : eMiddleman.findAll(con)){
+        try (Connection c = connectSQL.getConnection()){
+            table.taobangifchuaco(c);
+            var mm = new middleMan();
+            for (var e : mm.findAll(c)){
                 eModel.addRow(new Object[]{e.getNo(), e.getEID(), e.getName(), e.getGender(), e.getEdu(), e.getPhone(),
                 e.getEmail(), e.getDepartment(), e.getLevel(), e.getSalary()});
             }

@@ -12,6 +12,7 @@ import javax.swing.table.DefaultTableModel;
 
 import com.nhom1.hrm.SQL.connectSQL;
 import com.nhom1.hrm.SQL.middleMan;
+import com.nhom1.hrm.SQL.table;
 import com.nhom1.hrm.models.Department;
 import com.nhom1.hrm.models.Education;
 import com.nhom1.hrm.models.Employee;
@@ -25,9 +26,9 @@ public final class buttonAtcion {
     {
         if (!function.validateInput(nameField, eduBox, genderBox, deptBox, lvlBox, emailField, phoneField, salaryField)) return;
         var emp = function.newEmployeeToDB(nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, emailField, salaryField);
-        try (Connection c = com.nhom1.hrm.SQL.connectSQL.getConnection()) {
-            com.nhom1.hrm.SQL.table.taobangifchuaco(c);
-            new com.nhom1.hrm.SQL.middleMan().insert(c, emp);
+        try (Connection c = connectSQL.getConnection()) {
+            table.taobangifchuaco(c);
+            new middleMan().insert(c, emp);
             JOptionPane.showMessageDialog(null, "Đã thêm nhân viên!");
             guiTable.loadTable(eTable);
             function.resetInput(nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, emailField, salaryField);
@@ -45,8 +46,8 @@ public final class buttonAtcion {
         }
         int ok = JOptionPane.showConfirmDialog(null, "Xóa " + sel.length + " bản ghi?", "Xác nhận", JOptionPane.YES_NO_OPTION);
         if (ok != JOptionPane.YES_OPTION) return;
-        try (Connection c = com.nhom1.hrm.SQL.connectSQL.getConnection()) {
-            var middleMan = new com.nhom1.hrm.SQL.middleMan();
+        try (Connection c = connectSQL.getConnection()) {
+            var middleMan = new middleMan();
             Arrays.sort(sel);
             for (int i = sel.length - 1; i >= 0; i--) {
                 int viewRow  = sel[i];
@@ -91,10 +92,10 @@ public final class buttonAtcion {
         String phone = phoneField.getText().trim();
         String email = emailField.getText().trim();
 
-        Gender     gender = (Gender)     genderBox.getSelectedItem();
-        Education  edu    = (Education)  eduBox.getSelectedItem();
-        Department dept   = (Department) deptBox.getSelectedItem();
-        JobLevel   lvl    = (JobLevel)   lvlBox.getSelectedItem();
+        Gender gender = (Gender) genderBox.getSelectedItem();
+        Education edu = (Education) eduBox.getSelectedItem();
+        Department dept = (Department) deptBox.getSelectedItem();
+        JobLevel lvl = (JobLevel) lvlBox.getSelectedItem();
         try (Connection c = connectSQL.getConnection()) {
             middleMan mm = new middleMan();
             List<Employee> results = mm.searchEmployees(c, name, gender, edu, lvl, dept, phone, email);

@@ -95,7 +95,7 @@ public class middleMan extends Employee {
         }
     }
 
-    //Searching
+    //This is the real Searching :)))))
     public List<Employee> searchEmployees(Connection c, String name, Gender gender,
     Education edu, JobLevel lvl, Department dept, String phone, String email) throws  SQLException {
         StringBuilder sbSQL = new StringBuilder("SELECT EID, Full_Name, Gender, Education, Phone, Email, " + 
