@@ -16,6 +16,7 @@ import com.nhom1.hrm.models.JobLevel;
 
 public class middleMan extends Employee {
     //This is not Searching
+    //Just use to get selected data from SQL_DB to show it in GUI table
     public List<Employee> findAll(Connection c) throws SQLException {
         String sql = """
             SELECT No, EID, Full_Name, Gender, Phone, Email, Education, Department, Job_Level, Salary
@@ -42,7 +43,7 @@ public class middleMan extends Employee {
         return out;
     }
 
-    // Insert: KHÔNG truyền EID vì là computed column
+    //Insert
     public int insert(Connection c, Employee e) throws SQLException {
         String sql = """
             INSERT INTO dbo.Employees
@@ -72,7 +73,7 @@ public class middleMan extends Employee {
         }
     }
 
-    //Update selected - testing
+    //Updating selected row
     public int update(Connection c, Employee e) throws SQLException {
         String sql = """
             UPDATE dbo.Employees
