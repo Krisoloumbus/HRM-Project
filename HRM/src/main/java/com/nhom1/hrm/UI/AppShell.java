@@ -44,7 +44,7 @@ public class AppShell extends javax.swing.JFrame {
 
         //Set App Icon when run
         //D:\Coding\Java\HRM-Project\HRM\src\main\java\com\nhom1\hrm\Asset\appIconf.png
-        setIconImage(new ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/appIconf.png")).getImage());
+        setIconImage(new ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/hr-manager.png")).getImage());
     }
 
     /**
@@ -110,17 +110,17 @@ public class AppShell extends javax.swing.JFrame {
         logoLabel.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         logoLabel.setForeground(new java.awt.Color(255, 255, 255));
         logoLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/appLogo.png"))); // NOI18N
+        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/hr-manager80.png"))); // NOI18N
         sidePanel.add(logoLabel);
 
         homeButton.setBackground(new java.awt.Color(0, 0, 153));
-        homeButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        homeButton.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         homeButton.setForeground(new java.awt.Color(255, 255, 255));
         homeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/home20.png"))); // NOI18N
         homeButton.setText("HOME");
         homeButton.setBorder(null);
         homeButton.setFocusPainted(false);
-        homeButton.setIconTextGap(5);
+        homeButton.setIconTextGap(6);
         homeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 homeButtonActionPerformed(evt);
