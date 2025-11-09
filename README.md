@@ -9,9 +9,6 @@ Phase 1:
 Phase 2:
 - Adding GUI and refactor code
 
-Phase 3:
-- Applying AGILE
-
 Code:
 combo box -> name+Box
 
