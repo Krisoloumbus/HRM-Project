@@ -104,7 +104,7 @@ public class AppShell extends javax.swing.JFrame {
         eSplitPane.setOneTouchExpandable(true);
         eSplitPane.setOpaque(false);
 
-        sidePanel.setBackground(new java.awt.Color(0, 0, 153));
+        sidePanel.setBackground(new java.awt.Color(0, 133, 245));
         sidePanel.setLayout(new java.awt.GridLayout(10, 1));
 
         logoLabel.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
@@ -113,12 +113,12 @@ public class AppShell extends javax.swing.JFrame {
         logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/hr-manager80.png"))); // NOI18N
         sidePanel.add(logoLabel);
 
-        homeButton.setBackground(new java.awt.Color(0, 0, 153));
+        homeButton.setBackground(new java.awt.Color(0, 133, 245));
         homeButton.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         homeButton.setForeground(new java.awt.Color(255, 255, 255));
         homeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/home20.png"))); // NOI18N
         homeButton.setText("HOME");
-        homeButton.setBorder(null);
+        homeButton.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         homeButton.setFocusPainted(false);
         homeButton.setIconTextGap(6);
         homeButton.addActionListener(new java.awt.event.ActionListener() {
