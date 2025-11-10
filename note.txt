@@ -1,2 +1,1 @@
-SELECT *
-FROM [123].[dbo].[Employees] WHERE Full_Name = '?'
+Try to find a way to update with edit -> add Col and it type and how to delete it
