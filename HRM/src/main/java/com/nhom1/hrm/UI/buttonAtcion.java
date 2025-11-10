@@ -96,6 +96,22 @@ public final class buttonAtcion {
         Education edu = (Education) eduBox.getSelectedItem();
         Department dept = (Department) deptBox.getSelectedItem();
         JobLevel lvl = (JobLevel) lvlBox.getSelectedItem();
+
+        boolean noFilter = name.isBlank()
+        && phone.isBlank()
+        && email.isBlank()
+        && salaryField.getText().isBlank()
+        && gender == Gender.Default
+        && edu    == Education.Default
+        && dept   == Department.Default
+        && lvl    == JobLevel.Default;
+
+        if (noFilter) {
+            JOptionPane.showMessageDialog(null, """
+                                                No search field has been selected and no value has been entered.
+                                                Please select a field and enter a value to search.""");
+            return;
+        }
         try (Connection c = connectSQL.getConnection()) {
             middleMan mm = new middleMan();
             List<Employee> results = mm.searchEmployees(c, name, gender, edu, lvl, dept, phone, email);
