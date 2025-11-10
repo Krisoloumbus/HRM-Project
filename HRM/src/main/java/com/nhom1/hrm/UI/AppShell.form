@@ -191,21 +191,23 @@
                               <Component id="mailLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="nameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="8" pref="8" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
-                                          <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                                           <Component id="eduBox" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
                                       </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                                          <Component id="dateField" min="-2" pref="143" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Group type="103" groupAlignment="1" attributes="0">
+                                              <Component id="nameField" alignment="0" pref="141" max="32767" attributes="0"/>
+                                              <Component id="dateField" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="phoneField" max="32767" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="215" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="nameField" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
@@ -233,11 +235,8 @@
                                   <EmptySpace min="-2" pref="188" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="phoneField" alignment="0" pref="141" max="32767" attributes="0"/>
-                                      <Component id="mailField" alignment="0" max="32767" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace pref="49" max="32767" attributes="0"/>
+                                  <Component id="mailField" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                                   <Component id="addButton" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="delButton" min="-2" max="-2" attributes="0"/>
@@ -293,8 +292,8 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="salaryLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="phoneLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="phoneField" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="salaryField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="phoneField" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
@@ -306,7 +305,7 @@
                                   <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace pref="13" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="addButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="delButton" alignment="3" min="-2" max="-2" attributes="0"/>
