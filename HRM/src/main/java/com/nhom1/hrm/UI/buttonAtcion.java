@@ -30,7 +30,7 @@ public final class buttonAtcion {
             table.taobangifchuaco(c);
             new middleMan().insert(c, emp);
             JOptionPane.showMessageDialog(null, "Employee Add!");
-            guiTable.loadTable(eTable);
+            uiTable.loadTable(eTable);
             function.resetInput(nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, emailField, salaryField);
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -57,7 +57,7 @@ public final class buttonAtcion {
                 if (eid != null && !eid.isBlank()) middleMan.delByEID(c, eid);
             }
             JOptionPane.showMessageDialog(null, "Deleted!");
-            guiTable.loadTable(eTable);
+            uiTable.loadTable(eTable);
         } catch (Exception ex) {
             ex.printStackTrace();
             JOptionPane.showMessageDialog(null, "Delete error: " + ex.getMessage());
@@ -77,7 +77,7 @@ public final class buttonAtcion {
         try (Connection c = connectSQL.getConnection()) {
             new middleMan().update(c, emp);
             JOptionPane.showMessageDialog(null, "Employee updated!");
-            guiTable.loadTable(eTable);
+            uiTable.loadTable(eTable);
             function.resetInput(nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, emailField, salaryField);
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -154,14 +154,14 @@ public final class buttonAtcion {
         if (!noFilter) {
             try {
                 function.resetInput(nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, emailField, salaryField);
-                guiTable.loadTable(eTable);
+                uiTable.loadTable(eTable);
             } catch (Exception ex) {
                 ex.printStackTrace();
                 JOptionPane.showMessageDialog(null, "Refresh error: " + ex.getMessage());
             } return;
         } else {
             try {
-                guiTable.loadTable(eTable);
+                uiTable.loadTable(eTable);
             } catch (Exception ex) {
                 ex.printStackTrace();
                 JOptionPane.showMessageDialog(null, "Refresh error: " + ex.getMessage());

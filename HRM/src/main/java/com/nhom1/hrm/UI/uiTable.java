@@ -9,8 +9,8 @@ import com.nhom1.hrm.SQL.connectSQL;
 import com.nhom1.hrm.SQL.middleMan;
 import com.nhom1.hrm.SQL.table;
 
-public final class guiTable{
-    private guiTable(){}
+public final class uiTable{
+    private uiTable(){}
     public static void loadTable(JTable eTable)throws Exception{
         DefaultTableModel eModel = new DefaultTableModel(
             new Object[]{"No","EID","Full Name","Gender","Education","Phone","Email","Department","Level","Salary"},0

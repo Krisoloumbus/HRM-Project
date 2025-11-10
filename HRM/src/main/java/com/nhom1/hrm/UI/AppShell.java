@@ -36,7 +36,7 @@ public class AppShell extends javax.swing.JFrame {
         
         afterInit.setgetComboBox(deptBox, lvlBox, eduBox, genderBox, eTable, addButton, delButton);
         try {
-            guiTable.loadTable(eTable);
+            uiTable.loadTable(eTable);
         } catch (Exception e) {
             e.printStackTrace();
             javax.swing.JOptionPane.showMessageDialog(this, "Error Loading Table: " + e.getMessage());
@@ -84,7 +84,7 @@ public class AppShell extends javax.swing.JFrame {
         genderLabel = new javax.swing.JLabel();
         genderBox = new javax.swing.JComboBox<>();
         nameField = new javax.swing.JTextField();
-        dateField = new javax.swing.JTextField();
+        ad_dressField = new javax.swing.JTextField();
         updateButton = new javax.swing.JButton();
         searchButton = new javax.swing.JButton();
         refreshButton = new javax.swing.JButton();
@@ -161,7 +161,7 @@ public class AppShell extends javax.swing.JFrame {
         mailLabel.setText("Email:");
 
         dateLabel.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        dateLabel.setText("Date of birth:");
+        dateLabel.setText("Address");
 
         eTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -246,8 +246,8 @@ public class AppShell extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, homePanelLayout.createSequentialGroup()
                                 .addGroup(homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(nameField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
-                                    .addComponent(dateField, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(nameField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+                                    .addComponent(ad_dressField, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(phoneField))
                                 .addGap(215, 215, 215)))
                         .addGroup(homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -306,7 +306,7 @@ public class AppShell extends javax.swing.JFrame {
                     .addComponent(deptLabel)
                     .addComponent(dateLabel)
                     .addComponent(deptBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ad_dressField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lvlLabel)
@@ -408,6 +408,11 @@ public class AppShell extends javax.swing.JFrame {
 
         updateMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/update14.png"))); // NOI18N
         updateMenuItem.setText("Update");
+        updateMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateMenuItemActionPerformed(evt);
+            }
+        });
         helpMenu.add(updateMenuItem);
 
         eMenuBar.add(helpMenu);
@@ -447,7 +452,7 @@ public class AppShell extends javax.swing.JFrame {
 
     private void selectedMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectedMenuItemActionPerformed
         // TODO add your handling code here:
-        editingByEID = menuBar.onSelected(eTable, nameField, dateField, eduBox, deptBox, lvlBox, genderBox, phoneField, mailField, salaryField);
+        editingByEID = menuBar.onSelected(eTable, nameField, ad_dressField, eduBox, deptBox, lvlBox, genderBox, phoneField, mailField, salaryField);
     }//GEN-LAST:event_selectedMenuItemActionPerformed
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
@@ -459,6 +464,11 @@ public class AppShell extends javax.swing.JFrame {
         // TODO add your handling code here:
         buttonAtcion.onRefresh(nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, mailField, salaryField, eTable);
     }//GEN-LAST:event_refreshButtonActionPerformed
+
+    private void updateMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateMenuItemActionPerformed
+        // TODO add your handling code here:
+        menuBar.onUpdate();
+    }//GEN-LAST:event_updateMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -498,9 +508,9 @@ public class AppShell extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem aboutMenuItem;
     private javax.swing.JPanel aboutPanel;
+    private javax.swing.JTextField ad_dressField;
     private javax.swing.JButton addButton;
     private javax.swing.JPanel contentPanel;
-    private javax.swing.JTextField dateField;
     private javax.swing.JLabel dateLabel;
     private javax.swing.JButton delButton;
     private javax.swing.JComboBox<Department> deptBox;

@@ -50,6 +50,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Update"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updateMenuItemActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -201,8 +204,8 @@
                                       </Group>
                                       <Group type="102" alignment="1" attributes="0">
                                           <Group type="103" groupAlignment="1" attributes="0">
-                                              <Component id="nameField" alignment="0" pref="141" max="32767" attributes="0"/>
-                                              <Component id="dateField" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="nameField" alignment="0" pref="155" max="32767" attributes="0"/>
+                                              <Component id="ad_dressField" alignment="0" max="32767" attributes="0"/>
                                               <Component id="phoneField" max="32767" attributes="0"/>
                                           </Group>
                                           <EmptySpace min="-2" pref="215" max="-2" attributes="0"/>
@@ -279,7 +282,7 @@
                               <Component id="deptLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="dateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="deptBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="dateField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="ad_dressField" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -392,7 +395,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Date of birth:"/>
+                    <Property name="text" type="java.lang.String" value="Address"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="deptBox">
@@ -482,7 +485,7 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="nameField">
                 </Component>
-                <Component class="javax.swing.JTextField" name="dateField">
+                <Component class="javax.swing.JTextField" name="ad_dressField">
                 </Component>
                 <Component class="javax.swing.JButton" name="updateButton">
                   <Properties>
