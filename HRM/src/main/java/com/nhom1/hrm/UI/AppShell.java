@@ -97,6 +97,7 @@ public class AppShell extends javax.swing.JFrame {
         selectedMenuItem = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
         aboutMenuItem = new javax.swing.JMenuItem();
+        updateMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -406,6 +407,10 @@ public class AppShell extends javax.swing.JFrame {
         });
         helpMenu.add(aboutMenuItem);
 
+        updateMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/update14.png"))); // NOI18N
+        updateMenuItem.setText("Update");
+        helpMenu.add(updateMenuItem);
+
         eMenuBar.add(helpMenu);
 
         setJMenuBar(eMenuBar);
@@ -533,5 +538,6 @@ public class AppShell extends javax.swing.JFrame {
     private javax.swing.JPanel sidePanel;
     private javax.swing.JLabel titleLabel;
     private javax.swing.JButton updateButton;
+    private javax.swing.JMenuItem updateMenuItem;
     // End of variables declaration//GEN-END:variables
 }
