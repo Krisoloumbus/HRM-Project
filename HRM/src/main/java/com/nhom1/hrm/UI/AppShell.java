@@ -39,7 +39,7 @@ public class AppShell extends javax.swing.JFrame {
             guiTable.loadTable(eTable);
         } catch (Exception e) {
             e.printStackTrace();
-            javax.swing.JOptionPane.showMessageDialog(this, "Lỗi nạp bảng: " + e.getMessage());
+            javax.swing.JOptionPane.showMessageDialog(this, "Error Loading Table: " + e.getMessage());
         }
 
         //Set App Icon when run

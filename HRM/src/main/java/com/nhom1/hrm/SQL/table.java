@@ -3,7 +3,7 @@ import java.sql.Connection;
 import java.sql.Statement;
 
 public class table {
-        private static final String taobang ="""
+        private static final String creatTable ="""
         IF NOT EXISTS (
             SELECT 1
             FROM sys.tables t
@@ -28,7 +28,7 @@ public class table {
         public static void taobangifchuaco (Connection conn)
         throws Exception {
             try (Statement st = conn.createStatement()){
-                st.execute(taobang);
+                st.execute(creatTable);
             }
         }
     }

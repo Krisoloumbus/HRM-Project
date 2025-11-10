@@ -25,7 +25,7 @@ public final class function {
             || lvlBox.getSelectedItem() == JobLevel.Default
             || salaryField.getText().isBlank()
             || phoneField.getText().isBlank()) {
-            JOptionPane.showMessageDialog(null, "Vui lòng nhập đủ thông tin.");
+            JOptionPane.showMessageDialog(null, "Please fill out all the fields");
             return false;
         }
         try { new BigDecimal(salaryField.getText().trim()); }

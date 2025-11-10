@@ -24,7 +24,7 @@ public class HRM extends Employee {
             javax.swing.JOptionPane.showMessageDialog(null, "Connected to DB");
         } catch (Exception e) {
             e.printStackTrace();
-            javax.swing.JOptionPane.showMessageDialog(null, "Không thể tạo bảng/ket noi DB: " + e.getMessage());
+            javax.swing.JOptionPane.showMessageDialog(null, "Unable to create table or connecte to DB: " + e.getMessage());
         }
         // Launch GUI
         SwingUtilities.invokeLater(() -> new AppShell().setVisible(true));

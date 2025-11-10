@@ -29,22 +29,22 @@ public final class buttonAtcion {
         try (Connection c = connectSQL.getConnection()) {
             table.taobangifchuaco(c);
             new middleMan().insert(c, emp);
-            JOptionPane.showMessageDialog(null, "Đã thêm nhân viên!");
+            JOptionPane.showMessageDialog(null, "Employee Add!");
             guiTable.loadTable(eTable);
             function.resetInput(nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, emailField, salaryField);
         } catch (Exception ex) {
             ex.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Lỗi thêm: " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Add error: " + ex.getMessage());
         }
     }
     
     public static void onDelete(JTable eTable)
     {int[] sel = eTable.getSelectedRows();
         if (sel == null || sel.length == 0) {
-            JOptionPane.showMessageDialog(null, "Hãy chọn ít nhất một dòng để xóa.");
+            JOptionPane.showMessageDialog(null, "Select at least one line to delete");
             return;
         }
-        int ok = JOptionPane.showConfirmDialog(null, "Xóa " + sel.length + " bản ghi?", "Xác nhận", JOptionPane.YES_NO_OPTION);
+        int ok = JOptionPane.showConfirmDialog(null, "Delete " + sel.length + " record?", "Confirm", JOptionPane.YES_NO_OPTION);
         if (ok != JOptionPane.YES_OPTION) return;
         try (Connection c = connectSQL.getConnection()) {
             var middleMan = new middleMan();
@@ -56,11 +56,11 @@ public final class buttonAtcion {
                 String eid   = (idObj != null) ? idObj.toString() : null;
                 if (eid != null && !eid.isBlank()) middleMan.delByEID(c, eid);
             }
-            JOptionPane.showMessageDialog(null, "Đã xóa!");
+            JOptionPane.showMessageDialog(null, "Deleted!");
             guiTable.loadTable(eTable);
         } catch (Exception ex) {
             ex.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Lỗi xóa: " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Delete error: " + ex.getMessage());
         }
     }
 
@@ -69,19 +69,19 @@ public final class buttonAtcion {
         String eid, JTextField nameField, JComboBox<Education> eduBox, JComboBox<Department> deptBox, JComboBox<JobLevel> lvlBox,
         JComboBox<Gender>genderBox, JTextField phoneField, JTextField emailField, JTextField salaryField, JTable eTable){
         if (eid == null || eid.isBlank()) {
-            JOptionPane.showMessageDialog(null, "Không có nhân viên nào đang được chọn để cập nhật.");
+            JOptionPane.showMessageDialog(null, "There is no selected employee to be updated");
             return;
         }
         if (!function.validateInput(nameField, eduBox, genderBox, deptBox, lvlBox, emailField, phoneField, salaryField)) return;
         Employee emp = function.existingEmployeeFromDB(eid, nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, emailField, salaryField);
         try (Connection c = connectSQL.getConnection()) {
             new middleMan().update(c, emp);
-            JOptionPane.showMessageDialog(null, "Đã cập nhật nhân viên!");
+            JOptionPane.showMessageDialog(null, "Employee updated!");
             guiTable.loadTable(eTable);
             function.resetInput(nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, emailField, salaryField);
         } catch (Exception ex) {
             ex.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Lỗi cập nhật: " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Update error: " + ex.getMessage());
         }
     }
 

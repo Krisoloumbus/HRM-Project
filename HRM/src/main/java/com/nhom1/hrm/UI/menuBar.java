@@ -33,7 +33,7 @@ public class menuBar {
 
         int viewRow = eTable.getSelectedRow();
         if (viewRow == -1) {
-            JOptionPane.showMessageDialog(null, "Hãy chọn một dòng trong bảng.");
+            JOptionPane.showMessageDialog(null, "Select one row in table");
             return null;
         }
 
@@ -55,7 +55,7 @@ public class menuBar {
         lvlBox.setSelectedItem((JobLevel) model.getValueAt(row, 8));
         salaryField.setText(String.valueOf(model.getValueAt(row, 9)));
 
-        // hiện bạn chưa lưu DOB xuống SQL, tạm để ô rỗng
+        //Empty for now
         dateField.setText("");
 
         return eid;
