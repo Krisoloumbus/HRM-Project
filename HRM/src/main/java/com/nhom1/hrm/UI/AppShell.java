@@ -93,11 +93,12 @@ public class AppShell extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         eMenuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
+        exportMenuItem = new javax.swing.JMenuItem();
         editMenu = new javax.swing.JMenu();
         selectedMenuItem = new javax.swing.JMenuItem();
+        addMenuItem = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
         aboutMenuItem = new javax.swing.JMenuItem();
-        updateMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -380,6 +381,10 @@ public class AppShell extends javax.swing.JFrame {
         getContentPane().add(eSplitPane, java.awt.BorderLayout.CENTER);
 
         fileMenu.setText("File");
+
+        exportMenuItem.setText("Export");
+        fileMenu.add(exportMenuItem);
+
         eMenuBar.add(fileMenu);
 
         editMenu.setText("Edit");
@@ -393,6 +398,15 @@ public class AppShell extends javax.swing.JFrame {
         });
         editMenu.add(selectedMenuItem);
 
+        addMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/plus-mark14.png"))); // NOI18N
+        addMenuItem.setText("Add...");
+        addMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addMenuItemActionPerformed(evt);
+            }
+        });
+        editMenu.add(addMenuItem);
+
         eMenuBar.add(editMenu);
 
         helpMenu.setText("Help");
@@ -405,15 +419,6 @@ public class AppShell extends javax.swing.JFrame {
             }
         });
         helpMenu.add(aboutMenuItem);
-
-        updateMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/update14.png"))); // NOI18N
-        updateMenuItem.setText("Update");
-        updateMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateMenuItemActionPerformed(evt);
-            }
-        });
-        helpMenu.add(updateMenuItem);
 
         eMenuBar.add(helpMenu);
 
@@ -465,10 +470,10 @@ public class AppShell extends javax.swing.JFrame {
         buttonAtcion.onRefresh(nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, mailField, salaryField, eTable);
     }//GEN-LAST:event_refreshButtonActionPerformed
 
-    private void updateMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateMenuItemActionPerformed
+    private void addMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMenuItemActionPerformed
         // TODO add your handling code here:
         menuBar.onUpdate();
-    }//GEN-LAST:event_updateMenuItemActionPerformed
+    }//GEN-LAST:event_addMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -510,6 +515,7 @@ public class AppShell extends javax.swing.JFrame {
     private javax.swing.JPanel aboutPanel;
     private javax.swing.JTextField ad_dressField;
     private javax.swing.JButton addButton;
+    private javax.swing.JMenuItem addMenuItem;
     private javax.swing.JPanel contentPanel;
     private javax.swing.JLabel dateLabel;
     private javax.swing.JButton delButton;
@@ -522,6 +528,7 @@ public class AppShell extends javax.swing.JFrame {
     private javax.swing.JMenu editMenu;
     private javax.swing.JComboBox<Education> eduBox;
     private javax.swing.JLabel eduLabel;
+    private javax.swing.JMenuItem exportMenuItem;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JComboBox<Gender> genderBox;
     private javax.swing.JLabel genderLabel;
@@ -547,6 +554,5 @@ public class AppShell extends javax.swing.JFrame {
     private javax.swing.JPanel sidePanel;
     private javax.swing.JLabel titleLabel;
     private javax.swing.JButton updateButton;
-    private javax.swing.JMenuItem updateMenuItem;
     // End of variables declaration//GEN-END:variables
 }
