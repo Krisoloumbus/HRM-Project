@@ -56,17 +56,17 @@ public class menuBar {
         return eid;
     }
 
-    public static void onUpdate(){
-        int ok = JOptionPane.showConfirmDialog(null, "Do you want to update system table?", "Confirm Update", JOptionPane.YES_NO_OPTION);
+    public static void onAdd(){
+        int ok = JOptionPane.showConfirmDialog(null, "Do you want to add system table Column?", "Confirm Add new Column", JOptionPane.YES_NO_OPTION);
         if (ok != JOptionPane.YES_OPTION){
-            JOptionPane.showMessageDialog(null, "Cancel Update");
+            JOptionPane.showMessageDialog(null, "Cancel Add new Column");
             return;
         }
         try (Connection c = connectSQL.getConnection()) {
             updateTable.addAd_dressCol(c);
         } catch (Exception e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Update error: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Add new Column error: " + e.getMessage());
         }
     }
 }

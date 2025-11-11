@@ -472,7 +472,7 @@ public class AppShell extends javax.swing.JFrame {
 
     private void addMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMenuItemActionPerformed
         // TODO add your handling code here:
-        menuBar.onUpdate();
+        menuBar.onAdd();
     }//GEN-LAST:event_addMenuItemActionPerformed
 
     /**
