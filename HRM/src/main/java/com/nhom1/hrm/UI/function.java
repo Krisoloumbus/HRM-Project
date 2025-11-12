@@ -13,6 +13,11 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
 import com.nhom1.hrm.models.Department;
 import com.nhom1.hrm.models.Education;
 import com.nhom1.hrm.models.Employee;
@@ -109,6 +114,38 @@ public final class function {
                 pw.println();
             }
         }
+    }
+
+    public static void exportToXlsx(JTable table, File file) throws IOException {
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        Workbook wb = new XSSFWorkbook();
+        org.apache.poi.ss.usermodel.Sheet sheet = wb.createSheet("Employees");
+
+        // Header
+        Row header = sheet.createRow(0);
+        for (int c = 0; c < model.getColumnCount(); c++) {
+            Cell cell = header.createCell(c);
+            cell.setCellValue(model.getColumnName(c));
+        }
+
+        // Data
+        for (int r = 0; r < model.getRowCount(); r++) {
+            Row row = sheet.createRow(r + 1);
+            for (int c = 0; c < model.getColumnCount(); c++) {
+                Object value = model.getValueAt(r, c);
+                Cell cell = row.createCell(c);
+                if (value instanceof Number) {
+                    cell.setCellValue(((Number) value).doubleValue());
+                } else {
+                    cell.setCellValue(value == null ? "" : value.toString());
+                }
+            }
+        }
+
+        try (FileOutputStream out = new FileOutputStream(file)) {
+            wb.write(out);
+        }
+        wb.close();
     }
 }
 
