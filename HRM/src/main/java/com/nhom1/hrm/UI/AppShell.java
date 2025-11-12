@@ -24,7 +24,7 @@ public class AppShell extends javax.swing.JFrame {
     private String editingByEID = null;
     public AppShell() {
         initComponents();
-        
+        updateUI.LaFUI();
         customColor.setCustomRendererForAll(genderBox, lvlBox, eduBox, deptBox);
         cards deck = new cards();
         eSplitPane.setRightComponent(deck);
