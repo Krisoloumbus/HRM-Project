@@ -91,7 +91,7 @@ public final class function {
 
     }
 
-    public static void exportCSV(JTable table, File file) throws IOException {
+    public static void exportToCSV(JTable table, File file) throws IOException {
         DefaultTableModel model = (DefaultTableModel) table.getModel();
 
         try (PrintWriter pw = new PrintWriter(new OutputStreamWriter(

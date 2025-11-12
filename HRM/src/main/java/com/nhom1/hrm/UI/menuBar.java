@@ -10,6 +10,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
 import com.nhom1.hrm.models.Department;
@@ -60,17 +61,32 @@ public class menuBar {
 
     public static void onExport(Component parent, JTable eTable) {
         JFileChooser chooser = new JFileChooser();
+        FileNameExtensionFilter xlsxFilter = new FileNameExtensionFilter("Excel File (*.xlsx)", "xlsx");
+        FileNameExtensionFilter csvFilter =new FileNameExtensionFilter("CSV File (*.csv)", "csv");
+        chooser.setAcceptAllFileFilterUsed(false);
+        chooser.addChoosableFileFilter(xlsxFilter);
+        chooser.addChoosableFileFilter(csvFilter);
+        chooser.setFileFilter(xlsxFilter); 
         if (chooser.showSaveDialog(parent) == JFileChooser.APPROVE_OPTION) {
             File file = chooser.getSelectedFile();
-            if (!file.getName().toLowerCase().endsWith(".csv")) {
+            if (chooser.getFileFilter() == csvFilter && !file.getName().toLowerCase().endsWith(".csv")) {
                 file = new File(file.getParentFile(), file.getName() + ".csv");
-            }
-            try {
-                function.exportCSV(eTable, file);
-                JOptionPane.showMessageDialog(parent, "" + file.getAbsolutePath());
-            } catch (IOException e) {
-                e.printStackTrace();
-                JOptionPane.showMessageDialog(parent, "Export failed: " + e.getMessage());
+                try {
+                    function.exportToCSV(eTable, file);
+                    JOptionPane.showMessageDialog(parent, "" + file.getAbsolutePath());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    JOptionPane.showMessageDialog(parent, "Export failed: " + e.getMessage());
+                }
+            } else if (chooser.getFileFilter() == xlsxFilter && !file.getName().toLowerCase().endsWith(".xlsx")){
+                file = new File(file.getParentFile(), file.getName() + ".xlsx");
+                try {
+                    function.exportToXlsx(eTable, file);
+                    JOptionPane.showMessageDialog(parent, "" + file.getAbsolutePath());  
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    JOptionPane.showMessageDialog(parent, "Export failed: " + e.getMessage());
+                }
             }
         }
     }
