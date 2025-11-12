@@ -1,15 +1,16 @@
 package com.nhom1.hrm.UI;
 
-import java.sql.Connection;
+import java.io.File;
+import java.io.IOException;
 
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import com.nhom1.hrm.SQL.connectSQL;
 import com.nhom1.hrm.models.Department;
 import com.nhom1.hrm.models.Education;
 import com.nhom1.hrm.models.Gender;
@@ -56,17 +57,20 @@ public class menuBar {
         return eid;
     }
 
-    public static void onAdd(){
-        int ok = JOptionPane.showConfirmDialog(null, "Do you want to add system table Column?", "Confirm Add new Column", JOptionPane.YES_NO_OPTION);
-        if (ok != JOptionPane.YES_OPTION){
-            JOptionPane.showMessageDialog(null, "Cancel Add new Column");
-            return;
+    public static void onExport(AppShell aThis, JTable eTable) {
+    JFileChooser chooser = new JFileChooser();
+    if (chooser.showSaveDialog(aThis) == JFileChooser.APPROVE_OPTION) {
+        File file = chooser.getSelectedFile();
+        if (!file.getName().toLowerCase().endsWith(".csv")) {
+            file = new File(file.getParentFile(), file.getName() + ".csv");
         }
-        try (Connection c = connectSQL.getConnection()) {
-            updateTable.addAd_dressCol(c);
-        } catch (Exception e) {
+        try {
+            function.exportCSV(eTable, file);
+            JOptionPane.showMessageDialog(aThis, "" + file.getAbsolutePath());
+        } catch (IOException e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Add new Column error: " + e.getMessage());
+            JOptionPane.showMessageDialog(aThis, "Export failed: " + e.getMessage());
         }
     }
+}
 }

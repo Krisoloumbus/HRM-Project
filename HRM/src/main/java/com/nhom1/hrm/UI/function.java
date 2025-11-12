@@ -1,10 +1,17 @@
 package com.nhom1.hrm.UI;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.math.BigDecimal;
 
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 import com.nhom1.hrm.models.Department;
 import com.nhom1.hrm.models.Education;
@@ -54,7 +61,7 @@ public final class function {
         return e;
     }
 
-    //testing for update button
+    //For update button
     public static Employee existingEmployeeFromDB(String eid, JTextField nameField, JComboBox<Education> eduBox,
     JComboBox<Department> deptBox, JComboBox<JobLevel> lvlBox, JComboBox<Gender> genderBox,
     JTextField phoneField, JTextField emailField, JTextField salaryField)
@@ -77,6 +84,31 @@ public final class function {
         if (lvlBox.getItemCount()  > 0) lvlBox.setSelectedIndex(0);
         if (eduBox.getItemCount()  > 0) eduBox.setSelectedIndex(0);
 
+    }
+
+    public static void exportCSV(JTable table, File file) throws IOException {
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+
+        try (PrintWriter pw = new PrintWriter(new OutputStreamWriter(
+                new FileOutputStream(file), "UTF-8"))) {
+
+            //Header/Column Title
+            for (int c = 0; c < model.getColumnCount(); c++) {
+                pw.print(model.getColumnName(c));
+                if (c < model.getColumnCount() - 1) pw.print(",");
+            }
+            pw.println();
+
+            //Data/Row
+            for (int r = 0; r < model.getRowCount(); r++) {
+                for (int c = 0; c < model.getColumnCount(); c++) {
+                    Object value = model.getValueAt(r, c);
+                    pw.print(value == null ? "" : value.toString());
+                    if (c < model.getColumnCount() - 1) pw.print(",");
+                }
+                pw.println();
+            }
+        }
     }
 }
 

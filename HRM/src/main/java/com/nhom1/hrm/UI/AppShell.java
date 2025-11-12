@@ -96,7 +96,6 @@ public class AppShell extends javax.swing.JFrame {
         exportMenuItem = new javax.swing.JMenuItem();
         editMenu = new javax.swing.JMenu();
         selectedMenuItem = new javax.swing.JMenuItem();
-        addMenuItem = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
         aboutMenuItem = new javax.swing.JMenuItem();
 
@@ -382,7 +381,13 @@ public class AppShell extends javax.swing.JFrame {
 
         fileMenu.setText("File");
 
+        exportMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/upload14.png"))); // NOI18N
         exportMenuItem.setText("Export");
+        exportMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exportMenuItemActionPerformed(evt);
+            }
+        });
         fileMenu.add(exportMenuItem);
 
         eMenuBar.add(fileMenu);
@@ -397,15 +402,6 @@ public class AppShell extends javax.swing.JFrame {
             }
         });
         editMenu.add(selectedMenuItem);
-
-        addMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/plus-mark14.png"))); // NOI18N
-        addMenuItem.setText("Add...");
-        addMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addMenuItemActionPerformed(evt);
-            }
-        });
-        editMenu.add(addMenuItem);
 
         eMenuBar.add(editMenu);
 
@@ -470,10 +466,9 @@ public class AppShell extends javax.swing.JFrame {
         buttonAtcion.onRefresh(nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, mailField, salaryField, eTable);
     }//GEN-LAST:event_refreshButtonActionPerformed
 
-    private void addMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMenuItemActionPerformed
+    private void exportMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportMenuItemActionPerformed
         // TODO add your handling code here:
-        menuBar.onAdd();
-    }//GEN-LAST:event_addMenuItemActionPerformed
+    }//GEN-LAST:event_exportMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -515,7 +510,6 @@ public class AppShell extends javax.swing.JFrame {
     private javax.swing.JPanel aboutPanel;
     private javax.swing.JTextField ad_dressField;
     private javax.swing.JButton addButton;
-    private javax.swing.JMenuItem addMenuItem;
     private javax.swing.JPanel contentPanel;
     private javax.swing.JLabel dateLabel;
     private javax.swing.JButton delButton;
