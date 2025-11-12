@@ -468,6 +468,7 @@ public class AppShell extends javax.swing.JFrame {
 
     private void exportMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportMenuItemActionPerformed
         // TODO add your handling code here:
+        menuBar.onExport(this, eTable);
     }//GEN-LAST:event_exportMenuItemActionPerformed
 
     /**

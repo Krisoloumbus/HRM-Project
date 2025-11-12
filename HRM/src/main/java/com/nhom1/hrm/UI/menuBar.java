@@ -1,5 +1,6 @@
 package com.nhom1.hrm.UI;
 
+import java.awt.Component;
 import java.io.File;
 import java.io.IOException;
 
@@ -57,20 +58,20 @@ public class menuBar {
         return eid;
     }
 
-    public static void onExport(AppShell aThis, JTable eTable) {
-    JFileChooser chooser = new JFileChooser();
-    if (chooser.showSaveDialog(aThis) == JFileChooser.APPROVE_OPTION) {
-        File file = chooser.getSelectedFile();
-        if (!file.getName().toLowerCase().endsWith(".csv")) {
-            file = new File(file.getParentFile(), file.getName() + ".csv");
-        }
-        try {
-            function.exportCSV(eTable, file);
-            JOptionPane.showMessageDialog(aThis, "" + file.getAbsolutePath());
-        } catch (IOException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(aThis, "Export failed: " + e.getMessage());
+    public static void onExport(Component parent, JTable eTable) {
+        JFileChooser chooser = new JFileChooser();
+        if (chooser.showSaveDialog(parent) == JFileChooser.APPROVE_OPTION) {
+            File file = chooser.getSelectedFile();
+            if (!file.getName().toLowerCase().endsWith(".csv")) {
+                file = new File(file.getParentFile(), file.getName() + ".csv");
+            }
+            try {
+                function.exportCSV(eTable, file);
+                JOptionPane.showMessageDialog(parent, "" + file.getAbsolutePath());
+            } catch (IOException e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(parent, "Export failed: " + e.getMessage());
+            }
         }
     }
-}
 }
