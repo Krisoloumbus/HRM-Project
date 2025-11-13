@@ -6,11 +6,11 @@ package com.nhom1.hrm.UI;
 
 import javax.swing.ImageIcon;
 
-import com.nhom1.hrm.UI.ComboBox.CustomColor;
 import com.nhom1.hrm.Models.Department;
 import com.nhom1.hrm.Models.Education;
 import com.nhom1.hrm.Models.Gender;
 import com.nhom1.hrm.Models.JobLevel;
+import com.nhom1.hrm.UI.ComboBox.CustomColor;
 
 /**
  *
@@ -41,10 +41,13 @@ public class AppShell extends javax.swing.JFrame {
             e.printStackTrace();
             javax.swing.JOptionPane.showMessageDialog(this, "Error Loading Table: " + e.getMessage());
         }
-
+        
         //Set App Icon when run
         //D:\Coding\Java\HRM-Project\HRM\src\main\java\com\nhom1\hrm\Asset\appIconf.png
         setIconImage(new ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/hr-manager.png")).getImage());
+
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        KeyBind.bindEscToClose(this);
     }
 
     /**

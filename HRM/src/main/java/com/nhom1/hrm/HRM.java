@@ -12,7 +12,6 @@ import com.nhom1.hrm.SQL.Table;
 import com.nhom1.hrm.SQL.UserDAO;
 import com.nhom1.hrm.UI.AppShell;
 import com.nhom1.hrm.UI.AuthProvider;
-import com.nhom1.hrm.UI.LogInDialog;
 import com.nhom1.hrm.UI.LoginController;
 
 /**
@@ -56,11 +55,9 @@ public class HRM {
                         return false;
                     }
                 };
-                LogInDialog dlg = new LogInDialog(null, true);
-            
 
-                LoginController ctrl = new LoginController(dlg, auth);
-                if (!ctrl.showDialog()) {
+                boolean ok = LoginController.showDialog(null, auth);
+                if (!ok) {
                     System.exit(0);
                 }
                 new AppShell().setVisible(true);

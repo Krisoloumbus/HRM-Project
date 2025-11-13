@@ -4,8 +4,6 @@
  */
 package com.nhom1.hrm.UI;
 
-import java.awt.event.ActionListener;
-
 /**
  *
  * @author Kris
@@ -15,18 +13,13 @@ public class LogInDialog extends javax.swing.JDialog {
     /**
      * Creates new form LogInDialog
      */
-
-
-    /*Public API for controller/Expose methods for controller*/
-    public void setOnLogin(ActionListener l){logInButton.addActionListener(l);}
-    public void setOnCancel(ActionListener l) { cancelButton.addActionListener(l); }
-
-    public String getUsernameText() { return userTextField.getText().trim(); }
-    public char[] getPasswordChars() { return userPasswordField.getPassword(); }
     
     public LogInDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        UpdateUI.LaFUI();
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        KeyBind.bindEscToClose(this);
     }
 
     /**
@@ -54,6 +47,11 @@ public class LogInDialog extends javax.swing.JDialog {
         userPasswordField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 userPasswordFieldActionPerformed(evt);
+            }
+        });
+        userPasswordField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                userPasswordFieldKeyPressed(evt);
             }
         });
 
@@ -132,11 +130,18 @@ public class LogInDialog extends javax.swing.JDialog {
 
     private void logInButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logInButtonActionPerformed
         // TODO add your handling code here:
+        AuthProvider auth = (AuthProvider) getRootPane().getClientProperty("auth");
+        LoginController.OnLogin(this, userTextField, userPasswordField, auth);
     }//GEN-LAST:event_logInButtonActionPerformed
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         // TODO add your handling code here:
+        LoginController.OnCancel(this);
     }//GEN-LAST:event_cancelButtonActionPerformed
+
+    private void userPasswordFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_userPasswordFieldKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_userPasswordFieldKeyPressed
 
     /**
      * @param args the command line arguments
