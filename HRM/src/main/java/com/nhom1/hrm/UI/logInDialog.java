@@ -122,10 +122,12 @@ public class logInDialog extends javax.swing.JDialog {
 
     private void logInButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logInButtonActionPerformed
         // TODO add your handling code here:
+        buttonAtcion.onLogin(userTextField, userPasswordField);
     }//GEN-LAST:event_logInButtonActionPerformed
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         // TODO add your handling code here:
+        buttonAtcion.onCancel();
     }//GEN-LAST:event_cancelButtonActionPerformed
 
     /**

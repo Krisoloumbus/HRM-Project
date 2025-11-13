@@ -170,7 +170,7 @@ public final class buttonAtcion {
         }           
     }
 
-    private void onLogin(JTextField userTextField, JPasswordField userPasswordField) {
+    public static void onLogin(JTextField userTextField, JPasswordField userPasswordField) {
         AuthProvider auth;
         boolean ok;
         String u = userTextField.getText().trim();
@@ -187,7 +187,7 @@ public final class buttonAtcion {
         }
     }
 
-    public void onCancel() {
+    public static void onCancel() {
         
         doDispose();
     }
