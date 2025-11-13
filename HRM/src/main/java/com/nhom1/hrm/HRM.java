@@ -4,8 +4,6 @@
 
 package com.nhom1.hrm;
 
-import java.sql.Connection;
-
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
@@ -14,14 +12,14 @@ import com.nhom1.hrm.SQL.table;
 import com.nhom1.hrm.SQL.userDAO;
 import com.nhom1.hrm.UI.AppShell;
 import com.nhom1.hrm.UI.AuthProvider;
+import com.nhom1.hrm.UI.logInController;
 import com.nhom1.hrm.UI.logInDialog;
-import com.nhom1.hrm.models.Employee;
 
 /**
  *
  * @author Kris
  */
-public class HRM extends Employee {
+public class HRM {
     public static void main(String[] args) {
         /*try (Connection c = connectSQL.getConnection()) {
             table.createEmpIfNotHave(c);
@@ -43,9 +41,9 @@ public class HRM extends Employee {
                 // Đảm bảo có bảng Users
                 table.createUserIfNotHave(con);
 
-                // (tùy chọn) seed admin nếu chưa có
+                // (Optional/Testing) seed admin if not have
                 if (!userDAO.check(con, "admin", "123".toCharArray())) {
-                    // Nếu check thất bại do không có user, ta thử tạo
+                    // Failed check due to no user, try to create
                     userDAO.createUser(con, "admin", "123".toCharArray());
                 }
 
@@ -58,12 +56,13 @@ public class HRM extends Employee {
                         return false;
                     }
                 };
-                logInDialog dlg = new logInDialog(null, false);
-                dlg.setVisible(true);
-                if (!dlg.isOk()) {
+                logInDialog dlg = new logInDialog(null, true);
+            
+
+                logInController ctrl = new logInController(dlg, auth);
+                if (!ctrl.showDialog()) {
                     System.exit(0);
                 }
-
                 new AppShell().setVisible(true);
 
             } catch (Exception e) {

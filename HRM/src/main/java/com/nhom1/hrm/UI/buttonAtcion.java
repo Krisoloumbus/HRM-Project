@@ -6,7 +6,6 @@ import java.util.List;
 
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
-import javax.swing.JPasswordField;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -168,27 +167,5 @@ public final class buttonAtcion {
                 JOptionPane.showMessageDialog(null, "Refresh error: " + ex.getMessage());
             } return;
         }           
-    }
-
-    public static void onLogin(JTextField userTextField, JPasswordField userPasswordField) {
-        AuthProvider auth;
-        boolean ok;
-        String u = userTextField.getText().trim();
-        char[] p = userPasswordField.getPassword();
-        try {
-            if (auth != null && auth.authenticate(u, p)) {
-                ok = true;
-                dispose();
-            } else {
-                JOptionPane.showMessageDialog(null, "Sai user/password");
-            }
-        } finally {
-            Arrays.fill(p, '\0'); // xoá password khỏi RAM
-        }
-    }
-
-    public static void onCancel() {
-        
-        doDispose();
     }
 }

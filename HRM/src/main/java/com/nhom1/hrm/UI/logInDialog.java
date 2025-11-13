@@ -4,6 +4,8 @@
  */
 package com.nhom1.hrm.UI;
 
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author Kris
@@ -13,6 +15,14 @@ public class logInDialog extends javax.swing.JDialog {
     /**
      * Creates new form logInDialog
      */
+
+
+    /*Public API for controller/Expose methods for controller*/
+    public void setOnLogin(ActionListener l){logInButton.addActionListener(l);}
+    public void setOnCancel(ActionListener l) { cancelButton.addActionListener(l); }
+
+    public String getUsernameText() { return userTextField.getText().trim(); }
+    public char[] getPasswordChars() { return userPasswordField.getPassword(); }
     
     public logInDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -122,12 +132,10 @@ public class logInDialog extends javax.swing.JDialog {
 
     private void logInButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logInButtonActionPerformed
         // TODO add your handling code here:
-        buttonAtcion.onLogin(userTextField, userPasswordField);
     }//GEN-LAST:event_logInButtonActionPerformed
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         // TODO add your handling code here:
-        buttonAtcion.onCancel();
     }//GEN-LAST:event_cancelButtonActionPerformed
 
     /**
