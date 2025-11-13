@@ -61,6 +61,7 @@ public class AppShell extends javax.swing.JFrame {
         logoLabel = new javax.swing.JLabel();
         homeButton = new javax.swing.JButton();
         contentPanel = new javax.swing.JPanel();
+        lockPanel = new javax.swing.JPanel();
         homePanel = new javax.swing.JPanel();
         titleLabel = new javax.swing.JLabel();
         nameLabel = new javax.swing.JLabel();
@@ -90,7 +91,6 @@ public class AppShell extends javax.swing.JFrame {
         refreshButton = new javax.swing.JButton();
         aboutPanel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
         eMenuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         exportMenuItem = new javax.swing.JMenuItem();
@@ -111,7 +111,7 @@ public class AppShell extends javax.swing.JFrame {
         logoLabel.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         logoLabel.setForeground(new java.awt.Color(255, 255, 255));
         logoLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/hr-manager80.png"))); // NOI18N
+        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/hr-manager70.png"))); // NOI18N
         sidePanel.add(logoLabel);
 
         homeButton.setBackground(new java.awt.Color(0, 133, 245));
@@ -133,6 +133,19 @@ public class AppShell extends javax.swing.JFrame {
 
         contentPanel.setBackground(new java.awt.Color(51, 204, 255));
         contentPanel.setLayout(new java.awt.CardLayout());
+
+        javax.swing.GroupLayout lockPanelLayout = new javax.swing.GroupLayout(lockPanel);
+        lockPanel.setLayout(lockPanelLayout);
+        lockPanelLayout.setHorizontalGroup(
+            lockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 841, Short.MAX_VALUE)
+        );
+        lockPanelLayout.setVerticalGroup(
+            lockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 890, Short.MAX_VALUE)
+        );
+
+        contentPanel.add(lockPanel, "card3");
 
         homePanel.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -362,19 +375,6 @@ public class AppShell extends javax.swing.JFrame {
 
         contentPanel.add(aboutPanel, "card3");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 841, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 890, Short.MAX_VALUE)
-        );
-
-        contentPanel.add(jPanel2, "card3");
-
         eSplitPane.setRightComponent(contentPanel);
 
         getContentPane().add(eSplitPane, java.awt.BorderLayout.CENTER);
@@ -531,7 +531,7 @@ public class AppShell extends javax.swing.JFrame {
     private javax.swing.JButton homeButton;
     private javax.swing.JPanel homePanel;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel lockPanel;
     private javax.swing.JLabel logoLabel;
     private javax.swing.JComboBox<JobLevel> lvlBox;
     private javax.swing.JLabel lvlLabel;
