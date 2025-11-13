@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 import io.github.cdimascio.dotenv.Dotenv;
 
-public class connectSQL {
+public class ConnectSQL {
     public static final Connection getConnection() throws SQLException {
         Dotenv env = Dotenv.configure().directory("src/main/java/com/nhom1/hrm/SQL").filename("db.env").load();
         String dbURL = env.get("dbURL");

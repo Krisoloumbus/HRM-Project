@@ -7,13 +7,13 @@ package com.nhom1.hrm;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
-import com.nhom1.hrm.SQL.connectSQL;
-import com.nhom1.hrm.SQL.table;
-import com.nhom1.hrm.SQL.userDAO;
+import com.nhom1.hrm.SQL.ConnectSQL;
+import com.nhom1.hrm.SQL.Table;
+import com.nhom1.hrm.SQL.UserDAO;
 import com.nhom1.hrm.UI.AppShell;
 import com.nhom1.hrm.UI.AuthProvider;
-import com.nhom1.hrm.UI.logInController;
-import com.nhom1.hrm.UI.logInDialog;
+import com.nhom1.hrm.UI.LogInDialog;
+import com.nhom1.hrm.UI.LoginController;
 
 /**
  *
@@ -21,13 +21,13 @@ import com.nhom1.hrm.UI.logInDialog;
  */
 public class HRM {
     public static void main(String[] args) {
-        /*try (Connection c = connectSQL.getConnection()) {
-            table.createEmpIfNotHave(c);
-            table.createUserIfNotHave(c);
+        /*try (Connection c = ConnectSQL.getConnection()) {
+            Table.createEmpIfNotHave(c);
+            Table.createUserIfNotHave(c);
             javax.swing.JOptionPane.showMessageDialog(null, "Connected to DB");
         } catch (Exception e) {
             e.printStackTrace();
-            javax.swing.JOptionPane.showMessageDialog(null, "Unable to create table or connecte to DB: " + e.getMessage());
+            javax.swing.JOptionPane.showMessageDialog(null, "Unable to create Table or connecte to DB: " + e.getMessage());
         }
 
         // Launch GUI
@@ -35,31 +35,31 @@ public class HRM {
         */
 
          SwingUtilities.invokeLater(() -> {
-            try (var con = connectSQL.getConnection()) {
+            try (var con = ConnectSQL.getConnection()) {
                 // Tạo bảng nhân sự của bạn như cũ
-                table.createEmpIfNotHave(con);
+                Table.createEmpIfNotHave(con);
                 // Đảm bảo có bảng Users
-                table.createUserIfNotHave(con);
+                Table.createUserIfNotHave(con);
 
                 // (Optional/Testing) seed admin if not have
-                if (!userDAO.check(con, "admin", "123".toCharArray())) {
+                if (!UserDAO.check(con, "admin", "123".toCharArray())) {
                     // Failed check due to no user, try to create
-                    userDAO.createUser(con, "admin", "123".toCharArray());
+                    UserDAO.createUser(con, "admin", "123".toCharArray());
                 }
 
                 // Login dialog
                 AuthProvider auth = (u, p) -> {
-                    try { return userDAO.check(con, u, p); }
+                    try { return UserDAO.check(con, u, p); }
                     catch (Exception ex) {
                         ex.printStackTrace();
                         JOptionPane.showMessageDialog(null, "Auth error: " + ex.getMessage());
                         return false;
                     }
                 };
-                logInDialog dlg = new logInDialog(null, true);
+                LogInDialog dlg = new LogInDialog(null, true);
             
 
-                logInController ctrl = new logInController(dlg, auth);
+                LoginController ctrl = new LoginController(dlg, auth);
                 if (!ctrl.showDialog()) {
                     System.exit(0);
                 }

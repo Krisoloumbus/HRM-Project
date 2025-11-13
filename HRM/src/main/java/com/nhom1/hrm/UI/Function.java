@@ -18,14 +18,14 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import com.nhom1.hrm.models.Department;
-import com.nhom1.hrm.models.Education;
-import com.nhom1.hrm.models.Employee;
-import com.nhom1.hrm.models.Gender;
-import com.nhom1.hrm.models.JobLevel;
+import com.nhom1.hrm.Models.Department;
+import com.nhom1.hrm.Models.Education;
+import com.nhom1.hrm.Models.Employee;
+import com.nhom1.hrm.Models.Gender;
+import com.nhom1.hrm.Models.JobLevel;
 
-public final class function {
-    private function(){}
+public final class Function {
+    private Function(){}
     public static boolean validateInput(JTextField nameField, JComboBox<Education> eduBox, JComboBox<Gender> genderBox,
        JComboBox<Department> deptBox, JComboBox<JobLevel> lvlBox, JTextField mailField,
        JTextField phoneField, JTextField salaryField) {

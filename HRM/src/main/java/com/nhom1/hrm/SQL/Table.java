@@ -2,7 +2,7 @@ package com.nhom1.hrm.SQL;
 import java.sql.Connection;
 import java.sql.Statement;
 
-public class table {
+public class Table {
         private static final String empCreatTable ="""
         IF NOT EXISTS (
             SELECT 1

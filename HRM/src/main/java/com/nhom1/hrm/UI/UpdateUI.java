@@ -4,15 +4,17 @@
  */
 package com.nhom1.hrm.UI;
 
-import javax.swing.JButton;
+import com.formdev.flatlaf.FlatLightLaf;
 
 /**
  *
  * @author Kris
  */
-public class sideBar {   
+public class UpdateUI {
     
-    public static void switchCardOnClick(JButton button, cards deck, String cardName) {
-        button.addActionListener(e -> deck.showCard(cardName));
+    private UpdateUI(){}
+
+    public static void LaFUI() {
+        FlatLightLaf.setup();
     }
 }

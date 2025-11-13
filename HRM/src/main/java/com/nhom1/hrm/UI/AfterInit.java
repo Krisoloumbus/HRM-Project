@@ -6,13 +6,13 @@ import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 
-import com.nhom1.hrm.models.Department;
-import com.nhom1.hrm.models.Education;
-import com.nhom1.hrm.models.Gender;
-import com.nhom1.hrm.models.JobLevel;
+import com.nhom1.hrm.Models.Department;
+import com.nhom1.hrm.Models.Education;
+import com.nhom1.hrm.Models.Gender;
+import com.nhom1.hrm.Models.JobLevel;
 
-public final class afterInit {
-    private afterInit(){}
+public final class AfterInit {
+    private AfterInit(){}
     public static void setgetComboBox(JComboBox<Department> deptBox, JComboBox<JobLevel> lvlBox, JComboBox<Education> eduBox,
     JComboBox<Gender> genderBox, JTable eTable, JButton addButton, JButton delButton)
     {

@@ -6,11 +6,11 @@ package com.nhom1.hrm.UI;
 
 import javax.swing.ImageIcon;
 
-import com.nhom1.hrm.UI.comboBox.customColor;
-import com.nhom1.hrm.models.Department;
-import com.nhom1.hrm.models.Education;
-import com.nhom1.hrm.models.Gender;
-import com.nhom1.hrm.models.JobLevel;
+import com.nhom1.hrm.UI.ComboBox.CustomColor;
+import com.nhom1.hrm.Models.Department;
+import com.nhom1.hrm.Models.Education;
+import com.nhom1.hrm.Models.Gender;
+import com.nhom1.hrm.Models.JobLevel;
 
 /**
  *
@@ -24,19 +24,19 @@ public class AppShell extends javax.swing.JFrame {
     private String editingByEID = null;
     public AppShell() {
         initComponents();
-        updateUI.LaFUI();
-        customColor.setCustomRendererForAll(genderBox, lvlBox, eduBox, deptBox);
-        cards deck = new cards();
+        UpdateUI.LaFUI();
+        CustomColor.setCustomRendererForAll(genderBox, lvlBox, eduBox, deptBox);
+        Cards deck = new Cards();
         eSplitPane.setRightComponent(deck);
         deck.addCard("HOME", homePanel);
         deck.addCard("ABOUT", aboutPanel);
         deck.showCard("HOME");
-        sideBar.switchCardOnClick(homeButton, deck, "HOME");
-        menuBar.aboutSwitchCardOnClick(aboutMenuItem, deck, "ABOUT");
+        SideBar.switchCardOnClick(homeButton, deck, "HOME");
+        MenuBar.aboutSwitchCardOnClick(aboutMenuItem, deck, "ABOUT");
         
-        afterInit.setgetComboBox(deptBox, lvlBox, eduBox, genderBox, eTable, addButton, delButton);
+        AfterInit.setgetComboBox(deptBox, lvlBox, eduBox, genderBox, eTable, addButton, delButton);
         try {
-            uiTable.loadTable(eTable);
+            UiTable.loadTable(eTable);
         } catch (Exception e) {
             e.printStackTrace();
             javax.swing.JOptionPane.showMessageDialog(this, "Error Loading Table: " + e.getMessage());
@@ -425,12 +425,12 @@ public class AppShell extends javax.swing.JFrame {
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         // TODO add your handling code here:
-        buttonAtcion.onAdd(nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, mailField, salaryField, eTable);
+        ButtonAtcion.onAdd(nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, mailField, salaryField, eTable);
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void delButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delButtonActionPerformed
         // TODO add your handling code here:
-        buttonAtcion.onDelete(eTable);
+        ButtonAtcion.onDelete(eTable);
     }//GEN-LAST:event_delButtonActionPerformed
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
@@ -447,28 +447,28 @@ public class AppShell extends javax.swing.JFrame {
 
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
         // TODO add your handling code here:
-        buttonAtcion.onUpdate(editingByEID, nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, mailField, salaryField, eTable);
+        ButtonAtcion.onUpdate(editingByEID, nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, mailField, salaryField, eTable);
         editingByEID = null;
     }//GEN-LAST:event_updateButtonActionPerformed
 
     private void selectedMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectedMenuItemActionPerformed
         // TODO add your handling code here:
-        editingByEID = menuBar.onSelected(eTable, nameField, ad_dressField, eduBox, deptBox, lvlBox, genderBox, phoneField, mailField, salaryField);
+        editingByEID = MenuBar.onSelected(eTable, nameField, ad_dressField, eduBox, deptBox, lvlBox, genderBox, phoneField, mailField, salaryField);
     }//GEN-LAST:event_selectedMenuItemActionPerformed
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         // TODO add your handling code here:
-        buttonAtcion.onSearch(nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, mailField, salaryField, eTable);
+        ButtonAtcion.onSearch(nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, mailField, salaryField, eTable);
     }//GEN-LAST:event_searchButtonActionPerformed
 
     private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed
         // TODO add your handling code here:
-        buttonAtcion.onRefresh(nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, mailField, salaryField, eTable);
+        ButtonAtcion.onRefresh(nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, mailField, salaryField, eTable);
     }//GEN-LAST:event_refreshButtonActionPerformed
 
     private void exportMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportMenuItemActionPerformed
         // TODO add your handling code here:
-        menuBar.onExport(this, eTable);
+        MenuBar.onExport(this, eTable);
     }//GEN-LAST:event_exportMenuItemActionPerformed
 
     /**

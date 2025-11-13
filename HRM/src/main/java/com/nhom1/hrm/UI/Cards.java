@@ -13,9 +13,9 @@ import javax.swing.JPanel;
  *
  * @author Kris
  */
-public class cards extends JPanel {
+public class Cards extends JPanel {
     
-    public cards (){
+    public Cards (){
         setLayout(new CardLayout());
     }
 

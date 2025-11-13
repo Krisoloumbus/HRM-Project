@@ -8,13 +8,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.nhom1.hrm.models.Department;
-import com.nhom1.hrm.models.Education;
-import com.nhom1.hrm.models.Employee;
-import com.nhom1.hrm.models.Gender;
-import com.nhom1.hrm.models.JobLevel;
+import com.nhom1.hrm.Models.Department;
+import com.nhom1.hrm.Models.Education;
+import com.nhom1.hrm.Models.Employee;
+import com.nhom1.hrm.Models.Gender;
+import com.nhom1.hrm.Models.JobLevel;
 
-public class empDAO extends Employee {
+public class EmpDAO extends Employee {
     //This is not Searching
     //Just use to get selected data from SQL_DB to show it in GUI table
     public List<Employee> findAll(Connection c) throws SQLException {

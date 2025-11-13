@@ -10,10 +10,10 @@ import java.awt.event.ActionListener;
  *
  * @author Kris
  */
-public class logInDialog extends javax.swing.JDialog {
+public class LogInDialog extends javax.swing.JDialog {
 
     /**
-     * Creates new form logInDialog
+     * Creates new form LogInDialog
      */
 
 
@@ -24,7 +24,7 @@ public class logInDialog extends javax.swing.JDialog {
     public String getUsernameText() { return userTextField.getText().trim(); }
     public char[] getPasswordChars() { return userPasswordField.getPassword(); }
     
-    public logInDialog(java.awt.Frame parent, boolean modal) {
+    public LogInDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
@@ -155,20 +155,21 @@ public class logInDialog extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(logInDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LogInDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(logInDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LogInDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(logInDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LogInDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(logInDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LogInDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                logInDialog dialog = new logInDialog(new javax.swing.JFrame(), true);
+                LogInDialog dialog = new LogInDialog(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

@@ -12,12 +12,12 @@ import javax.swing.JOptionPane;
  *
  * @author Kris
  */
-public final class logInController {
-    private final logInDialog viewUI;
+public final class LoginController {
+    private final LogInDialog viewUI;
     private final AuthProvider auth;
     private boolean ok = false;
 
-    public logInController(logInDialog viewUI, AuthProvider auth){
+    public LoginController(LogInDialog viewUI, AuthProvider auth){
         this.viewUI = viewUI;
         this.auth = auth;
         

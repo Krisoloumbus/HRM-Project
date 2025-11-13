@@ -13,15 +13,15 @@ import javax.swing.JTextField;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
-import com.nhom1.hrm.models.Department;
-import com.nhom1.hrm.models.Education;
-import com.nhom1.hrm.models.Gender;
-import com.nhom1.hrm.models.JobLevel;
+import com.nhom1.hrm.Models.Department;
+import com.nhom1.hrm.Models.Education;
+import com.nhom1.hrm.Models.Gender;
+import com.nhom1.hrm.Models.JobLevel;
 
 
-public class menuBar {
+public class MenuBar {
 
-    public static void aboutSwitchCardOnClick(JMenuItem aboutItem, cards deck, String cardName) {
+    public static void aboutSwitchCardOnClick(JMenuItem aboutItem, Cards deck, String cardName) {
         aboutItem.addActionListener(e -> deck.showCard(cardName));
     }
 
@@ -72,7 +72,7 @@ public class menuBar {
             if (chooser.getFileFilter() == csvFilter && !file.getName().toLowerCase().endsWith(".csv")) {
                 file = new File(file.getParentFile(), file.getName() + ".csv");
                 try {
-                    function.exportToCSV(eTable, file);
+                    Function.exportToCSV(eTable, file);
                     JOptionPane.showMessageDialog(parent, "" + file.getAbsolutePath());
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -81,7 +81,7 @@ public class menuBar {
             } else if (chooser.getFileFilter() == xlsxFilter && !file.getName().toLowerCase().endsWith(".xlsx")){
                 file = new File(file.getParentFile(), file.getName() + ".xlsx");
                 try {
-                    function.exportToXlsx(eTable, file);
+                    Function.exportToXlsx(eTable, file);
                     JOptionPane.showMessageDialog(parent, "" + file.getAbsolutePath());  
                 } catch (Exception e) {
                     e.printStackTrace();

@@ -17,7 +17,7 @@ import java.util.Arrays;
  *
  * @author Kris
  */
-public class userDAO {
+public class UserDAO {
     /** Tạo user mới. Trả về true nếu tạo được, false nếu username đã tồn tại. */
     public static boolean createUser(Connection c, String username, char[] password) throws Exception {
         byte[] salt = randomSalt(16);

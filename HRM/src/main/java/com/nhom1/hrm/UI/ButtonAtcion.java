@@ -10,28 +10,28 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import com.nhom1.hrm.SQL.connectSQL;
-import com.nhom1.hrm.SQL.empDAO;
-import com.nhom1.hrm.SQL.table;
-import com.nhom1.hrm.models.Department;
-import com.nhom1.hrm.models.Education;
-import com.nhom1.hrm.models.Employee;
-import com.nhom1.hrm.models.Gender;
-import com.nhom1.hrm.models.JobLevel;
+import com.nhom1.hrm.SQL.ConnectSQL;
+import com.nhom1.hrm.SQL.EmpDAO;
+import com.nhom1.hrm.SQL.Table;
+import com.nhom1.hrm.Models.Department;
+import com.nhom1.hrm.Models.Education;
+import com.nhom1.hrm.Models.Employee;
+import com.nhom1.hrm.Models.Gender;
+import com.nhom1.hrm.Models.JobLevel;
 
-public final class buttonAtcion {
-    private buttonAtcion(){}
+public final class ButtonAtcion {
+    private ButtonAtcion(){}
     public static void onAdd(JTextField nameField, JComboBox<Education> eduBox, JComboBox<Department> deptBox, JComboBox<JobLevel> lvlBox,
     JComboBox<Gender>genderBox, JTextField phoneField, JTextField emailField, JTextField salaryField, JTable eTable)
     {
-        if (!function.validateInput(nameField, eduBox, genderBox, deptBox, lvlBox, emailField, phoneField, salaryField)) return;
-        var emp = function.newEmployeeToDB(nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, emailField, salaryField);
-        try (Connection c = connectSQL.getConnection()) {
-            table.createEmpIfNotHave(c);
-            new empDAO().insert(c, emp);
+        if (!Function.validateInput(nameField, eduBox, genderBox, deptBox, lvlBox, emailField, phoneField, salaryField)) return;
+        var emp = Function.newEmployeeToDB(nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, emailField, salaryField);
+        try (Connection c = ConnectSQL.getConnection()) {
+            Table.createEmpIfNotHave(c);
+            new EmpDAO().insert(c, emp);
             JOptionPane.showMessageDialog(null, "Employee Add!");
-            uiTable.loadTable(eTable);
-            function.resetInput(nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, emailField, salaryField);
+            UiTable.loadTable(eTable);
+            Function.resetInput(nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, emailField, salaryField);
         } catch (Exception ex) {
             ex.printStackTrace();
             JOptionPane.showMessageDialog(null, "Add error: " + ex.getMessage());
@@ -46,8 +46,8 @@ public final class buttonAtcion {
         }
         int ok = JOptionPane.showConfirmDialog(null, "Delete " + sel.length + " record?", "Confirm", JOptionPane.YES_NO_OPTION);
         if (ok != JOptionPane.YES_OPTION) return;
-        try (Connection c = connectSQL.getConnection()) {
-            var middleMan = new empDAO();
+        try (Connection c = ConnectSQL.getConnection()) {
+            var middleMan = new EmpDAO();
             Arrays.sort(sel);
             for (int i = sel.length - 1; i >= 0; i--) {
                 int viewRow  = sel[i];
@@ -57,7 +57,7 @@ public final class buttonAtcion {
                 if (eid != null && !eid.isBlank()) middleMan.delByEID(c, eid);
             }
             JOptionPane.showMessageDialog(null, "Deleted!");
-            uiTable.loadTable(eTable);
+            UiTable.loadTable(eTable);
         } catch (Exception ex) {
             ex.printStackTrace();
             JOptionPane.showMessageDialog(null, "Delete error: " + ex.getMessage());
@@ -72,13 +72,13 @@ public final class buttonAtcion {
             JOptionPane.showMessageDialog(null, "There is no selected employee to be updated");
             return;
         }
-        if (!function.validateInput(nameField, eduBox, genderBox, deptBox, lvlBox, emailField, phoneField, salaryField)) return;
-        Employee emp = function.existingEmployeeFromDB(eid, nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, emailField, salaryField);
-        try (Connection c = connectSQL.getConnection()) {
-            new empDAO().update(c, emp);
+        if (!Function.validateInput(nameField, eduBox, genderBox, deptBox, lvlBox, emailField, phoneField, salaryField)) return;
+        Employee emp = Function.existingEmployeeFromDB(eid, nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, emailField, salaryField);
+        try (Connection c = ConnectSQL.getConnection()) {
+            new EmpDAO().update(c, emp);
             JOptionPane.showMessageDialog(null, "Employee updated!");
-            uiTable.loadTable(eTable);
-            function.resetInput(nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, emailField, salaryField);
+            UiTable.loadTable(eTable);
+            Function.resetInput(nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, emailField, salaryField);
         } catch (Exception ex) {
             ex.printStackTrace();
             JOptionPane.showMessageDialog(null, "Update error: " + ex.getMessage());
@@ -112,8 +112,8 @@ public final class buttonAtcion {
                                                 Please select a field and enter a value to search.""");
             return;
         }
-        try (Connection c = connectSQL.getConnection()) {
-            empDAO mm = new empDAO();
+        try (Connection c = ConnectSQL.getConnection()) {
+            EmpDAO mm = new EmpDAO();
             List<Employee> results = mm.searchEmployees(c, name, gender, edu, lvl, dept, phone, email);
             DefaultTableModel dfModel = (DefaultTableModel) eTable.getModel();
             dfModel.setRowCount(0);
@@ -153,15 +153,15 @@ public final class buttonAtcion {
         && lvlBox.getSelectedItem()    == JobLevel.Default;
         if (!noFilter) {
             try {
-                function.resetInput(nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, emailField, salaryField);
-                uiTable.loadTable(eTable);
+                Function.resetInput(nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, emailField, salaryField);
+                UiTable.loadTable(eTable);
             } catch (Exception ex) {
                 ex.printStackTrace();
                 JOptionPane.showMessageDialog(null, "Refresh error: " + ex.getMessage());
             } return;
         } else {
             try {
-                uiTable.loadTable(eTable);
+                UiTable.loadTable(eTable);
             } catch (Exception ex) {
                 ex.printStackTrace();
                 JOptionPane.showMessageDialog(null, "Refresh error: " + ex.getMessage());
