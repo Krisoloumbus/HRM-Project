@@ -62,10 +62,6 @@ public class AppShell extends javax.swing.JFrame {
         homeButton = new javax.swing.JButton();
         contentPanel = new javax.swing.JPanel();
         lockPanel = new javax.swing.JPanel();
-        userLabel = new javax.swing.JLabel();
-        passwordLabel = new javax.swing.JLabel();
-        userPasswordField = new javax.swing.JPasswordField();
-        userTextField = new javax.swing.JTextField();
         homePanel = new javax.swing.JPanel();
         titleLabel = new javax.swing.JLabel();
         nameLabel = new javax.swing.JLabel();
@@ -138,45 +134,15 @@ public class AppShell extends javax.swing.JFrame {
         contentPanel.setBackground(new java.awt.Color(51, 204, 255));
         contentPanel.setLayout(new java.awt.CardLayout());
 
-        userLabel.setText("User");
-
-        passwordLabel.setText("Password");
-
-        userTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userTextFieldActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout lockPanelLayout = new javax.swing.GroupLayout(lockPanel);
         lockPanel.setLayout(lockPanelLayout);
         lockPanelLayout.setHorizontalGroup(
             lockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(lockPanelLayout.createSequentialGroup()
-                .addGap(235, 235, 235)
-                .addGroup(lockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(lockPanelLayout.createSequentialGroup()
-                        .addComponent(passwordLabel)
-                        .addGap(18, 18, 18)
-                        .addComponent(userPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(lockPanelLayout.createSequentialGroup()
-                        .addComponent(userLabel)
-                        .addGap(18, 18, 18)
-                        .addComponent(userTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(499, Short.MAX_VALUE))
+            .addGap(0, 866, Short.MAX_VALUE)
         );
         lockPanelLayout.setVerticalGroup(
             lockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(lockPanelLayout.createSequentialGroup()
-                .addGap(226, 226, 226)
-                .addGroup(lockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(userLabel)
-                    .addComponent(userTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(lockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(passwordLabel)
-                    .addComponent(userPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(602, Short.MAX_VALUE))
+            .addGap(0, 890, Short.MAX_VALUE)
         );
 
         contentPanel.add(lockPanel, "card3");
@@ -397,7 +363,7 @@ public class AppShell extends javax.swing.JFrame {
             .addGroup(aboutPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addContainerGap(756, Short.MAX_VALUE))
+                .addContainerGap(781, Short.MAX_VALUE))
         );
         aboutPanelLayout.setVerticalGroup(
             aboutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -505,10 +471,6 @@ public class AppShell extends javax.swing.JFrame {
         menuBar.onExport(this, eTable);
     }//GEN-LAST:event_exportMenuItemActionPerformed
 
-    private void userTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_userTextFieldActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -577,7 +539,6 @@ public class AppShell extends javax.swing.JFrame {
     private javax.swing.JLabel mailLabel;
     private javax.swing.JTextField nameField;
     private javax.swing.JLabel nameLabel;
-    private javax.swing.JLabel passwordLabel;
     private javax.swing.JTextField phoneField;
     private javax.swing.JLabel phoneLabel;
     private javax.swing.JButton refreshButton;
@@ -588,8 +549,5 @@ public class AppShell extends javax.swing.JFrame {
     private javax.swing.JPanel sidePanel;
     private javax.swing.JLabel titleLabel;
     private javax.swing.JButton updateButton;
-    private javax.swing.JLabel userLabel;
-    private javax.swing.JPasswordField userPasswordField;
-    private javax.swing.JTextField userTextField;
     // End of variables declaration//GEN-END:variables
 }

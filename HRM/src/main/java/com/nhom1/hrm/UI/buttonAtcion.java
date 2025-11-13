@@ -6,12 +6,13 @@ import java.util.List;
 
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import com.nhom1.hrm.SQL.connectSQL;
-import com.nhom1.hrm.SQL.middleMan;
+import com.nhom1.hrm.SQL.empDAO;
 import com.nhom1.hrm.SQL.table;
 import com.nhom1.hrm.models.Department;
 import com.nhom1.hrm.models.Education;
@@ -27,8 +28,8 @@ public final class buttonAtcion {
         if (!function.validateInput(nameField, eduBox, genderBox, deptBox, lvlBox, emailField, phoneField, salaryField)) return;
         var emp = function.newEmployeeToDB(nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, emailField, salaryField);
         try (Connection c = connectSQL.getConnection()) {
-            table.taobangifchuaco(c);
-            new middleMan().insert(c, emp);
+            table.createEmpIfNotHave(c);
+            new empDAO().insert(c, emp);
             JOptionPane.showMessageDialog(null, "Employee Add!");
             uiTable.loadTable(eTable);
             function.resetInput(nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, emailField, salaryField);
@@ -47,7 +48,7 @@ public final class buttonAtcion {
         int ok = JOptionPane.showConfirmDialog(null, "Delete " + sel.length + " record?", "Confirm", JOptionPane.YES_NO_OPTION);
         if (ok != JOptionPane.YES_OPTION) return;
         try (Connection c = connectSQL.getConnection()) {
-            var middleMan = new middleMan();
+            var middleMan = new empDAO();
             Arrays.sort(sel);
             for (int i = sel.length - 1; i >= 0; i--) {
                 int viewRow  = sel[i];
@@ -75,7 +76,7 @@ public final class buttonAtcion {
         if (!function.validateInput(nameField, eduBox, genderBox, deptBox, lvlBox, emailField, phoneField, salaryField)) return;
         Employee emp = function.existingEmployeeFromDB(eid, nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, emailField, salaryField);
         try (Connection c = connectSQL.getConnection()) {
-            new middleMan().update(c, emp);
+            new empDAO().update(c, emp);
             JOptionPane.showMessageDialog(null, "Employee updated!");
             uiTable.loadTable(eTable);
             function.resetInput(nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, emailField, salaryField);
@@ -113,7 +114,7 @@ public final class buttonAtcion {
             return;
         }
         try (Connection c = connectSQL.getConnection()) {
-            middleMan mm = new middleMan();
+            empDAO mm = new empDAO();
             List<Employee> results = mm.searchEmployees(c, name, gender, edu, lvl, dept, phone, email);
             DefaultTableModel dfModel = (DefaultTableModel) eTable.getModel();
             dfModel.setRowCount(0);
@@ -167,5 +168,27 @@ public final class buttonAtcion {
                 JOptionPane.showMessageDialog(null, "Refresh error: " + ex.getMessage());
             } return;
         }           
+    }
+
+    private void onLogin(JTextField userTextField, JPasswordField userPasswordField) {
+        AuthProvider auth;
+        boolean ok;
+        String u = userTextField.getText().trim();
+        char[] p = userPasswordField.getPassword();
+        try {
+            if (auth != null && auth.authenticate(u, p)) {
+                ok = true;
+                dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "Sai user/password");
+            }
+        } finally {
+            Arrays.fill(p, '\0'); // xoá password khỏi RAM
+        }
+    }
+
+    public void onCancel() {
+        
+        doDispose();
     }
 }

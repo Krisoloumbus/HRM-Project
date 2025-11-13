@@ -6,7 +6,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import com.nhom1.hrm.SQL.connectSQL;
-import com.nhom1.hrm.SQL.middleMan;
+import com.nhom1.hrm.SQL.empDAO;
 import com.nhom1.hrm.SQL.table;
 
 public final class uiTable{
@@ -18,8 +18,8 @@ public final class uiTable{
             @Override public boolean isCellEditable(int rows, int collumn){return false;}
         };
         try (Connection c = connectSQL.getConnection()){
-            table.taobangifchuaco(c);
-            var mm = new middleMan();
+            table.createEmpIfNotHave(c);
+            var mm = new empDAO();
             for (var e : mm.findAll(c)){
                 eModel.addRow(new Object[]{e.getNo(), e.getEID(), e.getName(), e.getGender(), e.getEdu(), e.getPhone(),
                 e.getEmail(), e.getDepartment(), e.getLevel(), e.getSalary()});

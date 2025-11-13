@@ -14,7 +14,7 @@ import com.nhom1.hrm.models.Employee;
 import com.nhom1.hrm.models.Gender;
 import com.nhom1.hrm.models.JobLevel;
 
-public class middleMan extends Employee {
+public class empDAO extends Employee {
     //This is not Searching
     //Just use to get selected data from SQL_DB to show it in GUI table
     public List<Employee> findAll(Connection c) throws SQLException {
