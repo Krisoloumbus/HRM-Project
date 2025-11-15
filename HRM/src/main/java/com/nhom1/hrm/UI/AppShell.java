@@ -5,6 +5,8 @@
 package com.nhom1.hrm.UI;
 
 import javax.swing.ImageIcon;
+
+import com.nhom1.hrm.AppUpdate.UpdaterLauncher;
 import com.nhom1.hrm.Models.Department;
 import com.nhom1.hrm.Models.Education;
 import com.nhom1.hrm.Models.Gender;
@@ -110,6 +112,7 @@ public class AppShell extends javax.swing.JFrame {
         logOutMenuItem = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
         aboutMenuItem = new javax.swing.JMenuItem();
+        appUpdateMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -509,6 +512,15 @@ public class AppShell extends javax.swing.JFrame {
         });
         helpMenu.add(aboutMenuItem);
 
+        appUpdateMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/question-mark-14.png"))); // NOI18N
+        appUpdateMenuItem.setText("Check for update");
+        appUpdateMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                appUpdateMenuItemActionPerformed(evt);
+            }
+        });
+        helpMenu.add(appUpdateMenuItem);
+
         eMenuBar.add(helpMenu);
 
         setJMenuBar(eMenuBar);
@@ -578,6 +590,11 @@ public class AppShell extends javax.swing.JFrame {
         StatsCharts.loadEducationChartInto(eduPanel);
     }//GEN-LAST:event_statsButtonActionPerformed
 
+    private void appUpdateMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_appUpdateMenuItemActionPerformed
+        // TODO add your handling code here:
+        UpdaterLauncher.runUpdateAndRelaunch(this);
+    }//GEN-LAST:event_appUpdateMenuItemActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -618,6 +635,7 @@ public class AppShell extends javax.swing.JFrame {
     private javax.swing.JPanel aboutPanel;
     private javax.swing.JTextField ad_dressField;
     private javax.swing.JButton addButton;
+    private javax.swing.JMenuItem appUpdateMenuItem;
     private javax.swing.JPanel contentPanel;
     private javax.swing.JLabel dateLabel;
     private javax.swing.JButton delButton;

@@ -1,1 +1,26 @@
-Try to find a way to update with edit -> add Col and it type and how to delete it
+Quy trình release & chạy
+
+Ở hrm-parent/ chạy:
+
+mvn -q -DskipTests package
+
+
+Lấy 2 file:
+
+HRM/target/hrm-app.jar
+
+updater/target/updater.jar
+
+Tạo GitHub Release với asset: hrm-app.jar.
+
+Khi user bấm Update, app sẽ:
+
+gọi GitHub API → thấy bản mới
+
+tải hrm-app.jar mới vào thư mục tạm
+
+chạy updater.jar để thay file
+
+khởi động lại app.
+
+Repo public không cần token. Repo private set GithubReleaseClient.GITHUB_TOKEN.

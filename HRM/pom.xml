@@ -42,4 +42,35 @@
         <maven.compiler.release>24</maven.compiler.release>
         <exec.mainClass>com.nhom1.hrm.HRM</exec.mainClass>
     </properties>
+    <build>
+        <plugins>
+        <!-- Tạo fat-jar có Main-Class và Implementation-Version -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.5.0</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <createDependencyReducedPom>true</createDependencyReducedPom>
+                            <finalName>hrm-app</finalName> <!-- => target/hrm-app.jar -->
+                            <transformers>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>com.nhom1.hrm.HRM</mainClass>
+                                    <manifestEntries>
+                                        <Implementation-Title>HRM</Implementation-Title>
+                                        <Implementation-Version>${project.version}</Implementation-Version>
+                                    </manifestEntries>
+                                </transformer>
+                            </transformers>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>
