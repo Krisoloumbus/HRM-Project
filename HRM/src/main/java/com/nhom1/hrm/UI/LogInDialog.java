@@ -62,6 +62,7 @@ public class LogInDialog extends javax.swing.JDialog {
         });
 
         logInButton.setText("LOG IN");
+        logInButton.setFocusPainted(false);
         logInButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logInButtonActionPerformed(evt);
@@ -69,6 +70,7 @@ public class LogInDialog extends javax.swing.JDialog {
         });
 
         cancelButton.setText("CANCEL");
+        cancelButton.setFocusPainted(false);
         cancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelButtonActionPerformed(evt);
@@ -82,27 +84,25 @@ public class LogInDialog extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(122, 122, 122)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(passwordLabel)
-                                .addGap(18, 18, 18)
-                                .addComponent(userPasswordField))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(userLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                                .addComponent(userTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(88, 88, 88)
+                        .addGap(130, 130, 130)
                         .addComponent(logInButton)
                         .addGap(18, 18, 18)
-                        .addComponent(cancelButton)))
-                .addGap(99, 99, 99))
+                        .addComponent(cancelButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(62, 62, 62)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(passwordLabel)
+                            .addComponent(userLabel))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(userTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+                            .addComponent(userPasswordField))))
+                .addContainerGap(146, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(96, 96, 96)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(53, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(userLabel)
                     .addComponent(userTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -114,7 +114,7 @@ public class LogInDialog extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(logInButton)
                     .addComponent(cancelButton))
-                .addContainerGap(101, Short.MAX_VALUE))
+                .addGap(49, 49, 49))
         );
 
         pack();
@@ -141,6 +141,10 @@ public class LogInDialog extends javax.swing.JDialog {
 
     private void userPasswordFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_userPasswordFieldKeyPressed
         // TODO add your handling code here:
+        if(evt.getKeyCode() == evt.VK_ENTER){
+            AuthProvider auth = (AuthProvider) getRootPane().getClientProperty("auth");
+            LoginController.OnLogin(this, userTextField, userPasswordField, auth);
+        };
     }//GEN-LAST:event_userPasswordFieldKeyPressed
 
     /**
