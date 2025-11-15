@@ -99,6 +99,8 @@ public class AppShell extends javax.swing.JFrame {
         exportMenuItem = new javax.swing.JMenuItem();
         editMenu = new javax.swing.JMenu();
         selectedMenuItem = new javax.swing.JMenuItem();
+        userMenu = new javax.swing.JMenu();
+        logOutMenuItem = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
         aboutMenuItem = new javax.swing.JMenuItem();
 
@@ -408,6 +410,14 @@ public class AppShell extends javax.swing.JFrame {
 
         eMenuBar.add(editMenu);
 
+        userMenu.setText("User");
+
+        logOutMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/log-out14.png"))); // NOI18N
+        logOutMenuItem.setText("Log Out");
+        userMenu.add(logOutMenuItem);
+
+        eMenuBar.add(userMenu);
+
         helpMenu.setText("Help");
 
         aboutMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/question-mark-14.png"))); // NOI18N
@@ -535,6 +545,7 @@ public class AppShell extends javax.swing.JFrame {
     private javax.swing.JPanel homePanel;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel lockPanel;
+    private javax.swing.JMenuItem logOutMenuItem;
     private javax.swing.JLabel logoLabel;
     private javax.swing.JComboBox<JobLevel> lvlBox;
     private javax.swing.JLabel lvlLabel;
@@ -552,5 +563,6 @@ public class AppShell extends javax.swing.JFrame {
     private javax.swing.JPanel sidePanel;
     private javax.swing.JLabel titleLabel;
     private javax.swing.JButton updateButton;
+    private javax.swing.JMenu userMenu;
     // End of variables declaration//GEN-END:variables
 }
