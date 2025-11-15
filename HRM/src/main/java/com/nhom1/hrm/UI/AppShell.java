@@ -29,8 +29,10 @@ public class AppShell extends javax.swing.JFrame {
         eSplitPane.setRightComponent(deck);
         deck.addCard("HOME", homePanel);
         deck.addCard("ABOUT", aboutPanel);
+        deck.addCard("STATS", statsPanel);
         deck.showCard("HOME");
         SideBar.switchCardOnClick(homeButton, deck, "HOME");
+        SideBar.switchCardOnClick(statsButton, deck, "STATS");
         MenuBar.aboutSwitchCardOnClick(aboutMenuItem, deck, "ABOUT");
         
         AfterInit.setgetComboBox(deptBox, lvlBox, eduBox, genderBox, eTable, addButton, delButton);
@@ -47,6 +49,7 @@ public class AppShell extends javax.swing.JFrame {
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         KeyBind.bindEscToClose(this);
+        
     }
 
     /**
@@ -62,8 +65,13 @@ public class AppShell extends javax.swing.JFrame {
         sidePanel = new javax.swing.JPanel();
         logoLabel = new javax.swing.JLabel();
         homeButton = new javax.swing.JButton();
+        statsButton = new javax.swing.JButton();
         contentPanel = new javax.swing.JPanel();
-        lockPanel = new javax.swing.JPanel();
+        statsPanel = new javax.swing.JPanel();
+        genderPanel = new javax.swing.JPanel();
+        eduPanel = new javax.swing.JPanel();
+        deptPanel = new javax.swing.JPanel();
+        lvlPanel = new javax.swing.JPanel();
         homePanel = new javax.swing.JPanel();
         titleLabel = new javax.swing.JLabel();
         nameLabel = new javax.swing.JLabel();
@@ -133,23 +141,89 @@ public class AppShell extends javax.swing.JFrame {
         });
         sidePanel.add(homeButton);
 
+        statsButton.setBackground(new java.awt.Color(0, 133, 245));
+        statsButton.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        statsButton.setForeground(new java.awt.Color(255, 255, 255));
+        statsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/pie-chart20.png"))); // NOI18N
+        statsButton.setText("STATS");
+        statsButton.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
+        statsButton.setFocusPainted(false);
+        statsButton.setIconTextGap(6);
+        statsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                statsButtonActionPerformed(evt);
+            }
+        });
+        sidePanel.add(statsButton);
+
         eSplitPane.setLeftComponent(sidePanel);
 
         contentPanel.setBackground(new java.awt.Color(51, 204, 255));
         contentPanel.setLayout(new java.awt.CardLayout());
 
-        javax.swing.GroupLayout lockPanelLayout = new javax.swing.GroupLayout(lockPanel);
-        lockPanel.setLayout(lockPanelLayout);
-        lockPanelLayout.setHorizontalGroup(
-            lockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 866, Short.MAX_VALUE)
+        statsPanel.setLayout(new java.awt.GridLayout(2, 2, 8, 8));
+
+        genderPanel.setBackground(new java.awt.Color(255, 204, 102));
+
+        javax.swing.GroupLayout genderPanelLayout = new javax.swing.GroupLayout(genderPanel);
+        genderPanel.setLayout(genderPanelLayout);
+        genderPanelLayout.setHorizontalGroup(
+            genderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 429, Short.MAX_VALUE)
         );
-        lockPanelLayout.setVerticalGroup(
-            lockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 890, Short.MAX_VALUE)
+        genderPanelLayout.setVerticalGroup(
+            genderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 441, Short.MAX_VALUE)
         );
 
-        contentPanel.add(lockPanel, "card3");
+        statsPanel.add(genderPanel);
+
+        eduPanel.setBackground(new java.awt.Color(255, 102, 102));
+
+        javax.swing.GroupLayout eduPanelLayout = new javax.swing.GroupLayout(eduPanel);
+        eduPanel.setLayout(eduPanelLayout);
+        eduPanelLayout.setHorizontalGroup(
+            eduPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 429, Short.MAX_VALUE)
+        );
+        eduPanelLayout.setVerticalGroup(
+            eduPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 441, Short.MAX_VALUE)
+        );
+
+        statsPanel.add(eduPanel);
+
+        deptPanel.setBackground(new java.awt.Color(204, 255, 0));
+
+        javax.swing.GroupLayout deptPanelLayout = new javax.swing.GroupLayout(deptPanel);
+        deptPanel.setLayout(deptPanelLayout);
+        deptPanelLayout.setHorizontalGroup(
+            deptPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 429, Short.MAX_VALUE)
+        );
+        deptPanelLayout.setVerticalGroup(
+            deptPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 441, Short.MAX_VALUE)
+        );
+
+        statsPanel.add(deptPanel);
+
+        lvlPanel.setBackground(new java.awt.Color(51, 0, 255));
+
+        javax.swing.GroupLayout lvlPanelLayout = new javax.swing.GroupLayout(lvlPanel);
+        lvlPanel.setLayout(lvlPanelLayout);
+        lvlPanelLayout.setHorizontalGroup(
+            lvlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 429, Short.MAX_VALUE)
+        );
+        lvlPanelLayout.setVerticalGroup(
+            lvlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 441, Short.MAX_VALUE)
+        );
+
+        statsPanel.add(lvlPanel);
+
+        contentPanel.add(statsPanel, "card3");
 
         homePanel.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -493,6 +567,15 @@ public class AppShell extends javax.swing.JFrame {
         MenuBar.onLogoutAndRelaunch(this, null, AppShell::new , true);
     }//GEN-LAST:event_logOutMenuItemActionPerformed
 
+    private void statsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statsButtonActionPerformed
+        // TODO add your handling code here:
+        //Stats Charts
+        StatsCharts.loadGenderChartInto(genderPanel);
+        StatsCharts.loadDepartmentChartInto(deptPanel);
+        StatsCharts.loadJobLevelChartInto(lvlPanel);
+        StatsCharts.loadEducationChartInto(eduPanel);
+    }//GEN-LAST:event_statsButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -538,6 +621,7 @@ public class AppShell extends javax.swing.JFrame {
     private javax.swing.JButton delButton;
     private javax.swing.JComboBox<Department> deptBox;
     private javax.swing.JLabel deptLabel;
+    private javax.swing.JPanel deptPanel;
     private javax.swing.JMenuBar eMenuBar;
     private javax.swing.JScrollPane eScrollPane;
     private javax.swing.JSplitPane eSplitPane;
@@ -545,19 +629,21 @@ public class AppShell extends javax.swing.JFrame {
     private javax.swing.JMenu editMenu;
     private javax.swing.JComboBox<Education> eduBox;
     private javax.swing.JLabel eduLabel;
+    private javax.swing.JPanel eduPanel;
     private javax.swing.JMenuItem exportMenuItem;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JComboBox<Gender> genderBox;
     private javax.swing.JLabel genderLabel;
+    private javax.swing.JPanel genderPanel;
     private javax.swing.JMenu helpMenu;
     private javax.swing.JButton homeButton;
     private javax.swing.JPanel homePanel;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel lockPanel;
     private javax.swing.JMenuItem logOutMenuItem;
     private javax.swing.JLabel logoLabel;
     private javax.swing.JComboBox<JobLevel> lvlBox;
     private javax.swing.JLabel lvlLabel;
+    private javax.swing.JPanel lvlPanel;
     private javax.swing.JTextField mailField;
     private javax.swing.JLabel mailLabel;
     private javax.swing.JTextField nameField;
@@ -570,6 +656,8 @@ public class AppShell extends javax.swing.JFrame {
     private javax.swing.JButton searchButton;
     private javax.swing.JMenuItem selectedMenuItem;
     private javax.swing.JPanel sidePanel;
+    private javax.swing.JButton statsButton;
+    private javax.swing.JPanel statsPanel;
     private javax.swing.JLabel titleLabel;
     private javax.swing.JButton updateButton;
     private javax.swing.JMenu userMenu;
