@@ -31,7 +31,14 @@ import com.nhom1.hrm.SQL.StatsDAO;
 public class StatsCharts {
     public static ChartPanel pie(String title, Map<String,Integer> data) {
         DefaultPieDataset<String> ds = new DefaultPieDataset<>();
+        
+        //short ver
         data.forEach(ds::setValue);
+        //full ver
+        /*for (var e : data.entrySet()) {
+            ds.setValue(e.getKey(), e.getValue());
+        }*/
+
         JFreeChart chart = ChartFactory.createPieChart(title, ds, true, true, false);
 
         PiePlot plot = (PiePlot) chart.getPlot();
@@ -60,7 +67,7 @@ public class StatsCharts {
         host.repaint();
     }
 
-    // ====== chính: nạp & vẽ cho 1 panel ======
+    //
     public static void loadGenderChartInto(JPanel genderPanel) {
         try (Connection c = ConnectSQL.getConnection()) {
             var byGender = StatsDAO.countByGender(c); // lấy Map<String,Integer> từ DB
@@ -72,7 +79,7 @@ public class StatsCharts {
         }
     }
 
-    // Ví dụ thêm: Department / Education / JobLevel
+    //
     public static void loadDepartmentChartInto(JPanel deptPanel) {
         try (Connection c = ConnectSQL.getConnection()) {
             var byDept = StatsDAO.countByDepartment(c);

@@ -265,6 +265,8 @@ public class AppShell extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        eTable.setGridColor(new java.awt.Color(0, 0, 0));
+        eTable.setShowGrid(true);
         eScrollPane.setViewportView(eTable);
 
         addButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/checked14.png"))); // NOI18N
