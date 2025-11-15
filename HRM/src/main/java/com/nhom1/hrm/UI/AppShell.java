@@ -4,15 +4,11 @@
  */
 package com.nhom1.hrm.UI;
 
-import java.sql.Connection;
-
 import javax.swing.ImageIcon;
-
 import com.nhom1.hrm.Models.Department;
 import com.nhom1.hrm.Models.Education;
 import com.nhom1.hrm.Models.Gender;
 import com.nhom1.hrm.Models.JobLevel;
-import com.nhom1.hrm.SQL.ConnectSQL;
 import com.nhom1.hrm.UI.ComboBox.CustomColor;
 
 /**

@@ -4,6 +4,8 @@
  */
 package com.nhom1.hrm.UI;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author Kris
@@ -20,6 +22,8 @@ public class LogInDialog extends javax.swing.JDialog {
         UpdateUI.LaFUI();
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         KeyBind.bindEscToClose(this);
+        setIconImage(new ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/profile14.png")).getImage());
+
     }
 
     /**
@@ -61,6 +65,7 @@ public class LogInDialog extends javax.swing.JDialog {
             }
         });
 
+        logInButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/import14.png"))); // NOI18N
         logInButton.setText("LOG IN");
         logInButton.setFocusPainted(false);
         logInButton.addActionListener(new java.awt.event.ActionListener() {
@@ -69,6 +74,7 @@ public class LogInDialog extends javax.swing.JDialog {
             }
         });
 
+        cancelButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/cancel14.png"))); // NOI18N
         cancelButton.setText("CANCEL");
         cancelButton.setFocusPainted(false);
         cancelButton.addActionListener(new java.awt.event.ActionListener() {
@@ -97,7 +103,7 @@ public class LogInDialog extends javax.swing.JDialog {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(userTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
                             .addComponent(userPasswordField))))
-                .addContainerGap(146, Short.MAX_VALUE))
+                .addContainerGap(114, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

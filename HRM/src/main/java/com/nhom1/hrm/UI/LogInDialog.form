@@ -44,7 +44,7 @@
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="146" max="32767" attributes="0"/>
+              <EmptySpace pref="114" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -95,6 +95,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="logInButton">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/com/nhom1/hrm/Asset/import14.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="LOG IN"/>
         <Property name="focusPainted" type="boolean" value="false"/>
       </Properties>
@@ -104,6 +107,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="cancelButton">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/com/nhom1/hrm/Asset/cancel14.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="CANCEL"/>
         <Property name="focusPainted" type="boolean" value="false"/>
       </Properties>
