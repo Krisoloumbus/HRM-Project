@@ -4,6 +4,10 @@
 
 package com.nhom1.hrm;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.function.Supplier;
+
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
@@ -33,8 +37,17 @@ public class HRM {
         SwingUtilities.invokeLater(() -> new AppShell().setVisible(true));
         */
 
-         SwingUtilities.invokeLater(() -> {
-            try (var con = ConnectSQL.getConnection()) {
+        SwingUtilities.invokeLater(() -> {
+            try {
+                Supplier<Connection> connFactory = () -> {
+                    try {
+                    return ConnectSQL.getConnection();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    throw new RuntimeException("Connection error: ", e);
+                }
+                };
+                try (Connection con = connFactory.get()) {
                 // Tạo bảng nhân sự của bạn như cũ
                 Table.createEmpIfNotHave(con);
                 // Đảm bảo có bảng Users
@@ -45,22 +58,28 @@ public class HRM {
                     // Failed check due to no user, try to create
                     UserDAO.createUser(con, "admin", "123".toCharArray());
                 }
-
-                // Login dialog
-                AuthProvider auth = (u, p) -> {
-                    try { return UserDAO.check(con, u, p); }
-                    catch (Exception ex) {
-                        ex.printStackTrace();
-                        JOptionPane.showMessageDialog(null, "Auth error: " + ex.getMessage());
-                        return false;
-                    }
-                };
-
-                boolean ok = LoginController.showDialog(null, auth);
-                if (!ok) {
-                    System.exit(0);
+            } catch (Exception e){
+                JOptionPane.showMessageDialog(null, "DB error: " + e.getMessage());
+            }
+            
+            // Login dialog
+            AuthProvider auth = (u, p) -> {
+                try (Connection con = connFactory.get()) { return UserDAO.check(con, u, p); }
+                catch (Exception ex) {
+                    ex.printStackTrace();
+                    JOptionPane.showMessageDialog(null, "Auth error: " + ex.getMessage());
+                    return false;
                 }
-                new AppShell().setVisible(true);
+            };
+
+            boolean ok = LoginController.showDialog(null, auth);
+            if (!ok) {
+                System.exit(0);
+            }
+
+            AppShell app = new AppShell();
+            app.getRootPane().putClientProperty("auth", auth);
+            app.setVisible(true);
 
             } catch (Exception e) {
                 e.printStackTrace();

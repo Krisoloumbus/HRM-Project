@@ -4,12 +4,15 @@
  */
 package com.nhom1.hrm.UI;
 
+import java.sql.Connection;
+
 import javax.swing.ImageIcon;
 
 import com.nhom1.hrm.Models.Department;
 import com.nhom1.hrm.Models.Education;
 import com.nhom1.hrm.Models.Gender;
 import com.nhom1.hrm.Models.JobLevel;
+import com.nhom1.hrm.SQL.ConnectSQL;
 import com.nhom1.hrm.UI.ComboBox.CustomColor;
 
 /**
@@ -414,6 +417,11 @@ public class AppShell extends javax.swing.JFrame {
 
         logOutMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/log-out14.png"))); // NOI18N
         logOutMenuItem.setText("Log Out");
+        logOutMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logOutMenuItemActionPerformed(evt);
+            }
+        });
         userMenu.add(logOutMenuItem);
 
         eMenuBar.add(userMenu);
@@ -483,6 +491,11 @@ public class AppShell extends javax.swing.JFrame {
         // TODO add your handling code here:
         MenuBar.onExport(this, eTable);
     }//GEN-LAST:event_exportMenuItemActionPerformed
+
+    private void logOutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutMenuItemActionPerformed
+        // TODO add your handling code here:
+        MenuBar.onLogoutAndRelaunch(this, null, AppShell::new , true);
+    }//GEN-LAST:event_logOutMenuItemActionPerformed
 
     /**
      * @param args the command line arguments

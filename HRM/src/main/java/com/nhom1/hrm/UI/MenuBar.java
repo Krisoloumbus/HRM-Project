@@ -3,9 +3,11 @@ package com.nhom1.hrm.UI;
 import java.awt.Component;
 import java.io.File;
 import java.io.IOException;
+import java.util.function.Supplier;
 
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -89,5 +91,56 @@ public class MenuBar {
                 }
             }
         }
+    }
+
+    public static void onLogoutAndRelaunch(JFrame appFrame,
+                                           AuthProvider auth,
+                                           Supplier<? extends JFrame> appFactory,
+                                           boolean confirm) {
+        // 1) Confirm (nếu cần)
+        if (confirm) {
+            int c = JOptionPane.showConfirmDialog(
+                    appFrame,
+                    "Are you sure you want to log out?",
+                    "Confirm log out",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.QUESTION_MESSAGE
+            );
+            if (c != JOptionPane.YES_OPTION) return;
+        }
+
+        // 2) Đóng AppShell hiện tại
+        if (appFrame != null) {
+            appFrame.dispose();
+        }
+
+        // 3) Lấy AuthProvider (nếu bạn không truyền vào thì thử lấy từ clientProperty)
+        if (auth == null && appFrame != null) {
+            Object v = appFrame.getRootPane().getClientProperty("auth");
+            if (v instanceof AuthProvider) auth = (AuthProvider) v;
+        }
+
+        // 4) Hiện lại màn hình đăng nhập
+        boolean ok = LoginController.showDialog(null, auth);
+        if (!ok) {
+            System.exit(0); // người dùng Cancel ở login -> thoát hẳn
+            return;
+        }
+
+        // 5) Đăng nhập thành công -> tạo lại AppShell và hiển thị
+        JFrame newApp = (appFactory != null) ? appFactory.get() : null;
+        if (newApp == null) {
+            JOptionPane.showMessageDialog(null, "Cannot relaunch app: appFactory is null");
+            System.exit(0);
+            return;
+        }
+
+        // truyền lại auth cho vòng đời mới (nếu có)
+        if (auth != null) {
+            newApp.getRootPane().putClientProperty("auth", auth);
+        }
+
+        newApp.setLocationRelativeTo(null);
+        newApp.setVisible(true);
     }
 }
