@@ -22,7 +22,8 @@ public class LogInDialog extends javax.swing.JDialog {
         UpdateUI.LaFUI();
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         KeyBind.bindEscToClose(this);
-        setIconImage(new ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/profile14.png")).getImage());
+        loadIcon.getResources("profile14.png");
+        //setIconImage(new ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/profile14.png")).getImage());
 
     }
 

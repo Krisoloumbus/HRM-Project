@@ -47,6 +47,28 @@
         <exec.mainClass>com.nhom1.hrm.HRM</exec.mainClass>
     </properties>
     <build>
+    <!-- Đảm bảo copy tài nguyên vào JAR -->
+  <resources>
+    <!-- Tất cả file trong src/main/resources -->
+    <resource>
+      <directory>src/main/resources</directory>
+      <includes>
+        <include>**/*</include>
+      </includes>
+      <filtering>false</filtering>
+    </resource>
+
+    <!-- (Tùy chọn) Nếu hiện bạn còn để db.env ở chỗ khác,
+         có thể thêm resource riêng cho nó. Tốt nhất vẫn là
+         DI CHUYỂN db.env vào src/main/resources -->
+    <resource>
+      <directory>src/main/java/com/nhom1/hrm/SQL</directory>
+      <includes>
+        <include>db.env</include>
+      </includes>
+      <filtering>false</filtering>
+    </resource>
+  </resources>
         <plugins>
         <!-- Tạo fat-jar có Main-Class và Implementation-Version -->
             <plugin>

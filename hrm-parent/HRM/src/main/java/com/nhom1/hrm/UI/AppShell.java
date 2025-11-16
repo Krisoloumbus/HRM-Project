@@ -4,8 +4,6 @@
  */
 package com.nhom1.hrm.UI;
 
-import javax.swing.ImageIcon;
-
 import com.nhom1.hrm.AppUpdate.UpdaterLauncher;
 import com.nhom1.hrm.AppUpdate.VersionUtils;
 import com.nhom1.hrm.Models.Department;
@@ -49,7 +47,8 @@ public class AppShell extends javax.swing.JFrame {
         
         //Set App Icon when run
         //D:\Coding\Java\HRM-Project\HRM\src\main\java\com\nhom1\hrm\Asset\appIconf.png
-        setIconImage(new ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/hr-manager.png")).getImage());
+        //setIconImage(new ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/hr-manager.png")).getImage());
+        loadIcon.getResources("hr-manager.png");
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         KeyBind.bindEscToClose(this);
