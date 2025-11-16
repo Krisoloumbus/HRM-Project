@@ -562,7 +562,7 @@ public class AppShell extends javax.swing.JFrame {
 
     private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
         // TODO add your handling code here:
-        VersionUtils.currentVersion();
+        VersionUtils.getVersion();
     }//GEN-LAST:event_aboutMenuItemActionPerformed
 
     private void genderBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genderBoxActionPerformed

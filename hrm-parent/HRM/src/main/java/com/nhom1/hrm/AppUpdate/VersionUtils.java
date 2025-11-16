@@ -4,6 +4,8 @@
  */
 package com.nhom1.hrm.AppUpdate;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Kris
@@ -25,5 +27,9 @@ public class VersionUtils {
             if (ai != bi) return Integer.compare(ai, bi);
         }
         return 0;
+    }
+
+    public static void getVersion() {
+        JOptionPane.showMessageDialog(null,"Version: " + currentVersion());
     }
 }
