@@ -4,6 +4,8 @@
  */
 package com.nhom1.hrm.UI;
 
+import java.awt.Image;
+
 import javax.swing.ImageIcon;
 
 /**
@@ -22,8 +24,10 @@ public class LogInDialog extends javax.swing.JDialog {
         UpdateUI.LaFUI();
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         KeyBind.bindEscToClose(this);
-        loadIcon.getResources("profile14.png");
+        //loadIcon.getResources("profile14.png");
         //setIconImage(new ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/profile14.png")).getImage());
+        System.out.println("Find: " + LoadIcon.url("/Asset/profile14.png"));
+        setIconImage(LoadIcon.image("profile14.png"));
 
     }
 
