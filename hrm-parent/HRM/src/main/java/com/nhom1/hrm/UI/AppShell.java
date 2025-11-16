@@ -30,8 +30,9 @@ public class AppShell extends javax.swing.JFrame {
         Cards deck = new Cards();
         eSplitPane.setRightComponent(deck);
         deck.addCard("HOME", homePanel);
-        deck.addCard("ABOUT", inf);
         deck.addCard("STATS", statsPanel);
+        //deck.addCard("INFO");
+        deck.addCard("editingByEID");
         deck.showCard("HOME");
         SideBar.switchCardOnClick(homeButton, deck, "HOME");
         SideBar.switchCardOnClick(statsButton, deck, "STATS");
