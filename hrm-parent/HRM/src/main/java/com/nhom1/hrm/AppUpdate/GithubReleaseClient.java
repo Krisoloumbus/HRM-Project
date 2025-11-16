@@ -23,8 +23,8 @@ public class GithubReleaseClient {
     private GithubReleaseClient(){}
 
     // TODO: ĐỔI theo repo của bạn
-    public static final String OWNER = "your-user-or-org";
-    public static final String REPO  = "your-repo";
+    public static final String OWNER = "Krisoloumbus";
+    public static final String REPO  = "HRM-Project";
     public static final String ASSET_NAME = "hrm-app.jar";
     public static Optional<String> GITHUB_TOKEN = Optional.empty(); // private repo -> Optional.of("ghp_xxx")
 

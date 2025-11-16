@@ -30,7 +30,7 @@ public class AppShell extends javax.swing.JFrame {
         Cards deck = new Cards();
         eSplitPane.setRightComponent(deck);
         deck.addCard("HOME", homePanel);
-        deck.addCard("ABOUT", aboutPanel);
+        deck.addCard("ABOUT", inf);
         deck.addCard("STATS", statsPanel);
         deck.showCard("HOME");
         SideBar.switchCardOnClick(homeButton, deck, "HOME");
@@ -68,6 +68,7 @@ public class AppShell extends javax.swing.JFrame {
         logoLabel = new javax.swing.JLabel();
         homeButton = new javax.swing.JButton();
         statsButton = new javax.swing.JButton();
+        infoButton = new javax.swing.JButton();
         contentPanel = new javax.swing.JPanel();
         statsPanel = new javax.swing.JPanel();
         genderPanel = new javax.swing.JPanel();
@@ -159,6 +160,21 @@ public class AppShell extends javax.swing.JFrame {
         });
         sidePanel.add(statsButton);
 
+        infoButton.setBackground(new java.awt.Color(0, 133, 245));
+        infoButton.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        infoButton.setForeground(new java.awt.Color(255, 255, 255));
+        infoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/info20.png"))); // NOI18N
+        infoButton.setText("INFO");
+        infoButton.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
+        infoButton.setFocusPainted(false);
+        infoButton.setIconTextGap(6);
+        infoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                infoButtonActionPerformed(evt);
+            }
+        });
+        sidePanel.add(infoButton);
+
         eSplitPane.setLeftComponent(sidePanel);
 
         contentPanel.setBackground(new java.awt.Color(51, 204, 255));
@@ -172,7 +188,7 @@ public class AppShell extends javax.swing.JFrame {
         genderPanel.setLayout(genderPanelLayout);
         genderPanelLayout.setHorizontalGroup(
             genderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 429, Short.MAX_VALUE)
+            .addGap(0, 422, Short.MAX_VALUE)
         );
         genderPanelLayout.setVerticalGroup(
             genderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -187,7 +203,7 @@ public class AppShell extends javax.swing.JFrame {
         eduPanel.setLayout(eduPanelLayout);
         eduPanelLayout.setHorizontalGroup(
             eduPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 429, Short.MAX_VALUE)
+            .addGap(0, 422, Short.MAX_VALUE)
         );
         eduPanelLayout.setVerticalGroup(
             eduPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -202,7 +218,7 @@ public class AppShell extends javax.swing.JFrame {
         deptPanel.setLayout(deptPanelLayout);
         deptPanelLayout.setHorizontalGroup(
             deptPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 429, Short.MAX_VALUE)
+            .addGap(0, 422, Short.MAX_VALUE)
         );
         deptPanelLayout.setVerticalGroup(
             deptPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -217,7 +233,7 @@ public class AppShell extends javax.swing.JFrame {
         lvlPanel.setLayout(lvlPanelLayout);
         lvlPanelLayout.setHorizontalGroup(
             lvlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 429, Short.MAX_VALUE)
+            .addGap(0, 422, Short.MAX_VALUE)
         );
         lvlPanelLayout.setVerticalGroup(
             lvlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -342,7 +358,7 @@ public class AppShell extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, homePanelLayout.createSequentialGroup()
                                 .addGroup(homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(nameField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+                                    .addComponent(nameField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
                                     .addComponent(ad_dressField, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(phoneField))
                                 .addGap(215, 215, 215)))
@@ -446,7 +462,7 @@ public class AppShell extends javax.swing.JFrame {
             .addGroup(aboutPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addContainerGap(781, Short.MAX_VALUE))
+                .addContainerGap(767, Short.MAX_VALUE))
         );
         aboutPanelLayout.setVerticalGroup(
             aboutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -512,7 +528,7 @@ public class AppShell extends javax.swing.JFrame {
         });
         helpMenu.add(aboutMenuItem);
 
-        appUpdateMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/question-mark-14.png"))); // NOI18N
+        appUpdateMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/appupdate14.png"))); // NOI18N
         appUpdateMenuItem.setText("Check for update");
         appUpdateMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -595,6 +611,10 @@ public class AppShell extends javax.swing.JFrame {
         UpdaterLauncher.runUpdateAndRelaunch(this);
     }//GEN-LAST:event_appUpdateMenuItemActionPerformed
 
+    private void infoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_infoButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_infoButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -658,6 +678,7 @@ public class AppShell extends javax.swing.JFrame {
     private javax.swing.JMenu helpMenu;
     private javax.swing.JButton homeButton;
     private javax.swing.JPanel homePanel;
+    private javax.swing.JButton infoButton;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuItem logOutMenuItem;
     private javax.swing.JLabel logoLabel;
