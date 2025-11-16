@@ -7,6 +7,7 @@ package com.nhom1.hrm.UI;
 import javax.swing.ImageIcon;
 
 import com.nhom1.hrm.AppUpdate.UpdaterLauncher;
+import com.nhom1.hrm.AppUpdate.VersionUtils;
 import com.nhom1.hrm.Models.Department;
 import com.nhom1.hrm.Models.Education;
 import com.nhom1.hrm.Models.Gender;
@@ -31,12 +32,12 @@ public class AppShell extends javax.swing.JFrame {
         eSplitPane.setRightComponent(deck);
         deck.addCard("HOME", homePanel);
         deck.addCard("STATS", statsPanel);
-        //deck.addCard("INFO");
-        deck.addCard("editingByEID");
+        deck.addCard("INFO", infoPanel);
         deck.showCard("HOME");
         SideBar.switchCardOnClick(homeButton, deck, "HOME");
         SideBar.switchCardOnClick(statsButton, deck, "STATS");
-        MenuBar.aboutSwitchCardOnClick(aboutMenuItem, deck, "ABOUT");
+        SideBar.switchCardOnClick(infoButton, deck, "INFO");
+        //MenuBar.aboutSwitchCardOnClick(aboutMenuItem, deck, "ABOUT");
         
         AfterInit.setgetComboBox(deptBox, lvlBox, eduBox, genderBox, eTable, addButton, delButton);
         try {
@@ -103,7 +104,7 @@ public class AppShell extends javax.swing.JFrame {
         updateButton = new javax.swing.JButton();
         searchButton = new javax.swing.JButton();
         refreshButton = new javax.swing.JButton();
-        aboutPanel = new javax.swing.JPanel();
+        infoPanel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         eMenuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
@@ -456,24 +457,24 @@ public class AppShell extends javax.swing.JFrame {
 
         jLabel2.setText("Team 1 project");
 
-        javax.swing.GroupLayout aboutPanelLayout = new javax.swing.GroupLayout(aboutPanel);
-        aboutPanel.setLayout(aboutPanelLayout);
-        aboutPanelLayout.setHorizontalGroup(
-            aboutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(aboutPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout infoPanelLayout = new javax.swing.GroupLayout(infoPanel);
+        infoPanel.setLayout(infoPanelLayout);
+        infoPanelLayout.setHorizontalGroup(
+            infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(infoPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
                 .addContainerGap(767, Short.MAX_VALUE))
         );
-        aboutPanelLayout.setVerticalGroup(
-            aboutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(aboutPanelLayout.createSequentialGroup()
+        infoPanelLayout.setVerticalGroup(
+            infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(infoPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
                 .addContainerGap(868, Short.MAX_VALUE))
         );
 
-        contentPanel.add(aboutPanel, "card3");
+        contentPanel.add(infoPanel, "card3");
 
         eSplitPane.setRightComponent(contentPanel);
 
@@ -561,6 +562,7 @@ public class AppShell extends javax.swing.JFrame {
 
     private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
         // TODO add your handling code here:
+        VersionUtils.currentVersion();
     }//GEN-LAST:event_aboutMenuItemActionPerformed
 
     private void genderBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genderBoxActionPerformed
@@ -653,7 +655,6 @@ public class AppShell extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem aboutMenuItem;
-    private javax.swing.JPanel aboutPanel;
     private javax.swing.JTextField ad_dressField;
     private javax.swing.JButton addButton;
     private javax.swing.JMenuItem appUpdateMenuItem;
@@ -680,6 +681,7 @@ public class AppShell extends javax.swing.JFrame {
     private javax.swing.JButton homeButton;
     private javax.swing.JPanel homePanel;
     private javax.swing.JButton infoButton;
+    private javax.swing.JPanel infoPanel;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuItem logOutMenuItem;
     private javax.swing.JLabel logoLabel;
