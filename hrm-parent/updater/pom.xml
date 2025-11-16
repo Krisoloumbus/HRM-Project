@@ -44,7 +44,7 @@
         </plugins>
     </build>
     <properties>
-        <maven.compiler.release>24</maven.compiler.release>
+        <maven.compiler.release>21</maven.compiler.release> <!-- From 24 to 21 -->
         <exec.mainClass>com.nhom1.updater.Updater</exec.mainClass>
     </properties>
 </project>
