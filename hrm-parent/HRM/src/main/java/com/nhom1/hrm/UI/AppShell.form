@@ -11,9 +11,6 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="exportMenuItem">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/com/nhom1/hrm/Asset/upload14.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Export"/>
               </Properties>
               <Events>
@@ -29,9 +26,6 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="selectedMenuItem">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/com/nhom1/hrm/Asset/checked14.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Selected"/>
               </Properties>
               <Events>
@@ -47,9 +41,6 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="logOutMenuItem">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/com/nhom1/hrm/Asset/log-out14.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Log Out"/>
               </Properties>
               <Events>
@@ -65,9 +56,6 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="aboutMenuItem">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/com/nhom1/hrm/Asset/question-mark-14.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="About"/>
               </Properties>
               <Events>
@@ -76,9 +64,6 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="appUpdateMenuItem">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/com/nhom1/hrm/Asset/appupdate14.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Check for update"/>
               </Properties>
               <Events>
@@ -92,6 +77,9 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="iconImages" type="java.util.List" editor="org.netbeans.modules.form.ComponentChooserEditor">
+      <ComponentRef name="null"/>
+    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="eMenuBar"/>
@@ -153,9 +141,6 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/com/nhom1/hrm/Asset/hr-manager70.png"/>
-                </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="homeButton">
@@ -168,9 +153,6 @@
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/com/nhom1/hrm/Asset/home20.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="HOME"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -196,9 +178,6 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/com/nhom1/hrm/Asset/pie-chart20.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="STATS"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
@@ -222,9 +201,6 @@
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/com/nhom1/hrm/Asset/info20.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="INFO"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -627,9 +603,6 @@
                 </Container>
                 <Component class="javax.swing.JButton" name="addButton">
                   <Properties>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/com/nhom1/hrm/Asset/checked14.png"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="ADD"/>
                   </Properties>
                   <Events>
@@ -638,9 +611,6 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="delButton">
                   <Properties>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/com/nhom1/hrm/Asset/cancel14.png"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="DELETE"/>
                   </Properties>
                   <Events>
@@ -674,9 +644,6 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="updateButton">
                   <Properties>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/com/nhom1/hrm/Asset/refresh14.png"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="UPDATE"/>
                   </Properties>
                   <Events>
@@ -685,9 +652,6 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="searchButton">
                   <Properties>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/com/nhom1/hrm/Asset/exclamation-mark14.png"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="SEARCH"/>
                   </Properties>
                   <Events>
@@ -696,9 +660,6 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="refreshButton">
                   <Properties>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/com/nhom1/hrm/Asset/reload14.png"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="REFRESH"/>
                   </Properties>
                   <Events>

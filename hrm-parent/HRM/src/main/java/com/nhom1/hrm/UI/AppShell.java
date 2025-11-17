@@ -4,10 +4,6 @@
  */
 package com.nhom1.hrm.UI;
 
-import java.awt.Image;
-
-import javax.swing.ImageIcon;
-
 import com.nhom1.hrm.AppUpdate.UpdaterLauncher;
 import com.nhom1.hrm.AppUpdate.VersionUtils;
 import com.nhom1.hrm.Models.Department;
@@ -55,6 +51,20 @@ public class AppShell extends javax.swing.JFrame {
         //setIconImage(loadIcon.image("hr-manager.png"));
         System.out.println("Find: " + LoadIcon.url("/Asset/hr-manager.png"));
         setIconImage(LoadIcon.image("hr-manager.png"));
+        logoLabel.setIcon(LoadIcon.icon("hr-manager70.png"));
+        homeButton.setIcon(LoadIcon.icon("home20.png"));
+        statsButton.setIcon(LoadIcon.icon("pie-chart20.png"));
+        infoButton.setIcon(LoadIcon.icon("info20.png"));
+        exportMenuItem.setIcon(LoadIcon.icon("upload14.png"));
+        logOutMenuItem.setIcon(LoadIcon.icon("log-out14.png"));
+        selectedMenuItem.setIcon(LoadIcon.icon("checked14.png"));
+        aboutMenuItem.setIcon(LoadIcon.icon("question-mark-14.png"));
+        appUpdateMenuItem.setIcon(LoadIcon.icon("update14.png"));
+        addButton.setIcon(LoadIcon.icon("plus-mark14.png"));
+        delButton.setIcon(LoadIcon.icon("cancel14.png"));
+        searchButton.setIcon(LoadIcon.icon("exclamation-mark14.png"));
+        updateButton.setIcon(LoadIcon.icon("refresh14.png"));
+        refreshButton.setIcon(LoadIcon.icon("reload14.png"));
         //loadIcon.getResources("hr-manager.png");
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -124,6 +134,7 @@ public class AppShell extends javax.swing.JFrame {
         appUpdateMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImages(null);
 
         eSplitPane.setDividerLocation(100);
         eSplitPane.setOneTouchExpandable(true);
@@ -135,13 +146,11 @@ public class AppShell extends javax.swing.JFrame {
         logoLabel.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         logoLabel.setForeground(new java.awt.Color(255, 255, 255));
         logoLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/hr-manager70.png"))); // NOI18N
         sidePanel.add(logoLabel);
 
         homeButton.setBackground(new java.awt.Color(0, 133, 245));
         homeButton.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         homeButton.setForeground(new java.awt.Color(255, 255, 255));
-        homeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/home20.png"))); // NOI18N
         homeButton.setText("HOME");
         homeButton.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         homeButton.setFocusPainted(false);
@@ -156,7 +165,6 @@ public class AppShell extends javax.swing.JFrame {
         statsButton.setBackground(new java.awt.Color(0, 133, 245));
         statsButton.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         statsButton.setForeground(new java.awt.Color(255, 255, 255));
-        statsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/pie-chart20.png"))); // NOI18N
         statsButton.setText("STATS");
         statsButton.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         statsButton.setFocusPainted(false);
@@ -171,7 +179,6 @@ public class AppShell extends javax.swing.JFrame {
         infoButton.setBackground(new java.awt.Color(0, 133, 245));
         infoButton.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         infoButton.setForeground(new java.awt.Color(255, 255, 255));
-        infoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/info20.png"))); // NOI18N
         infoButton.setText("INFO");
         infoButton.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         infoButton.setFocusPainted(false);
@@ -296,7 +303,6 @@ public class AppShell extends javax.swing.JFrame {
         eTable.setShowGrid(true);
         eScrollPane.setViewportView(eTable);
 
-        addButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/checked14.png"))); // NOI18N
         addButton.setText("ADD");
         addButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -304,7 +310,6 @@ public class AppShell extends javax.swing.JFrame {
             }
         });
 
-        delButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/cancel14.png"))); // NOI18N
         delButton.setText("DELETE");
         delButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -321,7 +326,6 @@ public class AppShell extends javax.swing.JFrame {
             }
         });
 
-        updateButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/refresh14.png"))); // NOI18N
         updateButton.setText("UPDATE");
         updateButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -329,7 +333,6 @@ public class AppShell extends javax.swing.JFrame {
             }
         });
 
-        searchButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/exclamation-mark14.png"))); // NOI18N
         searchButton.setText("SEARCH");
         searchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -337,7 +340,6 @@ public class AppShell extends javax.swing.JFrame {
             }
         });
 
-        refreshButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/reload14.png"))); // NOI18N
         refreshButton.setText("REFRESH");
         refreshButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -488,7 +490,6 @@ public class AppShell extends javax.swing.JFrame {
 
         fileMenu.setText("File");
 
-        exportMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/upload14.png"))); // NOI18N
         exportMenuItem.setText("Export");
         exportMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -501,7 +502,6 @@ public class AppShell extends javax.swing.JFrame {
 
         editMenu.setText("Edit");
 
-        selectedMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/checked14.png"))); // NOI18N
         selectedMenuItem.setText("Selected");
         selectedMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -514,7 +514,6 @@ public class AppShell extends javax.swing.JFrame {
 
         userMenu.setText("User");
 
-        logOutMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/log-out14.png"))); // NOI18N
         logOutMenuItem.setText("Log Out");
         logOutMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -527,7 +526,6 @@ public class AppShell extends javax.swing.JFrame {
 
         helpMenu.setText("Help");
 
-        aboutMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/question-mark-14.png"))); // NOI18N
         aboutMenuItem.setText("About");
         aboutMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -536,7 +534,6 @@ public class AppShell extends javax.swing.JFrame {
         });
         helpMenu.add(aboutMenuItem);
 
-        appUpdateMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/appupdate14.png"))); // NOI18N
         appUpdateMenuItem.setText("Check for update");
         appUpdateMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

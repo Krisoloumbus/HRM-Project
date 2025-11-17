@@ -4,10 +4,6 @@
  */
 package com.nhom1.hrm.UI;
 
-import java.awt.Image;
-
-import javax.swing.ImageIcon;
-
 /**
  *
  * @author Kris
@@ -27,6 +23,10 @@ public class LogInDialog extends javax.swing.JDialog {
         //loadIcon.getResources("profile14.png");
         //setIconImage(new ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/profile14.png")).getImage());
         System.out.println("Find: " + LoadIcon.url("/Asset/profile14.png"));
+        //Set icon button
+        logInButton.setIcon(LoadIcon.icon("import14.png"));
+        cancelButton.setIcon(LoadIcon.icon("cancel14.png"));
+        //Set icon JFrame/JDialog
         setIconImage(LoadIcon.image("profile14.png"));
 
     }
@@ -48,6 +48,8 @@ public class LogInDialog extends javax.swing.JDialog {
         cancelButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setIconImage(null);
+        setIconImages(null);
 
         userLabel.setText("User");
 
@@ -70,7 +72,6 @@ public class LogInDialog extends javax.swing.JDialog {
             }
         });
 
-        logInButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/import14.png"))); // NOI18N
         logInButton.setText("LOG IN");
         logInButton.setFocusPainted(false);
         logInButton.addActionListener(new java.awt.event.ActionListener() {
@@ -79,7 +80,6 @@ public class LogInDialog extends javax.swing.JDialog {
             }
         });
 
-        cancelButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/nhom1/hrm/Asset/cancel14.png"))); // NOI18N
         cancelButton.setText("CANCEL");
         cancelButton.setFocusPainted(false);
         cancelButton.addActionListener(new java.awt.event.ActionListener() {
@@ -108,7 +108,7 @@ public class LogInDialog extends javax.swing.JDialog {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(userTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
                             .addComponent(userPasswordField))))
-                .addContainerGap(114, Short.MAX_VALUE))
+                .addContainerGap(146, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

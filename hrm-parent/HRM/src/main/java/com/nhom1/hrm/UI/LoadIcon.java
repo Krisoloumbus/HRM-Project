@@ -8,6 +8,7 @@ import java.awt.Image;
 import java.net.URL;
 import java.util.Objects;
 
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 /**
@@ -30,19 +31,29 @@ public class LoadIcon {
         return new ImageIcon(u);
     }*/
 
+    private LoadIcon() {}
+
+    /** Lấy URL trong classpath (ném lỗi nếu không thấy) */
     public static URL url(String path) {
         return Objects.requireNonNull(
-            LoadIcon.class.getResource(path),
-            "Missing resource: " + path
+                LoadIcon.class.getResource(path),
+                "Missing resource: " + path
         );
     }
 
-    /** Lấy ImageIcon theo tên trong thư mục Asset/ */
+    /** Lấy ImageIcon từ thư mục Asset/ */
     public static ImageIcon icon(String name) {
         return new ImageIcon(url("/Asset/" + name));
     }
 
+    /** Lấy Image từ thư mục Asset/ */
     public static Image image(String name) {
         return icon(name).getImage();
+    }
+
+    /** Icon đã scale, tiện cho button/menu (tùy chọn) */
+    public static Icon iconScaled(String name, int w, int h) {
+        Image img = image(name).getScaledInstance(w, h, Image.SCALE_SMOOTH);
+        return new ImageIcon(img);
     }
 }
