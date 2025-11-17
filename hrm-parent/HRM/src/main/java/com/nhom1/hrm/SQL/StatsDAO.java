@@ -10,8 +10,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedHashMap;
 
-import com.nhom1.hrm.Models.Gender;
-
 /**
  *
  * @author Kris
