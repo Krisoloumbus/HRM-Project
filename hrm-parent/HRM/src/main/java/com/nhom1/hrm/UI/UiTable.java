@@ -13,7 +13,7 @@ public final class UiTable{
     private UiTable(){}
     public static void loadTable(JTable eTable)throws Exception{
         DefaultTableModel eModel = new DefaultTableModel(
-            new Object[]{"No","EID","Full Name","Gender","Education","Phone","Email","Department","Level","Salary"},0
+            new Object[]{"No","EID","Full Name","Gender","Education","Phone","Email","Address","Department","Level","Salary"},0
         ) {
             @Override public boolean isCellEditable(int rows, int collumn){return false;}
         };
@@ -22,7 +22,7 @@ public final class UiTable{
             var mm = new EmpDAO();
             for (var e : mm.findAll(c)){
                 eModel.addRow(new Object[]{e.getNo(), e.getEID(), e.getName(), e.getGender(), e.getEdu(), e.getPhone(),
-                e.getEmail(), e.getDepartment(), e.getLevel(), e.getSalary()});
+                e.getEmail(), e.getAddress(), e.getDepartment(), e.getLevel(), e.getSalary()});
             }
             eTable.setModel(eModel);
             eTable.setAutoCreateRowSorter(true);

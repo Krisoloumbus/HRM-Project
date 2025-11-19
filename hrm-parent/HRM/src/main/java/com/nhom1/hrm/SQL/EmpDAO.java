@@ -37,6 +37,7 @@ public class EmpDAO extends Employee {
                 e.setLevel(JobLevel.fromCodeToDB(rs.getString("Job_Level")));
                 e.setGender(Gender.fromCodeToDB(rs.getString("Gender")));
                 e.setSalary(rs.getBigDecimal("Salary"));
+                e.setAddress(rs.getString("Address"));
                 out.add(e);
             }
         }
@@ -47,8 +48,8 @@ public class EmpDAO extends Employee {
     public int insert(Connection c, Employee e) throws SQLException {
         String sql = """
             INSERT INTO dbo.Employees
-            (Full_Name, Gender, Phone, Email, Education, Department, Job_Level, Salary)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+            (Full_Name, Gender, Phone, Email, Education, Department, Job_Level, Salary, Address)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
         """;
         try (PreparedStatement ps = c.prepareStatement(sql)) {
             ps.setString(1, e.getName());
@@ -59,6 +60,7 @@ public class EmpDAO extends Employee {
             ps.setString(6, e.getDepartment().getCodeDB());
             ps.setString(7, e.getLevel().getCodeDB());
             ps.setBigDecimal(8, e.getSalary() != null ? e.getSalary() : BigDecimal.ZERO);
+            ps.setString(9, e.getAddress());
             return ps.executeUpdate();
         }
     }
@@ -78,7 +80,7 @@ public class EmpDAO extends Employee {
         String sql = """
             UPDATE dbo.Employees
             SET Full_Name = ?, Gender = ?, Phone = ?, Email = ?,
-            Education = ?, Department = ?, Job_Level = ?, Salary = ?
+            Education = ?, Department = ?, Job_Level = ?, Salary = ?, Address = ?
             WHERE EID = ?
         """;
         try (PreparedStatement ps = c.prepareStatement(sql)) {
@@ -90,7 +92,8 @@ public class EmpDAO extends Employee {
             ps.setString(6, e.getDepartment().getCodeDB());
             ps.setString(7, e.getLevel().getCodeDB());
             ps.setBigDecimal(8, e.getSalary() != null ? e.getSalary() : BigDecimal.ZERO);
-            ps.setString(9, e.getEID()); //
+            ps.setString(9, e.getAddress());
+            ps.setString(10, e.getEID()); //
             return ps.executeUpdate();
         }
     }
@@ -98,7 +101,7 @@ public class EmpDAO extends Employee {
     //This is the real Searching :)))))
     public List<Employee> searchEmployees(Connection c, String name, Gender gender,
     Education edu, JobLevel lvl, Department dept, String phone, String email) throws  SQLException {
-        StringBuilder sbSQL = new StringBuilder("SELECT EID, Full_Name, Gender, Education, Phone, Email, " + 
+        StringBuilder sbSQL = new StringBuilder("SELECT EID, Full_Name, Gender, Education, Phone, Email, Address, " + 
         "Department, Job_Level, Salary " + "FROM dbo.Employees WHERE 1=1");
             ArrayList<Object> params = new ArrayList<>();
             if(name != null && name.isBlank()){
@@ -135,6 +138,12 @@ public class EmpDAO extends Employee {
                 sbSQL.append("AND Email LIKE ?");
                 params.add("%" + email + "%");
             }
+
+            if(email != null && email.isBlank()){
+                sbSQL.append("AND Address LIKE ?");
+                params.add("%" + email + "%");
+            }
+
             try (PreparedStatement ps = c.prepareStatement(sbSQL.toString())){
                 for (int i = 0; i < params.size(); i ++) {
                     ps.setObject(i + 1, params.get(i));
@@ -152,6 +161,7 @@ public class EmpDAO extends Employee {
                     e.setDepartment(Department.fromCodeToDB(rs.getString("Department")));
                     e.setLevel(JobLevel.fromCodeToDB(rs.getString("Job_Level")));
                     e.setSalary(rs.getBigDecimal("Salary"));
+                    e.setAddress(rs.getString("Address"));
                     list.add(e);
                 }
                 return list;

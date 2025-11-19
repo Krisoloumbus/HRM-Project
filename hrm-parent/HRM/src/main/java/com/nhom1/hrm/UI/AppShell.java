@@ -102,7 +102,7 @@ public class AppShell extends javax.swing.JFrame {
         deptLabel = new javax.swing.JLabel();
         phoneLabel = new javax.swing.JLabel();
         mailLabel = new javax.swing.JLabel();
-        dateLabel = new javax.swing.JLabel();
+        ad_dressLabel = new javax.swing.JLabel();
         deptBox = new javax.swing.JComboBox<>();
         lvlBox = new javax.swing.JComboBox<>();
         eduBox = new javax.swing.JComboBox<>();
@@ -285,8 +285,8 @@ public class AppShell extends javax.swing.JFrame {
         mailLabel.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         mailLabel.setText("Email:");
 
-        dateLabel.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        dateLabel.setText("Address");
+        ad_dressLabel.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        ad_dressLabel.setText("Address");
 
         eTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -355,7 +355,7 @@ public class AppShell extends javax.swing.JFrame {
                 .addGap(46, 46, 46)
                 .addGroup(homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(eduLabel)
-                    .addComponent(dateLabel)
+                    .addComponent(ad_dressLabel)
                     .addComponent(phoneLabel)
                     .addComponent(mailLabel)
                     .addComponent(nameLabel))
@@ -426,7 +426,7 @@ public class AppShell extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(deptLabel)
-                    .addComponent(dateLabel)
+                    .addComponent(ad_dressLabel)
                     .addComponent(deptBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ad_dressField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -551,7 +551,7 @@ public class AppShell extends javax.swing.JFrame {
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         // TODO add your handling code here:
-        ButtonAtcion.onAdd(nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, mailField, salaryField, eTable);
+        ButtonAtcion.onAdd(nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, mailField, salaryField, eTable, ad_dressField);
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void delButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delButtonActionPerformed
@@ -574,7 +574,7 @@ public class AppShell extends javax.swing.JFrame {
 
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
         // TODO add your handling code here:
-        ButtonAtcion.onUpdate(editingByEID, nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, mailField, salaryField, eTable);
+        ButtonAtcion.onUpdate(editingByEID, nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, mailField, salaryField, eTable, ad_dressField);
         editingByEID = null;
     }//GEN-LAST:event_updateButtonActionPerformed
 
@@ -585,12 +585,12 @@ public class AppShell extends javax.swing.JFrame {
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         // TODO add your handling code here:
-        ButtonAtcion.onSearch(nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, mailField, salaryField, eTable);
+        ButtonAtcion.onSearch(nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, mailField, salaryField, eTable, ad_dressField);
     }//GEN-LAST:event_searchButtonActionPerformed
 
     private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed
         // TODO add your handling code here:
-        ButtonAtcion.onRefresh(nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, mailField, salaryField, eTable);
+        ButtonAtcion.onRefresh(nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, mailField, salaryField, eTable, ad_dressField);
     }//GEN-LAST:event_refreshButtonActionPerformed
 
     private void exportMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportMenuItemActionPerformed
@@ -659,10 +659,10 @@ public class AppShell extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem aboutMenuItem;
     private javax.swing.JTextField ad_dressField;
+    private javax.swing.JLabel ad_dressLabel;
     private javax.swing.JButton addButton;
     private javax.swing.JMenuItem appUpdateMenuItem;
     private javax.swing.JPanel contentPanel;
-    private javax.swing.JLabel dateLabel;
     private javax.swing.JButton delButton;
     private javax.swing.JComboBox<Department> deptBox;
     private javax.swing.JLabel deptLabel;

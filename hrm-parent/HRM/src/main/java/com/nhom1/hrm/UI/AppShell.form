@@ -346,7 +346,7 @@
                           <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="eduLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="dateLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="ad_dressLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="phoneLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="mailLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="nameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -437,7 +437,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="deptLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="dateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="ad_dressLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="deptBox" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="ad_dressField" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -547,7 +547,7 @@
                     <Property name="text" type="java.lang.String" value="Email:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="dateLabel">
+                <Component class="javax.swing.JLabel" name="ad_dressLabel">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>

@@ -27,7 +27,7 @@ import com.nhom1.hrm.Models.JobLevel;
 public final class Function {
     private Function(){}
     public static boolean validateInput(JTextField nameField, JComboBox<Education> eduBox, JComboBox<Gender> genderBox,
-       JComboBox<Department> deptBox, JComboBox<JobLevel> lvlBox, JTextField mailField,
+       JComboBox<Department> deptBox, JComboBox<JobLevel> lvlBox, JTextField mailField, JTextField ad_dressField,
        JTextField phoneField, JTextField salaryField) {
         if (nameField.getText().isBlank()
             || mailField.getText().isBlank()
@@ -35,6 +35,7 @@ public final class Function {
             || eduBox.getSelectedItem() == Education.Default
             || deptBox.getSelectedItem() == Department.Default
             || lvlBox.getSelectedItem() == JobLevel.Default
+            || ad_dressField.getText().isBlank()
             || salaryField.getText().isBlank()
             || phoneField.getText().isBlank()) {
             JOptionPane.showMessageDialog(null, "Please fill out all the fields");
@@ -50,7 +51,7 @@ public final class Function {
 
     public static Employee newEmployeeToDB(JTextField nameField, JComboBox<Education> eduBox,
     JComboBox<Department> deptBox, JComboBox<JobLevel> lvlBox, JComboBox<Gender> genderBox,
-    JTextField phoneField, JTextField emailField, JTextField salaryField)
+    JTextField phoneField, JTextField emailField, JTextField salaryField, JTextField ad_dressField)
     {
         var e = new Employee();
         e.setName(nameField.getText().trim());
@@ -59,6 +60,7 @@ public final class Function {
         e.setDepartment((Department) deptBox.getSelectedItem());
         e.setLevel((JobLevel) lvlBox.getSelectedItem());
         e.setPhone(phoneField.getText().trim());
+        e.setAddress(ad_dressField.getText().trim());
         var emailTxt = emailField.getText().trim();
         e.setEmail(emailTxt.isEmpty() ? null : emailTxt);
         var salaryTxt = salaryField.getText().trim();
@@ -69,21 +71,22 @@ public final class Function {
     //For update button
     public static Employee existingEmployeeFromDB(String eid, JTextField nameField, JComboBox<Education> eduBox,
     JComboBox<Department> deptBox, JComboBox<JobLevel> lvlBox, JComboBox<Gender> genderBox,
-    JTextField phoneField, JTextField emailField, JTextField salaryField)
+    JTextField phoneField, JTextField emailField, JTextField salaryField, JTextField ad_dressField)
     {
-        Employee e = newEmployeeToDB(nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, emailField, salaryField);
+        Employee e = newEmployeeToDB(nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, emailField, salaryField, ad_dressField);
         e.setEID(eid);
         return e;
     }
 
     public static void resetInput(JTextField nameField, JComboBox<Education> eduBox, 
     JComboBox<Department> deptBox, JComboBox<JobLevel> lvlBox, JComboBox<Gender> genderBox,
-    JTextField phoneField, JTextField emailField,JTextField salaryField) 
+    JTextField phoneField, JTextField emailField,JTextField salaryField, JTextField ad_dressField) 
     {
         nameField.setText("");
         phoneField.setText("");
         emailField.setText("");
         salaryField.setText("");
+        ad_dressField.setText("");
         if (genderBox.getItemCount() > 0) genderBox.setSelectedIndex(0);
         if (deptBox.getItemCount() > 0) deptBox.setSelectedIndex(0);
         if (lvlBox.getItemCount()  > 0) lvlBox.setSelectedIndex(0);

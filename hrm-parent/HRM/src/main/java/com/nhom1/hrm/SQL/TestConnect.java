@@ -10,7 +10,7 @@ import java.sql.Connection;
  *
  * @author Kris
  */
-public class testConnect {
+public class TestConnect {
     public static void main(String[] args) {
         try (Connection c = ConnectSQL.getConnection()) {
             javax.swing.JOptionPane.showMessageDialog(null, "Connected to DB");

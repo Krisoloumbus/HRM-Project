@@ -10,28 +10,28 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import com.nhom1.hrm.SQL.ConnectSQL;
-import com.nhom1.hrm.SQL.EmpDAO;
-import com.nhom1.hrm.SQL.Table;
 import com.nhom1.hrm.Models.Department;
 import com.nhom1.hrm.Models.Education;
 import com.nhom1.hrm.Models.Employee;
 import com.nhom1.hrm.Models.Gender;
 import com.nhom1.hrm.Models.JobLevel;
+import com.nhom1.hrm.SQL.ConnectSQL;
+import com.nhom1.hrm.SQL.EmpDAO;
+import com.nhom1.hrm.SQL.Table;
 
 public final class ButtonAtcion {
     private ButtonAtcion(){}
     public static void onAdd(JTextField nameField, JComboBox<Education> eduBox, JComboBox<Department> deptBox, JComboBox<JobLevel> lvlBox,
-    JComboBox<Gender>genderBox, JTextField phoneField, JTextField emailField, JTextField salaryField, JTable eTable)
+    JComboBox<Gender>genderBox, JTextField phoneField, JTextField emailField, JTextField salaryField, JTable eTable, JTextField ad_dressField)
     {
-        if (!Function.validateInput(nameField, eduBox, genderBox, deptBox, lvlBox, emailField, phoneField, salaryField)) return;
-        var emp = Function.newEmployeeToDB(nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, emailField, salaryField);
+        if (!Function.validateInput(nameField, eduBox, genderBox, deptBox, lvlBox, emailField, phoneField, salaryField, ad_dressField)) return;
+        var emp = Function.newEmployeeToDB(nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, emailField, salaryField, ad_dressField);
         try (Connection c = ConnectSQL.getConnection()) {
             Table.createEmpIfNotHave(c);
             new EmpDAO().insert(c, emp);
             JOptionPane.showMessageDialog(null, "Employee Add!");
             UiTable.loadTable(eTable);
-            Function.resetInput(nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, emailField, salaryField);
+            Function.resetInput(nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, emailField, salaryField, ad_dressField);
         } catch (Exception ex) {
             ex.printStackTrace();
             JOptionPane.showMessageDialog(null, "Add error: " + ex.getMessage());
@@ -67,18 +67,18 @@ public final class ButtonAtcion {
     //testing
     public static void onUpdate(
         String eid, JTextField nameField, JComboBox<Education> eduBox, JComboBox<Department> deptBox, JComboBox<JobLevel> lvlBox,
-        JComboBox<Gender>genderBox, JTextField phoneField, JTextField emailField, JTextField salaryField, JTable eTable){
+        JComboBox<Gender>genderBox, JTextField phoneField, JTextField emailField, JTextField salaryField, JTable eTable, JTextField ad_dressField){
         if (eid == null || eid.isBlank()) {
             JOptionPane.showMessageDialog(null, "There is no selected employee to be updated");
             return;
         }
-        if (!Function.validateInput(nameField, eduBox, genderBox, deptBox, lvlBox, emailField, phoneField, salaryField)) return;
-        Employee emp = Function.existingEmployeeFromDB(eid, nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, emailField, salaryField);
+        if (!Function.validateInput(nameField, eduBox, genderBox, deptBox, lvlBox, emailField, phoneField, salaryField, ad_dressField)) return;
+        Employee emp = Function.existingEmployeeFromDB(eid, nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, emailField, salaryField, ad_dressField);
         try (Connection c = ConnectSQL.getConnection()) {
             new EmpDAO().update(c, emp);
             JOptionPane.showMessageDialog(null, "Employee updated!");
             UiTable.loadTable(eTable);
-            Function.resetInput(nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, emailField, salaryField);
+            Function.resetInput(nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, emailField, salaryField, ad_dressField);
         } catch (Exception ex) {
             ex.printStackTrace();
             JOptionPane.showMessageDialog(null, "Update error: " + ex.getMessage());
@@ -87,10 +87,11 @@ public final class ButtonAtcion {
 
     //Searching
     public static void onSearch(JTextField nameField, JComboBox<Education> eduBox, JComboBox<Department> deptBox, JComboBox<JobLevel> lvlBox,
-        JComboBox<Gender>genderBox, JTextField phoneField, JTextField emailField, JTextField salaryField, JTable eTable) {
+        JComboBox<Gender>genderBox, JTextField phoneField, JTextField emailField, JTextField salaryField, JTable eTable, JTextField ad_dressField) {
         String name = nameField.getText().trim();
         String phone = phoneField.getText().trim();
         String email = emailField.getText().trim();
+        String ad_dress = ad_dressField.getText().trim();
 
         Gender gender = (Gender) genderBox.getSelectedItem();
         Education edu = (Education) eduBox.getSelectedItem();
@@ -100,6 +101,7 @@ public final class ButtonAtcion {
         boolean noFilter = name.isBlank()
         && phone.isBlank()
         && email.isBlank()
+        && ad_dress.isBlank()
         && salaryField.getText().isBlank()
         && gender == Gender.Default
         && edu    == Education.Default
@@ -130,7 +132,8 @@ public final class ButtonAtcion {
                         e.getEmail(),
                         e.getDepartment(),
                         e.getLevel(),
-                        e.getSalary()
+                        e.getSalary(),
+                        e.getAddress()
                 });
             }
         } catch (Exception ex) {
@@ -141,19 +144,20 @@ public final class ButtonAtcion {
 
     //Refresh
     public  static void onRefresh(JTextField nameField, JComboBox<Education> eduBox, JComboBox<Department> deptBox, JComboBox<JobLevel> lvlBox,
-    JComboBox<Gender>genderBox, JTextField phoneField, JTextField emailField, JTextField salaryField, JTable eTable)
+    JComboBox<Gender>genderBox, JTextField phoneField, JTextField emailField, JTextField salaryField, JTable eTable, JTextField ad_dressField)
     {
         boolean noFilter = nameField.getText().isBlank()
         && emailField.getText().isBlank()
         && phoneField.getText().isBlank()
         && salaryField.getText().isBlank()
+        && ad_dressField.getText().isBlank()
         && genderBox.getSelectedItem() == Gender.Default
         && eduBox.getSelectedItem()    == Education.Default
         && deptBox.getSelectedItem()   == Department.Default
         && lvlBox.getSelectedItem()    == JobLevel.Default;
         if (!noFilter) {
             try {
-                Function.resetInput(nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, emailField, salaryField);
+                Function.resetInput(nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, emailField, salaryField, ad_dressField);
                 UiTable.loadTable(eTable);
             } catch (Exception ex) {
                 ex.printStackTrace();
