@@ -13,6 +13,7 @@ import javax.swing.SwingUtilities;
 
 import com.nhom1.hrm.SQL.ConnectSQL;
 import com.nhom1.hrm.SQL.Table;
+import com.nhom1.hrm.SQL.UpdateTable;
 import com.nhom1.hrm.SQL.UserDAO;
 import com.nhom1.hrm.UI.AppShell;
 import com.nhom1.hrm.UI.AuthProvider;
@@ -48,6 +49,7 @@ public class HRM {
                 }
                 };
                 try (Connection con = connFactory.get()) {
+                UpdateTable.migrateB(con);
                 // Tạo bảng nhân sự của bạn như cũ
                 Table.createEmpIfNotHave(con);
                 // Đảm bảo có bảng Users

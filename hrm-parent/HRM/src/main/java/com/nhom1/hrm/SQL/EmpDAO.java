@@ -19,7 +19,7 @@ public class EmpDAO extends Employee {
     //Just use to get selected data from SQL_DB to show it in GUI table
     public List<Employee> findAll(Connection c) throws SQLException {
         String sql = """
-            SELECT No, EID, Full_Name, Gender, Phone, Email, Education, Department, Job_Level, Salary
+            SELECT No, EID, Full_Name, Gender, Phone, Email, Education, Department, Job_Level, Salary, Address
             FROM dbo.Employees ORDER BY No
         """;
         List<Employee> out = new ArrayList<>();
