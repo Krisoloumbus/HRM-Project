@@ -1,4 +1,4 @@
-package com.nhom1.hrm.UI;
+package com.nhom1.hrm.UI.Utils;
 
 import java.sql.Connection;
 

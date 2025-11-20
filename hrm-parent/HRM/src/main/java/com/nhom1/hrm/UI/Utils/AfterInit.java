@@ -1,4 +1,4 @@
-package com.nhom1.hrm.UI;
+package com.nhom1.hrm.UI.Utils;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;

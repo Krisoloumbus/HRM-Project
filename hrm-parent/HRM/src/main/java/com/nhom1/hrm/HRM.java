@@ -16,8 +16,8 @@ import com.nhom1.hrm.SQL.DAO.UserDAO;
 import com.nhom1.hrm.SQL.Table.Table;
 import com.nhom1.hrm.SQL.Table.UpdateTable;
 import com.nhom1.hrm.UI.AppShell;
-import com.nhom1.hrm.UI.AuthProvider;
-import com.nhom1.hrm.UI.LoginController;
+import com.nhom1.hrm.UI.Utils.AuthProvider;
+import com.nhom1.hrm.UI.Utils.LoginController;
 
 /**
  *

@@ -1,5 +1,7 @@
-package com.nhom1.hrm.UI;
+package com.nhom1.hrm.UI.Utils;
 
+import com.nhom1.hrm.UI.Utils.UiTable;
+import com.nhom1.hrm.UI.Utils.Function;
 import java.sql.Connection;
 import java.util.Arrays;
 import java.util.List;

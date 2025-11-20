@@ -1,5 +1,6 @@
-package com.nhom1.hrm.UI;
+package com.nhom1.hrm.UI.Utils;
 
+import com.nhom1.hrm.UI.Utils.Function;
 import java.awt.Component;
 import java.io.File;
 import java.io.IOException;
