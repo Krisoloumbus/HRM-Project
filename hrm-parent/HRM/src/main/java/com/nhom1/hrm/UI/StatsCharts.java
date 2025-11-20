@@ -22,7 +22,7 @@ import org.jfree.data.general.DefaultPieDataset;
 
 import com.nhom1.hrm.Models.Gender;
 import com.nhom1.hrm.SQL.ConnectSQL;
-import com.nhom1.hrm.SQL.StatsDAO;
+import com.nhom1.hrm.SQL.DAO.StatsDAO;
 
 /**
  *

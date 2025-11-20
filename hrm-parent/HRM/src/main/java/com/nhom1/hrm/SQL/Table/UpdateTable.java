@@ -1,4 +1,4 @@
-package com.nhom1.hrm.SQL;
+package com.nhom1.hrm.SQL.Table;
 
 import java.sql.Connection;
 import java.sql.SQLException;

@@ -1,4 +1,4 @@
-package com.nhom1.hrm.SQL;
+package com.nhom1.hrm.SQL.DAO;
 
 import java.math.BigDecimal;
 import java.sql.Connection;

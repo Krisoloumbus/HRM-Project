@@ -16,8 +16,8 @@ import com.nhom1.hrm.Models.Employee;
 import com.nhom1.hrm.Models.Gender;
 import com.nhom1.hrm.Models.JobLevel;
 import com.nhom1.hrm.SQL.ConnectSQL;
-import com.nhom1.hrm.SQL.EmpDAO;
-import com.nhom1.hrm.SQL.Table;
+import com.nhom1.hrm.SQL.DAO.EmpDAO;
+import com.nhom1.hrm.SQL.Table.Table;
 
 public final class ButtonAtcion {
     private ButtonAtcion(){}

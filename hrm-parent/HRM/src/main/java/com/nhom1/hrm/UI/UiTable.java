@@ -6,8 +6,8 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import com.nhom1.hrm.SQL.ConnectSQL;
-import com.nhom1.hrm.SQL.EmpDAO;
-import com.nhom1.hrm.SQL.Table;
+import com.nhom1.hrm.SQL.DAO.EmpDAO;
+import com.nhom1.hrm.SQL.Table.Table;
 
 public final class UiTable{
     private UiTable(){}
