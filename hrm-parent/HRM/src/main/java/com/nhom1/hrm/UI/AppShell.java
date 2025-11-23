@@ -9,7 +9,6 @@ import com.nhom1.hrm.UI.Utils.Cards;
 import com.nhom1.hrm.UI.Utils.StatsCharts;
 import com.nhom1.hrm.UI.Utils.UiTable;
 import com.nhom1.hrm.UI.Utils.MenuBar;
-import com.nhom1.hrm.UI.Utils.UpdateUI;
 import com.nhom1.hrm.UI.Utils.KeyBind;
 import com.nhom1.hrm.UI.Utils.AfterInit;
 import com.nhom1.hrm.UI.Utils.LoadIcon;
@@ -34,7 +33,6 @@ public class AppShell extends javax.swing.JFrame {
     private String editingByEID = null;
     public AppShell() {
         initComponents();
-        UpdateUI.LaFUI();
         CustomColor.setCustomRendererForAll(genderBox, lvlBox, eduBox, deptBox);
         Cards deck = new Cards();
         eSplitPane.setRightComponent(deck);
