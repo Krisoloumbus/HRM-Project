@@ -20,7 +20,6 @@ import org.jfree.chart.plot.PiePlot;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
 
-import com.nhom1.hrm.Models.Gender;
 import com.nhom1.hrm.SQL.ConnectSQL;
 import com.nhom1.hrm.SQL.DAO.StatsDAO;
 
