@@ -22,7 +22,7 @@ import org.json.JSONObject;
 public class GithubReleaseClient {
     private GithubReleaseClient(){}
 
-    // TODO: ĐỔI theo repo của bạn
+    // Change to your Git repo
     public static final String OWNER = "Krisoloumbus";
     public static final String REPO  = "HRM-Project";
     public static final String ASSET_NAME = "hrm-app.jar";

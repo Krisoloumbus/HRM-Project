@@ -33,7 +33,7 @@ public class ConnectSQL {
     }*/
 
     public static Connection getConnection() throws SQLException {
-    // 1) VM option hoặc file cạnh JAR (Dotenv đọc từ filesystem)
+    // 1) VM option or file near JAR (Dotenv read from filesystem)
     Dotenv dotenv = tryLoadFromSystemOrJarDir();
 
     String dbURL, dbName, dbUser, dbPass;
@@ -44,8 +44,8 @@ public class ConnectSQL {
         dbUser = trim(dotenv.get("dbUser"));
         dbPass = trim(dotenv.get("dbPass"));
     } else {
-        // 2) Fallback: đọc từ classpath (resource bên trong JAR)
-        Map<String,String> env = loadFromClasspath("/db.env"); // đặt file ở src/main/resources
+        // 2) Fallback: read from classpath (resource inside JAR)
+        Map<String,String> env = loadFromClasspath("/db.env"); // place file at src/main/resources
         dbURL  = env.get("dbURL");
         dbName = env.get("dbName");
         dbUser = env.get("dbUser");
@@ -94,7 +94,7 @@ private static Dotenv tryLoadFromSystemOrJarDir() {
         }
     } catch (Exception ignore) { /* keep fallback */ }
 
-    return null; // để fallback sang classpath
+    return null; // let fallback to classpath
 }
 
 private static Map<String,String> loadFromClasspath(String resourcePath) {
