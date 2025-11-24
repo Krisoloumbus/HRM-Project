@@ -20,6 +20,7 @@ import java.util.Arrays;
 public class UserDAO {
     /** Tạo user mới. Trả về true nếu tạo được, false nếu username đã tồn tại. */
     public static boolean createUser(Connection c, String username, char[] password) throws Exception {
+
         byte[] salt = randomSalt(16);
         byte[] hash = hashPassword(password, salt);
 
@@ -31,8 +32,9 @@ public class UserDAO {
             ps.executeUpdate();
             return true;
         } catch (SQLException ex) {
-            // 2627 = unique constraint violation
-            if (ex.getErrorCode() == 2627) return false;
+            // 2627: Violation of PRIMARY KEY/UNIQUE constraint
+            // 2601: Cannot insert duplicate key row in object with unique index
+            if (ex.getErrorCode() == 2627 || ex.getErrorCode() == 2601 || "23000".equals(ex.getSQLState())) return false;
             throw ex;
         } finally {
             // xoá dấu vết trong RAM

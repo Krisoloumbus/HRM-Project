@@ -64,7 +64,7 @@ public final class ButtonAtcion {
         }
     }
 
-    //testing
+    //Update employee info
     public static void onUpdate(
         String eid, JTextField nameField, JComboBox<Education> eduBox, JComboBox<Department> deptBox, JComboBox<JobLevel> lvlBox,
         JComboBox<Gender>genderBox, JTextField phoneField, JTextField emailField, JTextField salaryField, JTable eTable, JTextField ad_dressField){

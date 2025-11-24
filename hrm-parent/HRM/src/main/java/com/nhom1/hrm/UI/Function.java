@@ -68,7 +68,7 @@ public final class Function {
         return e;
     }
 
-    //For update button
+    //For update employee button
     public static Employee existingEmployeeFromDB(String eid, JTextField nameField, JComboBox<Education> eduBox,
     JComboBox<Department> deptBox, JComboBox<JobLevel> lvlBox, JComboBox<Gender> genderBox,
     JTextField phoneField, JTextField emailField, JTextField salaryField, JTextField ad_dressField)
