@@ -5,6 +5,7 @@
 package com.nhom1.hrm.AppUpdate;
 
 import java.awt.Component;
+import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -58,9 +59,13 @@ public class UpdaterLauncher {
                 return;
             }
 
-            // Lệnh relaunch
-            String javaBin = System.getProperty("java.home") + java.io.File.separator + "bin" + java.io.File.separator + "java";
-            String relaunchCmd = "\"" + javaBin + "\" -jar \"" + runningJar.toAbsolutePath() + "\"";
+            // Lệnh relaunch: nếu chạy bằng jpackage, dùng EXE; ngược lại java -jar
+            String jpkg = System.getProperty("jpackage.app-path");
+            String javaBin = System.getProperty("java.home") + File.separator + "bin" + File.separator + (System.getProperty("os.name").startsWith("Windows") ? "java.exe" : "java");
+
+            String relaunchCmd = (jpkg != null && !jpkg.isBlank())
+                    ? "\"" + jpkg + "\""                            // ví dụ: "C:\Program Files\HRM\HRM.exe"
+                    : "\"" + javaBin + "\" -jar \"" + runningJar.toAbsolutePath() + "\"";
 
             // Gọi updater rồi thoát ứng dụng
             new ProcessBuilder(javaBin, "-jar",

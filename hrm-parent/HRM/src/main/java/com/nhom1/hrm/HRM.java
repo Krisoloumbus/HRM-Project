@@ -26,18 +26,6 @@ import com.nhom1.hrm.UI.UpdateUI;
  */
 public class HRM {
     public static void main(String[] args) {
-        /*try (Connection c = ConnectSQL.getConnection()) {
-            Table.createEmpIfNotHave(c);
-            Table.createUserIfNotHave(c);
-            javax.swing.JOptionPane.showMessageDialog(null, "Connected to DB");
-        } catch (Exception e) {
-            e.printStackTrace();
-            javax.swing.JOptionPane.showMessageDialog(null, "Unable to create Table or connecte to DB: " + e.getMessage());
-        }
-
-        // Launch GUI
-        SwingUtilities.invokeLater(() -> new AppShell().setVisible(true));
-        */
         UpdateUI.LaFUI();
         SwingUtilities.invokeLater(() -> {
             try {
