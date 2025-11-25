@@ -18,6 +18,7 @@ import com.nhom1.hrm.SQL.UserDAO;
 import com.nhom1.hrm.UI.AppShell;
 import com.nhom1.hrm.UI.AuthProvider;
 import com.nhom1.hrm.UI.LoginController;
+import com.nhom1.hrm.UI.UpdateUI;
 
 /**
  *
@@ -37,7 +38,7 @@ public class HRM {
         // Launch GUI
         SwingUtilities.invokeLater(() -> new AppShell().setVisible(true));
         */
-
+        UpdateUI.LaFUI();
         SwingUtilities.invokeLater(() -> {
             try {
                 Supplier<Connection> connFactory = () -> {
