@@ -579,7 +579,7 @@ public class AppShell extends javax.swing.JFrame {
 
     private void selectedMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectedMenuItemActionPerformed
         // TODO add your handling code here:
-        editingByEID = MenuBar.onSelected(eTable, nameField, ad_dressField, eduBox, deptBox, lvlBox, genderBox, phoneField, mailField, salaryField);
+        editingByEID = MenuBar.onSelected(eTable, nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, mailField, salaryField, ad_dressField);
     }//GEN-LAST:event_selectedMenuItemActionPerformed
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed

@@ -28,16 +28,16 @@ public class MenuBar {
     }
 
     public static String onSelected(
-            JTable eTable,
-            JTextField nameField,
-            JTextField dateField,          //I gonna comeback for this later
-            JComboBox<Education> eduBox,
-            JComboBox<Department> deptBox,
-            JComboBox<JobLevel> lvlBox,
-            JComboBox<Gender> genderBox,
-            JTextField phoneField,
-            JTextField mailField,
-            JTextField salaryField) {
+        JTable eTable,
+        JTextField nameField,
+        JComboBox<Education> eduBox,
+        JComboBox<Department> deptBox,
+        JComboBox<JobLevel> lvlBox,
+        JComboBox<Gender> genderBox,
+        JTextField phoneField,
+        JTextField mailField,
+        JTextField salaryField,
+        JTextField ad_dressField) {
         int viewRow = eTable.getSelectedRow();
         if (viewRow == -1) {
             JOptionPane.showMessageDialog(null, "Select one row in table");
@@ -53,11 +53,10 @@ public class MenuBar {
         phoneField.setText(String.valueOf(model.getValueAt(row, 5)));
         Object emailObj = model.getValueAt(row, 6);
         mailField.setText(emailObj != null ? emailObj.toString() : "");
-        deptBox.setSelectedItem((Department) model.getValueAt(row, 7));
-        lvlBox.setSelectedItem((JobLevel) model.getValueAt(row, 8));
-        salaryField.setText(String.valueOf(model.getValueAt(row, 9)));
-        //Empty for now
-        dateField.setText("");
+        ad_dressField.setText(String.valueOf(model.getValueAt(row, 7)));
+        deptBox.setSelectedItem((Department) model.getValueAt(row, 8));
+        lvlBox.setSelectedItem((JobLevel) model.getValueAt(row, 9));
+        salaryField.setText(String.valueOf(model.getValueAt(row, 10)));
         return eid;
     }
 

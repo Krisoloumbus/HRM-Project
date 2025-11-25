@@ -100,68 +100,64 @@ public class EmpDAO extends Employee {
 
     //This is the real Searching :)))))
     public List<Employee> searchEmployees(Connection c, String name, Gender gender,
-    Education edu, JobLevel lvl, Department dept, String phone, String email, String ad_dress) throws  SQLException {
-        StringBuilder sbSQL = new StringBuilder("SELECT EID, Full_Name, Gender, Education, Phone, Email, Address, " + 
-        "Department, Job_Level, Salary " + "FROM dbo.Employees WHERE 1=1");
-            ArrayList<Object> params = new ArrayList<>();
-            if(name != null && name.isBlank()){
-                sbSQL.append("AND Full_Name LIKE ?");
-                params.add("%" + name + "%");
+        Education edu, JobLevel lvl, Department dept, String phone, String email, String ad_dress) throws SQLException {
+            StringBuilder sql = new StringBuilder(
+                "SELECT No, EID, Full_Name, Gender, Education, Phone, Email, Address, Department, Job_Level, Salary " +
+                "FROM dbo.Employees WHERE 1=1 "
+            );
+        ArrayList<Object> params = new ArrayList<>();
+        if (name != null && !name.isBlank()) {
+            sql.append("AND Full_Name LIKE ? ");
+            params.add("%" + name + "%");
+        }
+        if (gender != null && gender != Gender.Default) {
+            sql.append("AND Gender = ? ");
+            params.add(gender.getCodeDB());
+        }
+        if (edu != null && edu != Education.Default) {
+            sql.append("AND Education = ? ");
+            params.add(edu.getCodeDB());
+        }
+        if (lvl != null && lvl != JobLevel.Default) {
+            sql.append("AND Job_Level = ? ");
+        params.add(lvl.getCodeDB());
+        }
+        if (dept != null && dept != Department.Default) {
+            sql.append("AND Department = ? ");
+            params.add(dept.getCodeDB());
+        }
+        if (phone != null && !phone.isBlank()) {
+            sql.append("AND Phone LIKE ? ");
+            params.add("%" + phone + "%");
+        }
+        if (email != null && !email.isBlank()) {
+            sql.append("AND Email LIKE ? ");
+            params.add("%" + email + "%");
+        }
+        if (ad_dress != null && !ad_dress.isBlank()) {
+            sql.append("AND Address LIKE ? ");
+            params.add("%" + ad_dress + "%");
+        }
+        
+        try (PreparedStatement ps = c.prepareStatement(sql.toString())) {
+            for (int i = 0; i < params.size(); i++) {
+                ps.setObject(i + 1, params.get(i));
             }
-
-            if (gender != Gender.Default){
-                sbSQL.append("AND Gender = ?");
-                params.add(gender.getCodeDB());
-            }
-
-            if (edu != Education.Default){
-                sbSQL.append("AND Education = ?");
-                params.add(edu.getCodeDB());
-            }
-
-            if (lvl != JobLevel.Default) {
-                sbSQL.append("AND Job_Level = ?");
-                params.add(lvl.getCodeDB());
-            }
-
-            if (dept != Department.Default) {
-                sbSQL.append("AND Department = ?");
-                params.add(dept.getCodeDB());
-            }
-
-            if(phone != null && phone.isBlank()){
-                sbSQL.append("AND Phone LIKE ?");
-                params.add("%" + phone + "%");
-            }
-
-            if(email != null && email.isBlank()){
-                sbSQL.append("AND Email LIKE ?");
-                params.add("%" + email + "%");
-            }
-
-            if(email != null && ad_dress.isBlank()){
-                sbSQL.append("AND Address LIKE ?");
-                params.add("%" + email + "%");
-            }
-
-            try (PreparedStatement ps = c.prepareStatement(sbSQL.toString())){
-                for (int i = 0; i < params.size(); i ++) {
-                    ps.setObject(i + 1, params.get(i));
-                }
-                try (ResultSet rs = ps.executeQuery()) {
+            try (ResultSet rs = ps.executeQuery()) {
                 List<Employee> list = new ArrayList<>();
                 while (rs.next()) {
                     Employee e = new Employee();
+                    e.setNo(rs.getInt("No"));
                     e.setEID(rs.getString("EID"));
                     e.setName(rs.getString("Full_Name"));
                     e.setGender(Gender.fromCodeToDB(rs.getString("Gender")));
                     e.setEdu(Education.fromCodeToDB(rs.getString("Education")));
                     e.setPhone(rs.getString("Phone"));
                     e.setEmail(rs.getString("Email"));
+                    e.setAddress(rs.getString("Address"));
                     e.setDepartment(Department.fromCodeToDB(rs.getString("Department")));
                     e.setLevel(JobLevel.fromCodeToDB(rs.getString("Job_Level")));
                     e.setSalary(rs.getBigDecimal("Salary"));
-                    e.setAddress(rs.getString("Address"));
                     list.add(e);
                 }
                 return list;

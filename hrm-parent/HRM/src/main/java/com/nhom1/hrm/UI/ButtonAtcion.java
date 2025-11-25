@@ -130,10 +130,10 @@ public final class ButtonAtcion {
                         e.getEdu(),
                         e.getPhone(),
                         e.getEmail(),
+                        e.getAddress(),
                         e.getDepartment(),
                         e.getLevel(),
-                        e.getSalary(),
-                        e.getAddress()
+                        e.getSalary()
                 });
             }
         } catch (Exception ex) {

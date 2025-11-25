@@ -41,8 +41,15 @@ public final class Function {
             JOptionPane.showMessageDialog(null, "Please fill out all the fields");
             return false;
         }
-        try { new BigDecimal(salaryField.getText().trim()); }
-        catch (NumberFormatException e) { JOptionPane.showMessageDialog(null,"Invalid Salary"); return false; }
+        String s = salaryField.getText().trim().replace(",", "");
+        try { 
+            java.math.BigDecimal sal = new java.math.BigDecimal(s);
+            if (sal.signum() < 0) throw new NumberFormatException("negative");}
+        catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Invalid Salary");
+            salaryField.requestFocus();
+            return false;
+        }
         try { Long.parseLong(phoneField.getText().trim()); }
         catch (NumberFormatException e) { JOptionPane.showMessageDialog(null,"Phone must be number"); return false; }
         //try {} catch ( e) {}
