@@ -24,7 +24,7 @@ public final class ButtonAtcion {
     public static void onAdd(JTextField nameField, JComboBox<Education> eduBox, JComboBox<Department> deptBox, JComboBox<JobLevel> lvlBox,
     JComboBox<Gender>genderBox, JTextField phoneField, JTextField emailField, JTextField salaryField, JTable eTable, JTextField ad_dressField)
     {
-        if (!Function.validateInput(nameField, eduBox, genderBox, deptBox, lvlBox, emailField, phoneField, salaryField, ad_dressField)) return;
+        if (!Function.validateInput(nameField, eduBox, genderBox, deptBox, lvlBox, phoneField, emailField, salaryField, ad_dressField)) return;
         var emp = Function.newEmployeeToDB(nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, emailField, salaryField, ad_dressField);
         try (Connection c = ConnectSQL.getConnection()) {
             Table.createEmpIfNotHave(c);
@@ -72,7 +72,7 @@ public final class ButtonAtcion {
             JOptionPane.showMessageDialog(null, "There is no selected employee to be updated");
             return;
         }
-        if (!Function.validateInput(nameField, eduBox, genderBox, deptBox, lvlBox, emailField, phoneField, salaryField, ad_dressField)) return;
+        if (!Function.validateInput(nameField, eduBox, genderBox, deptBox, lvlBox, phoneField, emailField, salaryField, ad_dressField)) return;
         Employee emp = Function.existingEmployeeFromDB(eid, nameField, eduBox, deptBox, lvlBox, genderBox, phoneField, emailField, salaryField, ad_dressField);
         try (Connection c = ConnectSQL.getConnection()) {
             new EmpDAO().update(c, emp);
