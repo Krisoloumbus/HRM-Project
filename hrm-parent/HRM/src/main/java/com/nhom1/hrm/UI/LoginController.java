@@ -24,6 +24,19 @@ public final class LoginController {
         String u = userTextField.getText().trim();
         char[] p = passwordField.getPassword();
         try {
+            boolean userEmpty = u.isEmpty();
+            boolean passEmpty = p.length == 0;
+            if (userEmpty || passEmpty) {
+                if (userEmpty && passEmpty) {
+                    JOptionPane.showMessageDialog(viewUI, "Please enter user and password");
+                } else if (userEmpty) {
+                    JOptionPane.showMessageDialog(viewUI, "Please enter user");
+                } else {
+                    JOptionPane.showMessageDialog(viewUI, "Please enter password");
+                }
+                return;
+            }
+
             boolean pass = (auth != null && auth.authenticate(u, p));
             if (pass) {
                 viewUI.getRootPane().putClientProperty(OK_FLAG, Boolean.TRUE);
