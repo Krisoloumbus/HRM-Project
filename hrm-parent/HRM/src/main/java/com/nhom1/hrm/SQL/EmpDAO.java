@@ -100,7 +100,7 @@ public class EmpDAO extends Employee {
 
     //This is the real Searching :)))))
     public List<Employee> searchEmployees(Connection c, String name, Gender gender,
-    Education edu, JobLevel lvl, Department dept, String phone, String email) throws  SQLException {
+    Education edu, JobLevel lvl, Department dept, String phone, String email, String ad_dress) throws  SQLException {
         StringBuilder sbSQL = new StringBuilder("SELECT EID, Full_Name, Gender, Education, Phone, Email, Address, " + 
         "Department, Job_Level, Salary " + "FROM dbo.Employees WHERE 1=1");
             ArrayList<Object> params = new ArrayList<>();
@@ -139,7 +139,7 @@ public class EmpDAO extends Employee {
                 params.add("%" + email + "%");
             }
 
-            if(email != null && email.isBlank()){
+            if(email != null && ad_dress.isBlank()){
                 sbSQL.append("AND Address LIKE ?");
                 params.add("%" + email + "%");
             }

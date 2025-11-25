@@ -116,7 +116,7 @@ public final class ButtonAtcion {
         }
         try (Connection c = ConnectSQL.getConnection()) {
             EmpDAO mm = new EmpDAO();
-            List<Employee> results = mm.searchEmployees(c, name, gender, edu, lvl, dept, phone, email);
+            List<Employee> results = mm.searchEmployees(c, name, gender, edu, lvl, dept, phone, email, ad_dress);
             DefaultTableModel dfModel = (DefaultTableModel) eTable.getModel();
             dfModel.setRowCount(0);
 
