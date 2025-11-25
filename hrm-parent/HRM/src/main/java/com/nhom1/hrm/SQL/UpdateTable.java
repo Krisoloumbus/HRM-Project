@@ -58,4 +58,23 @@ public class UpdateTable {
                              END""";
         exec(con, step3);
     }
+
+    public static void migratePhoneToVarchar(Connection con) throws SQLException {
+    // Chỉ chạy nếu cột Phone hiện KHÔNG phải VARCHAR
+    final String step = """
+        IF EXISTS (SELECT 1
+                   FROM INFORMATION_SCHEMA.COLUMNS
+                   WHERE TABLE_SCHEMA='dbo' AND TABLE_NAME='Employees'
+                     AND COLUMN_NAME='Phone' AND DATA_TYPE <> 'varchar')
+        BEGIN
+            ALTER TABLE dbo.Employees ALTER COLUMN Phone VARCHAR(32) NOT NULL;
+        END
+        """;
+        exec(con, step);
+    }
+
+    public static void runAllMigrations(Connection con) throws SQLException {
+        migrateB(con, "");           // Address: ADD -> backfill -> NOT NULL (nếu bạn đang dùng)
+        migratePhoneToVarchar(con);  // Phone: đổi sang VARCHAR(32)
+    }
 }

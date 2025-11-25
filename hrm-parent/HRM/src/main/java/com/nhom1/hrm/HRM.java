@@ -38,7 +38,7 @@ public class HRM {
                 }
                 };
                 try (Connection con = connFactory.get()) {
-                UpdateTable.migrateB(con);
+                UpdateTable.runAllMigrations(con);
                 // Tạo bảng nhân sự của bạn như cũ
                 Table.createEmpIfNotHave(con);
                 // Đảm bảo có bảng Users
