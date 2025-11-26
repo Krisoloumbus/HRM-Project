@@ -4,6 +4,8 @@
 
 package com.nhom1.updater;
 
+import java.nio.file.AtomicMoveNotSupportedException;
+import java.nio.file.FileSystemException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -15,7 +17,7 @@ import java.nio.file.StandardCopyOption;
  */
 public class Updater {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws AtomicMoveNotSupportedException {
         if (args.length < 3) {
             System.err.println("Usage: java -jar updater.jar <targetJar> <newJar> <relaunchCmd>");
             System.exit(2);
@@ -34,20 +36,23 @@ public class Updater {
         // Thử nhiều lần nếu vẫn đang bị khóa
         for (int i = 0; i < 10; i++) {
             try {
-                // Ghi đè: move tệp mới vào vị trí target
-                Files.move(newJar, target,
-                        StandardCopyOption.REPLACE_EXISTING,
-                        StandardCopyOption.ATOMIC_MOVE);
-                break; // ok
-            } catch (Exception ex) {
-                sleepQuiet(500);
-                if (i == 9) {
-                    ex.printStackTrace();
-                    show("Update failed: " + ex.getMessage());
-                    System.exit(1);
+                try {
+                    // Thử move bình thường (không ATOMIC_MOVE để hỗ trợ khác ổ đĩa)
+                    Files.move(newJar, target, StandardCopyOption.REPLACE_EXISTING);
+                } catch (FileSystemException ex) {
+                    // Fallback: copy rồi replace
+                    //java.nio.file.AtomicMoveNotSupportedException | java.nio.file.FileSystemException 
+                    Path bak = target.resolveSibling(target.getFileName() + ".bak");
+                    try { Files.deleteIfExists(bak); } catch (Exception ignore) {}
+                    Files.copy(newJar, target, StandardCopyOption.REPLACE_EXISTING);
+                    Files.deleteIfExists(newJar);
+                }
+                break; // OK
+                } catch (Exception ex) {
+                    sleepQuiet(500);
+                    if (i == 9) { ex.printStackTrace(); show("Update failed: " + ex.getMessage()); System.exit(1); }
                 }
             }
-        }
 
         // 2) Relaunch app
         try {
