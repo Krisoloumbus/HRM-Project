@@ -121,6 +121,7 @@ public class AppShell extends javax.swing.JFrame {
         refreshButton = new javax.swing.JButton();
         infoPanel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         eMenuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         exportMenuItem = new javax.swing.JMenuItem();
@@ -464,21 +465,30 @@ public class AppShell extends javax.swing.JFrame {
 
         jLabel2.setText("Team 1 project");
 
+        jLabel1.setText("Test Update ver1.1.4");
+
         javax.swing.GroupLayout infoPanelLayout = new javax.swing.GroupLayout(infoPanel);
         infoPanel.setLayout(infoPanelLayout);
         infoPanelLayout.setHorizontalGroup(
             infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(infoPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
-                .addContainerGap(767, Short.MAX_VALUE))
+                .addGroup(infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(infoPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel2))
+                    .addGroup(infoPanelLayout.createSequentialGroup()
+                        .addGap(86, 86, 86)
+                        .addComponent(jLabel1)))
+                .addContainerGap(674, Short.MAX_VALUE))
         );
         infoPanelLayout.setVerticalGroup(
             infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(infoPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addContainerGap(868, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1)
+                .addContainerGap(840, Short.MAX_VALUE))
         );
 
         contentPanel.add(infoPanel, "card3");
@@ -684,6 +694,7 @@ public class AppShell extends javax.swing.JFrame {
     private javax.swing.JPanel homePanel;
     private javax.swing.JButton infoButton;
     private javax.swing.JPanel infoPanel;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuItem logOutMenuItem;
     private javax.swing.JLabel logoLabel;
