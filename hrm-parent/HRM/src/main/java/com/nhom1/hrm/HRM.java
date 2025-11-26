@@ -38,11 +38,9 @@ public class HRM {
                 }
                 };
                 try (Connection con = connFactory.get()) {
-                UpdateTable.runAllMigrations(con);
-                // Tạo bảng nhân sự của bạn như cũ
                 Table.createEmpIfNotHave(con);
-                // Đảm bảo có bảng Users
                 Table.createUserIfNotHave(con);
+                UpdateTable.runAllMigrations(con);
 
                 // (Optional/Testing) seed admin if not have
                 if (!UserDAO.check(con, "admin", "123".toCharArray())) {
